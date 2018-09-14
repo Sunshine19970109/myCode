@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+	<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+	<!-- namespace表示命名空间 ，值必须为接口的名称（包括包名）-->
+	<!-- 实现类没有，mybatis框架会生成接口的实现类 -->
+	<mapper namespace="cn.tedu.store.mapper.CartMapper">
+			<insert id="insertCart"
+				parameterType="cn.tedu.store.bean.Cart">
+				insert into t_cart(
+					uid,goods_id,num,created_user,created_time
+				)values(
+					#{uid},
+					#{goodsId},
+					#{num},
+					#{createdUser},
+					#{createdTime}
+				)
+			</insert>
+			<select id="selectByUid"
+		resultType="cn.tedu.store.vo.CartVo">
+			select 
+				t_cart.id id,uid,goods_id goodsId,t_cart.num num,
+				image,title,price,
+				t_cart.created_user createdUser,
+				t_cart.created_time createdTime,
+				t_cart.modified_user modifiedUser,
+				t_cart.modified_time modifiedTime
+			from
+				t_cart,t_goods
+			where 
+				goods_id=t_goods.id 
+				and
+				uid=#{uid}
+	</select>
+	<delete id="deleteByIds">
+		delete from t_cart
+		where id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>	
+	</delete>
+	<delete id="deleteById">
+		{call del(#{id})}
+	</delete>
+	<!-- 加减购物车商品数量 -->
+	<update id="updateById">
+		call upd(#{id},#{num})
+	</update>
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

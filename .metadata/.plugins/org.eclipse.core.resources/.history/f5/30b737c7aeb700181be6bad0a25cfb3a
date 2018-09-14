@@ -1,0 +1,30 @@
+package listener;
+
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+import com.alibaba.fastjson.JSON;
+
+import entity.User;
+
+public class UserPushListener implements MessageListener {
+
+	public void onMessage(Message message) {
+		TextMessage textMessage =(TextMessage)message;
+		try {
+			//获取数据
+			String jsonStr = textMessage.getText();
+			System.out.println("收到消息:"+jsonStr);
+			if(jsonStr!=null){
+				User info = JSON.parseObject(jsonStr,User.class);
+				System.out.println("-----接收用户信息开始------");
+				System.out.println(info);
+				System.out.println("-----接收用户信息结束------");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,277 @@
+ajax
+	利用XMLHttpRequest ajax对象
+	异步请求:服务器返回部分数据，不再有冗余
+	怎么获取
+		getXhr()
+	有哪些属性
+		onreadystatechange：绑定数据处理函数
+	处理readystatechange事件
+	readystate:0,1,2,3,4
+	当readystate的属性值发生改变的时候，
+	onreadystatechange事件发生
+	readystate的值等于4的时候，表示已经获取到了
+	数据。
+	属性:responseText--获得服务器返回的文本
+	属性:responseXML--获得服务器返回的XML
+	属性:status--状态码
+
+编程步骤
+	step1.获取ajax对象
+	function getXhr(){
+		var xhr = null;
+		if(window.XMLHttpRequest){
+			//非ie浏览器
+			xhr = new XMLHttpRequest();
+		}else{
+			xhr=new ActiveXObject(
+				'MicroSoft.XMLHttp');
+		}
+		return xhr;
+	}
+	step2 调用ajax对象的方法发请求
+	xhr.open('get','check.do?adminCode=xxx',
+		true);--true表示异步请求
+	shr.onreadystatechange=f1;
+	xhr.send(null);
+	step3.编写服务器端的代码
+		out.println
+	step4.function(){
+			if(xhr.readystate==&&
+			chr.status==200){
+		  var txt = xhr.responseText;
+		  //更新页面
+		}
+
+
+(4)编程步骤
+	step1.获得ajax对象
+	比如	var xhr = getXhr();
+	step2.调用ajax对象的方法，发送请求
+	方式一:get请求
+	//准备工作
+	xhr.open('get','check.do?
+	adminCode=king&XXX=xxx',true);
+	//绑定事件处理函数
+	xhr.onreadystatechange=f1;
+	//发送数据包，参数一定要加一个null,不然有的
+	浏览器可能会出现兼容性问题。
+	xhr.send(null);
+	注:
+		true:异步(浏览器不会销毁当前页面，用户
+	仍然可以对当前页面做其他操作)
+		false:同步(浏览器不会销毁当前页面，但是
+	会锁定当前页面，用户不能对页面做任何操作)。
+	方式二:post请求
+	xhr.open('post','check.do');
+	xhr.setRequestHeader('content-type',
+		'application/x-www-form-urlenxcoded');
+	xhr.onreadystatechange=f1;
+	xhr.send('adminCode=king');
+	注(了解):
+	按照http协议要求，如果发送的是post请求，应该
+	包含有content-type消息头，但是，ajax默认
+	不会带这个消息头，所以，需要调用setRequestHeader方法
+	来添加这个消息头。
+	
+	
+	
+	
+	step3.编写服务器端的程序
+	注:不需要返回完整的页面，只需要返回部分数据。
+	step4.编写事件处理函数
+	if(xhr.readyState==4&&
+	xhr.status==200){
+		//ajax对象已经获得了服务器返回的所有数据，
+		//而且服务器处理正确
+	}
+
+1. 编码问题
+  (1)为什么会有乱码?
+  ie浏览器提供的ajax对象，在发送get请求时，会对中文
+参数值使用“gbk”来编码，其他浏览器会只用UTF-8来编码，
+服务端默认会使用iso-8859-1解码的，所以会有乱码。
+
+1)如何解决?
+	step1.服务器端，统一使用"utf-8"来解码。
+	可以修改
+	<Connector URIEncoding="utf-8"/>
+	step2.客户端，使用encodeURI函数对中文参数值
+进行解码。
+	注:
+	encodeURI函数是javascript内置的函数，会使用
+	"utf-8"来编码。
+
+(2)post请求
+  1)为什么会有乱码?
+  浏览器提供的ajax对象在发送post请求时，对中文参数值
+会使用"utf-8"来编码，而服务器端会使用"iso-8859-1"
+来解码。
+  2)如何解决
+  request.setCharacterEncoding("utf-8")
+
+写网页的测试方法?
+	1 数据库单独测试
+	2 服务端假造网页地址
+	3 客户端直接测
+
+2。问题
+  (1)什么是缓存问题?
+  如果使用ie浏览器提供的ajax对象发送请求，会比较请求地址
+是否访问过，如果访问过，则不再发送新的请求，而是将第一次
+访问的结果显示出来(也就是说，第一次访问时，会将服务器返回
+的结果缓存下来了)。
+  (2)如何解决?
+  在请求地址后面添加随机数。
+
+3.json(javascript object notation) 声明
+(1)json是什么?
+	是一种轻量级的数据交换格式。
+	注:json借鉴了javascript的部分语法
+	xml解析速度慢，文档大
+	注:
+	  数据交换:指的是将要交换的数据转换成一种与平台
+无关的数据格式(比如xml),然后发送给接收方来处理。
+	轻量级:json相对于xml而言，文档更小，解析速度
+	更快。
+	
+var obj={"name":"tom","age":22}
+这是一种常见对象得到方式。
+今天讲的json借鉴了上面的语法
+(2)语法
+	1)表示一个对象
+	{属性名:属性值,属性名:属性值}
+	注意:
+	a.属性名必须使用双引号括起来。
+	b.属性值可以string,number,true/false,null,object
+	c.属性值如果是string,必须是使用双引号括起来。
+	2)表示对象的数组
+	[{},{},{}...]
+
+(3)使用json
+	1)java对象如何转换成json字符串
+	使用jackson提供的api(ObjectMapper).
+	2)将json字符串转换成javascript对象?
+	使用javascript内置对象JSON提供的parse()
+	函数。
+
+练习:
+	销量排行榜
+每隔5秒钟，显示销量前三的商品的名称和销量。
+编程步骤:
+	1 写数据库代码
+		1 建表，建立序列，插入数据
+		2 
+	2 写dao
+		方法一:JDBC
+			1 JDBC创建连接，DBUtil
+			创建Properties对象
+			加载配置文件p.load
+			读取连接参数p.getProperties
+			注册驱动Class.forName(driver)
+			封装关闭连接操作close
+			封装连接对象DriverManager.getConnection(url,user,pwd)
+			
+			2 创建DAO
+		方法二:MyBatis
+			1 导包mybatis,ojdbc,junit
+			2 添加配置文件
+			3 写实体类
+			4 写映射文件
+			5 调用SqlSession对象提供的方法访问数据库
+		方法三:SpringJdbc
+			1 导包 spring-webmvc,spring-jdbc
+			ojdbc,dbcp,junit,annotation
+			2 添加spring配置文件，添加数据库配置文件
+			3 配置jdbcTemplate模板
+			4 调用JdbcTemplate的方法来访问数据库
+		方式四:Spring集成Mabatis
+			方式一:使用Mapper映射器
+			1 导包:spring-webmvc,mabatis-spring,dbcp,
+			ojdbc,spring-jdbc,junit
+			2 添加spring配置文件
+			3 添加实体类
+			4 添加映射文件
+			方式二:
+			1 导包:spring-webmvc,mabatis-spring,dbcp,
+			ojdbc,spring-jdbc,junit
+			2 添加spring配置文件
+			3 实体类
+			4 映射文件
+			5 DAO接口
+			6 写一个DAO接口实现类
+			7 配置SqlSessionTemplate
+	3 写Servlet
+		方法一:SpringMVC
+		方法二:Servlet-JSP
+		方法三:Spring
+	4 写html,js
+		ajax:
+		jQuery
+create table t_sale(
+	id number(8) primary key,
+	item varchar2(50),
+	qty number(8)
+);
+create sequence t_sale_seq;
+
+练习:使用ajax检验注册信息中的中文昵称是否存在?
+	1 获取XMLHttp对象--拷贝
+	2 当onblur失去焦点，拿到文本框数据--参考
+	3 发送异步请求--参考
+	4 服务端返回字符串--参考
+	5 显示返回结果--参考
+	on--=f1();
+
+2 简述对JSON的理解
+	由于XML文件进行数据交换，当数据量大时非常复杂，
+JSON进行数据转换的时候按照JSON的语法就会比较简单。
+
+怎么抄程序?
+	作为一个程序员如果你所有的程序都是靠自己一句一句写出来的，那么你
+就没有任何竞争力，一定要在复杂的时候学会copy,参考就好。
+
+
+练习:用ajax获取随机数
+	1 获取对象
+	2 发送请求
+	2 监视返回
+	4 发送参数
+	Random.html
+	random.do
+
+
+
+
+
+
+
+
+
+
+
+怎么才能明白一个技术的原理呢?
+或者说怎么才能创新出很多的技术，让业务变的简单，
+而且功能跟多?
+	ajax就相当于浏览器对象，多了一个属性而已
+要想明白首先你就需要明白面向对象的思想:
+	这个体系有哪些对象，各自有哪些属性，有哪些
+方法、功能。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

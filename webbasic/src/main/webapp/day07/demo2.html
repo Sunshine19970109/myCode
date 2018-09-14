@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo2</title>
+<style>
+	p{
+		width:200px;
+		height:30px;
+		line-height:30px;
+		font-size:20px;
+		text-align:center;
+		border:1px solid red;
+	}
+</style>
+<script>
+	var id;
+	function start(){
+		if(id){
+			return;
+		}
+		id = setInterval(function(){
+			//获取当时前事件的当地字符串
+			var date = new Date();
+			var now = date.toLocaleTimeString();
+			//插入p标签中
+			var clock = document.getElementById("clock");
+			clock.innerHTML=now;
+		},1000);
+	}
+	function stop(){
+		clearTimeout(id);
+		//停止定时器时清空id,以保证下次启动
+		id=null;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="开始"
+	onclick="start();"/>
+	<input type="button" value="停止"
+	onclick="stop();"/>
+	<p id = "clock"> </p>
+	<input type="button" value="调试"
+	onclick="stop();"/>
+</body>
+</html>

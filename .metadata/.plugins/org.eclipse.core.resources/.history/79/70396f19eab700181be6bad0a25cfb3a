@@ -1,0 +1,7 @@
+package listener;
+
+import org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener;
+
+public class TopicMessageListener1 {
+
+}

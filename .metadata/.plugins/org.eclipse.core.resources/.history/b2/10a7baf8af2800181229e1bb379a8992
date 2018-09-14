@@ -1,0 +1,42 @@
+package day09;
+/**
+ * Exception常用方法
+ * @author dell
+ *
+ */
+public class Exception_API {
+	public static void main(String[] args) {
+		/*
+		 * 1.字符串转Integer
+		 * 
+		 */
+		System.out.println("程序开始了");
+		String s = "abc";
+		System.out.println(Integer.parseInt(s));
+		System.out.println("程序结束了");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

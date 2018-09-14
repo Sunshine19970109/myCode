@@ -1,0 +1,26 @@
+package test;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+
+public class TestUser {
+	private SqlMapClientTemplate clientTemplate;
+	private AbstractApplicationContext ac;
+	@Before
+	public void init(){
+		ac = new ClassPathXmlApplicationContext("config/applicationContext.xml");
+		clientTemplate = (SqlMapClientTemplate) ac.getBean("sqlMapClientTemplate", SqlMapClientTemplate.class);
+	}
+	@After
+	public void close(){
+		ac.close();
+	}
+	@Test
+	public void testSelectByName(){
+		
+	}
+}

@@ -1,0 +1,129 @@
+定义key：
+	1.不要太长,最好不要超过1024个字节，不然影响性能
+	2.不要太短,可读性会低
+	3.在项目开发中，最好有统一的命名规范
+
+每个hash可以存42亿个字符串
+
+list：
+	像栈一样
+	lpoprpush--附和条件放一个里面，不符合条件放另一边 
+	lpop
+	rpop
+	lpush
+	rpush
+	set
+	
+set:可以替代session
+	添加:sadd key values values
+	smembers key
+	srem key member1 member2
+	sismember key member
+	sdiff key1 ke2--k1与k2的差集A-B
+	sinter key1 key2
+	sunion key1 key2
+	scard key
+	srandmember key
+	sdiffstore destanation key1 key2 
+	sinterstore
+	sunionstore
+	
+sortedset
+	按照权重排序
+	zadd 100 key1 80 key2  
+	zrange key start end withscores
+	zscore key value
+	zrem key memeber 
+	zrange 0 -1 默认从小到大
+	zrevrange 0 -1 从大到小
+	zremrangebyrank key start end 
+	zremrangebyscore key min max
+	zrangebyscore key min max withscores limit  offset count--分页
+	zincrby key increment member
+	zcount key min max 
+	zrank key member(从小到大)
+	zrevrank key member (从大到小)
+	
+keys的通用操作
+	*--任意  ?--一个
+	del xxx num 
+	exists myset
+	rename num2 num
+	expire key --设置过期时间(单位是秒)
+	ttl key --显示剩余时间
+	type key --获取类型
+	
+redis的特性
+	RedisDeskTop Manager
+	name
+	host
+	port
+	select 1
+	move num 1
+	
+	ping  监测是否存活
+	quit 退出连接
+	flushall 全部删除
+	
+7.3订阅与发布
+	qq--及时通讯
+	subscribe channal 订阅频道
+	psubscribe c* 批量订阅
+	publish channel message
+	
+redis的事务:
+	multi 开始事务标记
+	exec 提交事务
+	discard 事务回滚
+	queue--排队
+	
+
+redis(持久化)
+	关系型配合内存数据库
+	RDB 方式 (默认方式，不用配置)--快照
+	AOF 方式(日志的形式)--所有的操作步骤都记住(不记数据)
+	
+	RDB:
+	优点:1.不用配置
+	2.启动效率高(如果数据多的时候)
+	缺点:
+	可能会丢数据			
+	
+AOF 
+	配置:
+	always ---每次操作都会持久
+	everysec --每秒都会持久
+	no
+	
+	
+linux /save--搜索
+	vim 
+	cat
+	
+	
+经验:以后要学的框架还有很多，你不可能把所有的API记住怎么办?
+	1.API可以不用记住，但是有哪些功能一定要记住
+	还有关键字一定要记住，而且一定要有可以查询的资料和你自己敲过的代码
+		
+
+总结:
+	1.noSql
+	2.redis安装---linux(重点)
+	3.jedis(重点)
+	4.redis的数据操作类型5种(了解)--string和hash重点
+	5.redis的其他的特性
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

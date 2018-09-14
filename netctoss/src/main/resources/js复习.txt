@@ -1,0 +1,48 @@
+function pf(){
+	//获取文本框
+	var input = document.getElementById("");
+	//获取框内的值
+	var n = input.value;
+	//获取span
+	var s = document.getElementById("result");
+	
+	//判断该值是不是数字
+	if(isNaN(n)){
+		s.innerHTML = "请输入数字";
+		
+	}else{
+		s.innerHTML = n*n;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

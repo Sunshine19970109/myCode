@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="E:\JavaDoc\code1803"/>
+		<item value="E:\Java入门视频教学\JSD1702\04_javaSE\day01\FishGame"/>
+		<item value="E:\Java入门视频教学\day27\avi\code\day27_JDK_NEWS"/>
+		<item value="C:\workspace\shoot_day03_all"/>
+		<item value="E:\Java入门视频教学\day26\avi\code\day26_Net"/>
+		<item value="E:\Java入门视频教学\day26\resource"/>
+		<item value="E:\Java入门视频教学\JSD1702\02_oop01\day03\day03_all"/>
+		<item value="E:\Java入门视频教学\MyTetristApp"/>
+		<item value="E:\Java入门视频教学\day25\avi\code"/>
+		<item value="E:\Java入门视频教学\12day\code"/>
+		<item value="E:\15测绘一班GIS开发大作业\1521010103王黎明\Debug"/>
+		<item value="E:\Android 教程\11、百度地图\BaiduMap_AndroidSDK_v2.1.2_Sample"/>
+		<item value="E:\Java入门视频教学\11章\code"/>
+		<item value="E:\Java入门视频教学\day21\avi\code"/>
+		<item value="E:\Android 教程\Android应用开发教程课程资源\源代码\Chapter13"/>
+		<item value="E:\Android 教程\11、百度地图"/>
+		<item value="E:\Android 教程\day01\code"/>
+	</list>
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="391" key="DIALOG_HEIGHT"/>
+		<item value="433" key="DIALOG_X_ORIGIN"/>
+		<item value="104" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\Java入门视频教学\day23\avi\code\day23_Thread"/>
+			<item value="G:\易商阜极\1-SpringMVC框架的搭建\EbizTest"/>
+			<item value="E:\Java入门视频教学\day27\avi\code\day27_Pattern"/>
+			<item value="E:\Java入门视频教学\day27\avi\code\day27_Reflect"/>
+			<item value="C:\workspace\day27_Reflect"/>
+			<item value="E:\Java入门视频教学\day19\avi\code19\day19_Exception"/>
+			<item value="E:\Java入门视频教学\day26\avi\code\day26_Net"/>
+			<item value="E:\Java入门视频教学\JSD1702\04_javaSE\day01\FishGame"/>
+			<item value="E:\Java入门视频教学\day11_jsp基础\01.代码\contactSys_web"/>
+			<item value="C:\workspace\jdbc"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY03_PART3"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY03_PART2"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY03_PART1"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY02_PART3"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY02_PART2"/>
+			<item value="C:\workspace\DMS_DAY01_PART3"/>
+			<item value="C:\workspace\DMS_DAY01_PART2"/>
+			<item value="C:\workspace\DMS_DAY01_PART1"/>
+			<item value="C:\workspace\DMS\DMS\DMS_DAY02_PART1"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1511851682862" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+			<item value="org.eclipse.ui.workbenchTransfer"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.jst.j2ee.internal"/>
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="379" key="DIALOG_X_ORIGIN"/>
+		<item value="160" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

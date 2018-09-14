@@ -1,0 +1,205 @@
+CREATE TABLE [schema.]table_name{
+	column_name datatype[DEFAULT expr][,...]
+};
+
+创建表employee
+CREATE TABLE employee{
+	id NUMBER(4),
+	name VARCHAR2(20),
+	gender CHAR(1),
+	birth DATE,
+	salary NUMBER(6,2),
+	job VARCHAR2(30),
+	deptno NUMBER(2)
+};
+
+
+
+select sysDate FROM dual
+
+
+SQL语句
+SQL:结构化查询语句，是用来操作数据库的语言
+所有的数据库都支持表示准的SQL语句
+SQL语句包含:
+DDL,DML,TCL,DQL,DCL这几类语句
+
+DDL语句
+DDL语句是用于增删改数据库对象的
+数据库对象：表，视图，索引，序列
+
+创建表:
+CREATE TABLE employee_zhu(
+  id NUMBER(4),
+  name VARCHAR2(20) NOT NULL,
+  gender CHAR(1),
+  birth DATE,
+  salary NUMBER(6,2),
+  job VARCHAR2(30),
+  deptno NUMBER(2)
+);
+
+
+
+查看表结构
+DESC employee_zhu
+
+删除表
+DROP TABLE employee_zhu
+
+DEFAULT语句--可以通过DEFAULT子语句给列指定默认值
+SQL语句不区分大小写，但是字符串的值（直接量）
+是区分大小写的，字符串直接量是使用单引号括起来的。
+数据库中所有的数据类型的默认值都是NULL,
+在创建表时，可以使用DEFAULT为字段单独指定默认值。
+
+CREATE TABLE employee_zhu(
+  id NUMBER(20),
+  name CHAR(20) NOT NULL,
+  gender VARCHAR2(1)  DEFAULT 'm',
+  birth DATE,
+  salary NUMBER(10,2) DEFAULT 5000
+);
+
+DESC  employee_zhu
+
+DROP TABLE employee_zhu
+
+DESC employee_zhu
+
+NOT NULL 非空约束--必填选项
+
+修改表
+1 修改表名
+2 修改表结构
+
+修改表名：
+RENAME old_name TO new_name
+
+RENAME employee_zhu TO employee_zhu_copy
+
+DESC employee_zhu_copy
+
+修改表结构 
+1 添加新字段
+向表employee_zhu_copy中添加字段你hiredate
+
+ALTER TABLE employee_zhu_copy
+ADD(
+  hiredate DATE,
+  account NUMBER(6,2) NOT NULL
+)
+
+DESC employee_zhu_copy
+
+删除表中现有字段
+将empolyee_zhu_copy中的hiredate字段删除
+ALTER TABLE employee_zhu_copy
+DROP(
+  hiredate
+)
+
+DESC employee_zhu_copy
+
+修改表中现有字段
+修改字段可以修改字段的类型，长度，默认值
+非空约束。
+但是表中若已经存在数据，那么修改字段的时候
+尽量不要修改类型，若修改长度尽量不要缩小，否则
+可能导致修改失败。
+
+ALTER TABLE employee_zhu_copy
+MODIFY(
+  job VARCHAR2(40) NOT NULL
+)
+
+DESC employee_zhu_copy
+
+RENAME employee_zhu_copy TO myemp
+
+DML语句
+增删改表中的数据--用来对表中的数据做操作而不是表本身
+
+
+  1 插入数据
+  INSERT INTO myemp
+  (id,name,salary,deptno,job,account)
+  VALUES
+  (1,'JACK',3000,10,'teacher',2000)
+  
+  SELECT * FROM myemp
+  
+  COMMIT  --提交真的插入
+  ROLLBACK--回滚，小心别白干
+  
+  
+  INSERT INTO myemp 
+  VALUES
+  (2,'sunShine','m',SYSDATE,3000,'stu',20,3000)
+  
+  可以自定义日期 使用TO_DATE
+  INSERT INTO myemp
+  (id,name,birth,job,account)
+  VALUES
+  (3,'zhaoyu',TO_DATE('2018-04-01','YYYY-MM-DD'),
+  'CEO',5000)
+
+SELECT * FROM myemp
+
+2 修改数据
+UPDATE语句用于修改表中的数据，需要使用
+WHERE添加条件以修改满足条件的记录，若不添加
+WHERE则是全表所有数据修改
+
+将JACK的工资改为8000
+UPDATE myemp
+SET salary = 8000,deptno = 12
+WHERE name= 'JACK'
+
+DESC myemp
+SELECT * FROM myemp
+
+3 删除表中的数据
+DELETE语句用于删除表中的记录，通常需要使用
+WHERE添加条件来删除满足条件的记录，若不添加
+WHERE是清空表操作
+DELETE FROM myemp
+WHERE name='JACK'
+ROLLBACK
+
+删除表中数据有两种方法
+DELETE FROM myemp--受事物控制，可以后悔
+唯一的一个针对数据的DDL语句
+TRUNCATE TABLE myemp--不受事物控制，不能后悔，效率高
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

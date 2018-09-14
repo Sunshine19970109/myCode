@@ -1,0 +1,16 @@
+package Test;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+
+public class ArrayDemo {
+	public static void main(String[] args) throws Exception, SecurityException {
+		//创建集合对象
+		ArrayList<Integer> array = new ArrayList<Integer>();
+		
+		Class c = array.getClass();
+		Method m = c.getMethod("add",Object.class);
+		
+		m.invoke(array, "hello");
+	}
+}

@@ -1,0 +1,134 @@
+云笔记:
+JSON 是什么
+JSON 就是JS的一部分:
+JSON是JavaScript中的对象直接量语法，用于生明JS
+对象。
+var i=5;
+
+如何将JSON字符串转换为JSON对象(JS对象)
+	var obj = eval("("+str+")");
+	JSON.parse()--这两个函数都可以，但是JSON.parse()
+	函数底层就是eval()函数
+	这个函数应该注意什么？--加括号
+
+
+list[0]["if"]---javaScript语法
+可以取出特殊的键值对
+
+
+
+
+
+
+
+
+
+
+怎么做一个小的项目的时候才不会不会做或者卡住?
+	即使你是复习也请你能够做一下开发文档。
+	永远记住不可以抄别人的代码作为自己的项目，
+只能抄别人的代码做文档。
+
+
+需求分析:
+软件=数据结构+算法
+
+设计数据存储
+	内存:数据临时计算存储场所，关闭电源就消失，称为瞬态的
+	  -运行内存
+	  -分配的是对象
+	外存:(SSD固体硬盘，HDD机械硬盘,SD,闪存，U盘)，关闭电源不消失，
+	称为持久状态
+	  -存储容量
+	  -保存的是文件 单机(单线程)程序可以使用文件存储数据
+	  -数据库(文件) 数据库管理系统，提供了并发访问管理!适合多线程访问。
+
+云笔记采用数据库存储数据!
+	
+###设计数据的存储
+	cn_user
+	id name password
+	
+	cn_notebook
+	id title user_id  createtime
+	
+	cn_note
+	id  title body user_id  notebook_id time
+
+1.mySQL的简单使用
+	-windows 用户使用:MySQL  Client,输入密码
+	-Linux:
+		mysql -u用户名 -p密码
+		mysql -uroot -p
+
+2.显示数据库命令
+	show databases
+3.创建数据库的命令
+	create database 数据库名
+4.删除数据库命令
+	drop database 数据库名
+5.切换数据库
+	use 数据库名
+	use mysql
+6.显示当前数据库的所有表
+	show tables;
+	
+7.建表语句，
+	create table 表名(列的声明)
+8.设置当前命令行窗口的编码:设置窗口文本编码为Utf-8
+	set names utf8;
+9.执行sql脚本命令，执行文本文件中的一批SQL命令
+	-如果SQL文件是utf-8编码的，就必须先执行 set names utf8;
+	source 文本文件的路径名
+	windows--source D:\Robin\Note\note_ziliao\cloud_note.sql
+	Linux--source /home/Note/note_ziliao/cloud_note.sql
+	
+	>清楚要清晰路径，保障路径的正确性!!!
+
+案例：
+create database demo;
+use demo;
+create table MyTable(id int,name varchar(100));
+insert into MyTable(id,name) values(1,'Tom');
+insert into MyTable(id,name) values(1,'Jerry');
+select id,name from MyTable;
+
+
+
+为什么数据的表越细越复杂?
+	因为数据分类越细它的隶属层次就越多，然后关系就会越来越复杂
+
+怎么解决一对多的关系?
+	可以直接使用外键解决
+怎么解决多对多的关系?
+	可以使用多对多，关系表解决
+
+怎么建表?
+	根据需求得到功能，根据功能模拟业务
+	根据模拟业务添加一些假的数据，根据模拟的业务
+	去寻找表的关联关系，然后再建立表
+
+
+登陆功能
+	程序=数据结构+算法
+	编程思路:
+	0.搞清楚业务需求。
+	1.考虑数据如何存储
+	2.如何操作数据才能达到业务目的
+	-设计SQL
+	3.编程:将业务功能和数据操作整合起来。如何编程才能
+	执行SQL操作数据。
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+127.0.0.1 - - [08/Sep/2018:20:17:52 +0800] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [08/Sep/2018:20:20:52 +0800] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:20:55 +0800] "GET /ibatisAndLog4j/ HTTP/1.1" 404 981
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:21:15 +0800] "GET /ibatisAndLog4j/findName.do?name=sun HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:21:34 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:24:00 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:25:14 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:27:41 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:42:09 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+127.0.0.1 - - [08/Sep/2018:20:52:09 +0800] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:20:52:17 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [08/Sep/2018:21:00:32 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507

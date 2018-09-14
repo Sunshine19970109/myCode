@@ -1,0 +1,31 @@
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\workspace\.metadata\.plugins\org.eclipse.
+wst.server.core\tmp2\wtpwebapps\Ebiz1\WEB-INF\classes\controller
+\HelloController.class]; nested exception is org.springframework
+.core.NestedIOException: ASM ClassReader failed to parse 
+class file - probably due to a new Java class file version 
+that isn't supported yet: file [C:\workspace\.metadata\.
+plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\Ebiz1
+\WEB-INF\classes\controller\HelloController.class]; 
+nested exception is java.lang.IllegalArgumentException
+	at org.springframework.context.annotation.
+	ClassPathScanningCandidateComponentProvider.
+	findCandidateComponents(ClassPathScanningCan
+	didateComponentProvider.java:290)
+	
+	
+问题:视频中的项目是在tomcat7.0,jdk1.7的环境下做的
+给出的jar包也是适应于环境的
+	分析:
+	重新安装jdk1.7,并重新安装eclipse-->4小时
+	
+	方案二:
+	弄清楚每个jar包都是干什么的，自己导入jar包
+	
+动态web项目和maven项目的区别:
+	1.目录结构不同，动态web项目需要自己来导入jar包
+	maven项目可以依赖dependence的路径
+	综合选择，maven更加合适
+	
+解决方案:
+	学习视频中的方法，使用maven工程做，自己搜索jar包，达到
+	视频中的效果。

@@ -1,0 +1,174 @@
+spring是什么?
+	开源的简化开发应用开发框架
+	简化
+		springjdbc
+	解耦
+		容器:管理对象之间的依赖关系
+		IOC/DI
+	集成
+		mybatis
+spring容器
+	ApplicationContext ac=
+	new ClassPathXmlApplicationContext(config);
+	创建对象的方式
+		无参构造器
+		<bean id="" class=""/>反射机制
+		静态工厂方法
+		<bean class="" factory-method="">
+		实例工厂方法
+		<bean factory-bean="" factory-method=""/>
+	作用域
+	prototype
+	延迟加载
+	声明周期
+	
+IOC/DI:不是容器，是容器的一部分
+	IOC:控制反转
+	DI:依赖注入
+	容器调用set	构造器
+	set方法
+	<property name="属性名" ref="id"/>
+	构造器
+	<constructor-arg index="" ref=""/>
+	自动装配
+	autowire="byName" "byType" "constructor"
+	
+	注入基本类型的值
+	value
+	注入集合类型的值
+	list	set	map	props
+	<util:list id="">
+	</util:list>
+	<ref=""
+	读取属性文件	。properties
+	<util:properties id
+	location="classpath:db.properties"/>
+	
+	Spring表达式
+	#{vb1.name}	#{vb1.interest[0]}
+	#{vb1.score['english']}
+	
+
+注解来简化配置
+	组件扫描:包和其子包下面所有的类
+	带有特定的注解
+	@Component	@Service	@Repository
+	@Controller
+	
+	<context:component-scan base-package=""/>
+	
+	@Scope
+	@Lazy
+	@PostConstruct	@PreDestroy
+	
+	@Autowired	@Qualifier
+	@Resource(name="")
+	
+	@Value--可以注入基本类型和spring表达式的值
+	
+springMVC
+	是一个用于简化基于mvc架构的web应用程序开发
+	
+	五大组件
+	DispatcherServlet--前端控制器
+	HandlerMapping--映射处理器
+	Controller--处理器
+	ModelAndView--处理结果和视图名
+	ViewResolver--视图解析器
+	
+1 基于注解的springMVC应用
+	(1)编程步骤
+	step1.导包
+	spring-mvc
+	step2.添加spring配置文件
+	step3.配置DispatcherServlet
+	step4.写Controller
+	step5.添加jsp文件
+	step6.在配置文件中，添加ViewResolver配置
+	添加组件扫描，添加MVC注解扫描。
+
+2.读取请求参数值
+  1)方式一	通过request提供的方法(建议)
+  2)方式二	通过@RequestParam注解
+  3）方式三	通过javabean(建议)
+  
+3.向页面传值
+	1)方式一	将数据绑定到request转发(建议)
+	2)方式二	返回ModelAndView
+	3)方式三	将数据添加到ModelMap（建议）
+	4)方式四	将数据绑定到session
+	
+(4)重定向
+	1)方法的返回值是String
+	比如	return "redirect:toIndex.do"
+	2)方法的返回值是ModelAndView
+	比如
+	RedirectView rv = new RedirectView("toIndex.do")
+	ModelAndView mav = new ModelAndView(rv);
+
+练习:
+	计算一个人的bmi指数
+	bmi指数=体重(公斤)/身高(米)/身高(米)
+	如果 bmi指数 <19 过轻
+	如果 bmi指数 >24 过重
+	否则正常
+
+怎么避免测试的时候报一大堆错误?
+	然后让你觉得测试怎么也这么复杂呀，有一种办法就是
+你写一个方法测试一次这样测试会好很多。
+	你最嫌弃的就是频繁切换，因为你觉得频繁切换容易
+降低效率，但是这时候如果你频繁切换的话，它会提高效率。
+
+练习:
+	完成电信计费登陆模块
+	要求:
+	1.http://ip:port/spring-netctoss/toLogin.do,
+	返回完整的登陆页面(不用考虑验证码)
+	2.点击登陆，跳转到首页。(不用考虑登陆的具体业务)
+	
+描述Spring MVC中Controller接收页面参数的几种方式
+1 request参数直接接收
+	在方法中加入request参数，DispatcherServlet调用的时候会
+	分析方法的结构，将请求对象放入request
+2 javaBean接收参数
+	前端控制器会根据参数名将参数的值转换后赋值给对象
+3 用@RequestParam注解
+	将指定的请求参数传给，指定的参数
+
+3 介绍Spring MVC重定向的几种方式。
+	两种方式
+	1 return "redirect:toIndex.do"
+	2 创建重定向对象
+	RedirectView rv = new RedirectView("toIndex.do");
+	ModelAndView mav = new ModelAndView(rv);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Deployment Descriptor--部署描述
+target-Runtime--运行环境
+
+
+
+
+
+
+
+
+
+
+
+

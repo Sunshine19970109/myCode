@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=spring-nectoss/src\/main\/java&lt;cn.tedu.netctoss.dao{AdminDAO.java[AdminDAO" modifiers="513" timestamp="1530261506712"/>
+<typeInfo handle="=spring-nectoss/src\/main\/java&lt;cn.tedu.netctoss.service{CostService.java[CostService" modifiers="513" timestamp="1529743409229"/>
+<typeInfo handle="=SelectionSort/C:\/Program Files\/Java\/jdk1.8.0_121\/jre\/lib\/rt.jar&lt;java.lang(Comparable.class[Comparable" modifiers="1537" timestamp="1488678909884"/>
+<typeInfo handle="=ibatisAndLog4j/src\/main\/java&lt;cn.com.ysfj.service{IUserService.java[IUserService" modifiers="513" timestamp="1535793462986"/>
+<typeInfo handle="=ibatis_zhugaohong_20180831/src\/main\/java&lt;com.ysfj.Dao{IUserDAO.java[IUserDAO" modifiers="513" timestamp="1535695803685"/>
+<typeInfo handle="=ibatisAndLog4j3/src\/main\/java&lt;com.ysfj.DAO{ICustomerDAO.java[ICustomerDAO" modifiers="513" timestamp="1535899872966"/>
+<typeInfo handle="=ibatis-zhugaohong-20180903/src\/main\/java&lt;com.ysfj.dao{IUserDAO.java[IUserDAO" modifiers="513" timestamp="1535954723352"/>
+<typeInfo handle="=ibatis-zhugaohong-20180903/src\/main\/java&lt;com.ysfj.service{IUserService.java[IUserService" modifiers="513" timestamp="1535955982013"/>
+<typeInfo handle="=webservicetest/src\/main\/java&lt;ws{HelloWebService.java[HelloWebService" modifiers="513" timestamp="1536031006054"/>
+<typeInfo handle="=ibtis-zhugaohong-20180904/src\/main\/java&lt;com.ysfj.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1536051464865"/>
+<typeInfo handle="=webservicetest1/src\/main\/java&lt;service{HelloWorld.java[HelloWorld" modifiers="513" timestamp="1536215833486"/>
+<typeInfo handle="=Ebiz/C:\/Users\/dell\/.m2\/repository\/org\/springFramework\/spring-web\/3.2.8.RELEASE\/spring-web-3.2.8.RELEASE.jar&lt;org.springframework.web.filter(HiddenHttpMethodFilter.class[HiddenHttpMethodFilter" modifiers="33" timestamp="1532851316682"/>
+<typeInfo handle="=vue-demo-server/C:\/Program Files\/Java\/jdk1.7.0_17\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1536042494567"/>
+<typeInfo handle="=vue-demo-server/src\/main\/java&lt;service{PushService.java[PushService" modifiers="513" timestamp="1536815259479"/>
+<typeInfo handle="=vue-activemq-spring/C:\/Users\/dell\/.m2\/repository\/org\/apache\/geronimo\/specs\/geronimo-jms_1.1_spec\/1.1.1\/geronimo-jms_1.1_spec-1.1.1.jar&lt;javax.jms(MessageListener.class[MessageListener" modifiers="1537" timestamp="1534200442422"/>
+<typeInfo handle="=webService-client/C:\/workspace\/webService-client\/WebContent\/WEB-INF\/lib\/spring.jar&lt;org.springframework.jms.core(JmsTemplate.class[JmsTemplate" modifiers="33" timestamp="1536009509123"/>
+</typeInfoHistroy>

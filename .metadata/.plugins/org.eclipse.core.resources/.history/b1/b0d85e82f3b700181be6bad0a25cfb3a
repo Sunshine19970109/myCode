@@ -1,0 +1,42 @@
+1.创建项目:
+	vue-activemq-spring
+2.导入包:
+	springMVC spring spring-activemq
+3.创建包:
+	cotroller  listener  websocket  response
+4.创建配置文件
+	activemq-config.xml
+	1)添加MQ的地址bean
+	2)配置连接工厂
+	3)配置jmsTemplate
+	4)推送信息
+	5)接收信息
+5创建监听类
+	UserPushListener
+	
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

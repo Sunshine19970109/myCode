@@ -1,0 +1,63 @@
+可以实现不同网页之间的数据共享，而且还可以实现垮机共享数据的JSP对象是
+	Application对象：Application对应了Servelet中的ServeletContext对象。它
+在每个web对象中只有一个实例，常被实现不同用户之间的数据共享，因为不同用户在访问Applacation的时候都访问
+同一个对象，这样的话，一个用户把需要共享的数据放在Application中，然后其他用户就可以在这个对象中得到
+共享数据了。
+
+JSON对象是什么?
+	JSON是使用JavaScript语法来描述数据对象。
+	它是一个轻量级的文本数据交换格式，独立于语言和平台JSON解析器和JSON库支持许多不同的语言。
+	它具有自我描述性
+
+Servlet中，可以保存数据的三个不同的作用域是
+	能够用来保存数据的作用域分别是request,session,application
+	
+设置Http头标
+	response.setHeader("Refresh","only");
+设置cookie
+	Cookie c1 = new Cookie("usename","only");
+读取路劲信息
+	从request获取各种路径总结
+	request.getRealPath("url");//虚拟目录映射为实际目录
+	request.getRealPath("./");//网页所在目录
+	request.getRealPath("../");//网页所在目录的上一层目录
+	request.getContextPath();//应用的web目录的名称
+	输出返回数据
+	HttpServletResponse.getOutputStream().write();
+	
+J2EE中，HttpSession接口位于Javax.servlet.http.HttpSession中
+
+XMLHttpRequest对象的readState属性值代表什么
+	AJAX的readState属性的状态:
+	0 - (未初始化)还没有调用send()方法
+	1 - (载入) 已调用send()方法，正在发送请求
+	2 - (载入完成) send()方法执行完成，已经接收到全部响应内容
+	3 - (交互) 正在解析响应内容
+	4 - (完成) 响应内容解析完成，可以在客户端调用了 
+
+jsp:forword可以实现页面跳转效果，作用是转发所以浏览器地址不会发生变化
+
+Cookie是用来记录客户端数据的，不能共享
+
+"td:parent"表示匹配所有含有子元素或文本内容的td元素
+
+Servelet声明周期就是创建Servlet实例后响应客户请求直至销毁的全过程。Servlet声明周期的
+三个方法：init()-->service()-->destroy(),Servlet生命周期的各个阶段：实例化：
+Servlet容器创建Servlet类的实例对象；
+	初始化:Servlet容器调用Servlet的init()方法；
+	服务：如果请求Servlet,则容器调用service()方法；
+	销毁：销毁实例之前调用destroy()方法。
+
+
+Apache是PHP程序运行的服务器，IIS是.net程序运行的服务器
+
+<servlet>应该包含servlet-name和servlet-class元素
+
+
+
+
+
+
+
+
+

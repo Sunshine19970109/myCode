@@ -1,0 +1,47 @@
+1.Struts2框架应用javaee三层结构中web层框架
+2.strust2框架是在struts1和webwork基础之上发展全新的框架
+3.struts解决问题:
+	用户管理功能crud操作
+		添加---添加servlet
+		修改---修改servlet
+		如果功能很多，创建很多的servelet,
+		造成维护特别不方便
+web阶段解决方案:创建BaseServlet解决
+1.写底层反射代码实现
+	用户管理系统crud操作:
+		过滤器:不同的操作，在类里面写不同的方法
+		执行类里面add方法
+		执行类里面update方法
+		在struts2里面action方法
+4.struts2版本:struts-2.3.24-all.zip
+5.web层中常见框架
+	springMVC框架
+	struts2框架
+	
+Struts2入门案例:
+1.导入jar包
+	1.在lib中有jar包，不能把这些jar包都导入到项目中
+	2.到apps目录里面，找到实例程序，从实例程序中找jar包
+2.创建Action
+3.配置action类访问路径
+	1。创建struts2核心配置文件
+	名称和位置固定，在src下，名称struts2
+	访问路径:
+	http://localhost/struts2_day01/hello.action
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

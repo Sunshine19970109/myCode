@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.ysfj.DAO.CustomerDAO">
+ <!-- Use primitive wrapper type (e.g. Integer) as parameter and allow results to
+ be auto-mapped results to Person object (Java Bean) properties -->
+ 	<select id="selectByNameAndCreatedDate" parameterClass="java.util.Map"
+ 	    resultClass="com.ysfj.entity.Customer">
+ 	    select 
+ 	    	id ,name,email,address,
+ 	    	created_date createdDate
+ 	    From
+ 	    	PF_CUSTOMER
+ 	    <dynamic prepend="where ">
+ 	        
+ 	        <isNotNull prepend="and" property="name">
+ 	            name like '%'||#name#||'%'
+ 	        </isNotNull>
+ 	        <isNotNull prepend="and"  property="createdDate">
+ 	            created_date&lt;#createdDate#
+ 	        </isNotNull>
+ 	         <isNotNull prepend="and id in" property="ids">
+ 	            <iterate property="ids" open="(" close=")" conjunction=",">    
+			 #ids[]#    
+			</iterate>  
+ 	        </isNotNull>
+ 	    </dynamic>
+ 	</select>
+
+	 <insert id="insertCustomer" parameterClass="com.ysfj.entity.Customer">
+	     insert into pf_customer(name,email,address,created_date) 
+	     values(#name#,#email#,#address#,#createdDate#)
+	 </insert>
+	 <select id="selectByIds" parameterClass="com.ysfj.entity.QueryConditionArray"
+	     resultClass="com.ysfj.entity.Customer">
+	     select id ,name,email,address,
+ 	    	created_date createdDate
+ 	    From
+ 	    	PF_CUSTOMER
+ 	    <dynamic prepend="where id in">
+ 	        <iterate property="stuIds" open="(" conjunction="," close=")">
+ 	            #stuIds[]#
+ 	        </iterate>
+ 	    </dynamic>
+	 </select>
+	 <select id="selectByIdsList" parameterClass="com.ysfj.entity.QueryConditionList"
+	     resultClass="com.ysfj.entity.Customer">
+	     select id ,name,email,address,
+ 	    	created_date createdDate
+ 	    From
+ 	    	PF_CUSTOMER
+ 	    <dynamic prepend="where id in">
+ 	        <iterate property="lcus" open="(" conjunction="," close=")">
+ 	            #lcus[].id#
+ 	        </iterate>
+ 	    </dynamic>
+	 </select>
+</sqlMap>

@@ -1,0 +1,12 @@
+package service;
+
+import entity.User;
+
+public interface UserService {
+	/**
+	 * 根据姓名查询用户
+	 * @param name
+	 * @return
+	 */
+	Boolean login(String name,String password);
+}

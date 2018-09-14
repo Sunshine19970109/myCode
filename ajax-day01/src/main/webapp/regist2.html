@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页面</title>
+		<script type="text/javascript" src="js/ajax.js" ></script>
+		<script>
+			function check(){
+				//step1.获取ajax对象
+				var xhr = getXhr();
+				//step2.发送请求
+				xhr.open('POST','check.do',true);
+				xhr.setRequestHeader('content-type',
+				"application/x-www-form-urlencoded");
+				xhr.onreadystatechange=function(){
+					//处理服务器返回的数据
+					if(xhr.readyState==4&&xhr.status==200){
+						var txt = xhr.responseText;
+						$('msg').innerHTML = txt;
+					}
+				}
+				xhr.send('adminCode='+$F('adminCode'))
+			}
+		</script>
+	</head>
+	<body>
+		<form action="check.do">
+			账号:<input type="text" id="adminCode" onblur="check()"/><span id='msg'></span><br />
+			密码:<input type="password"  /><br />
+			<input type="submit" value="登录" />
+		</form>
+	</body>
+</html>

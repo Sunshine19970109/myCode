@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(".btn").click(function() {     
+	var json = 
+		[                  
+			{ "S_Name": "周颜", "S_Sex": "男" },                 
+			{ "S_Name": "周颖", "S_Sex": "女" }                
+		];      
+	$.each(json, function(index, s) { 
+		//语句1
+		alert(s.S_Name + "," + s.S_Sex);		    
+	}); 
+});  
+</script>
+</head>
+<body>
+	<input type="button" class="btn" value="点我"/>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 2 嵌入式:在script标签内写JS
+	该标签可以写在网页的任何位置 -->
+<script type="text/javascript">
+	function f2(){
+		alert("嵌入式");
+	}
+</script>
+<!-- 3 文件调用式:在独立的js文件中写js
+	script标签不能同时引入js和书写js -->
+<script type="text/javascript" src = "my.js"></script>
+</head>
+<body>
+	<!-- 1 事件定义式:在定义事件时直接写JS -->
+	<input type="button" value="事件定义式" onclick="alert('事件定义式');"/>
+	<input type="button" value="嵌入式" onclick="f2();" />
+	<input type="button" value="文件调用式" onclick="f3();"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

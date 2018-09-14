@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;springDay09.txt&apos; to &apos;mybatis-day03&apos;" description="Move &apos;springDay09.txt&apos; to &apos;mybatis-day03&apos;" destination="/mybatis-day03" element1="/mybatis-spring1/springDay09.txt" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1530226257813" updateReferences="true"/>
+</session>

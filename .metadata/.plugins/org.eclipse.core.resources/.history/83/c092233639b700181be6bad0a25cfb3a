@@ -1,0 +1,35 @@
+package Demo;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadState {
+	public static void main(String[] args) {
+		ExecutorService  es = Executors.newFixedThreadPool(5);
+		
+		FutureTask<Integer> future= new FutureTask<Integer>(
+
+			　　　　(Callable<Integer>)()->{
+
+			　　　　　　return 5;
+
+			　　　　}
+
+			　　  );
+	}
+}
+class T1 extends Thread{
+	@Override
+	public void run() {
+		
+		super.run();
+	}
+}
+class T2 implements Runnable{
+
+	@Override
+	public void run() {
+		
+	}
+	
+}

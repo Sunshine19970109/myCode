@@ -1,0 +1,13 @@
+package service.impl;
+
+import entity.User;
+import service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	public User findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

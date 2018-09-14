@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	<!-- 配置SqlSessionFatoryBean -->
+	<bean id="ssfb"
+	class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <!-- 注入连接池 -->
+	    <property name="dataSource"
+	        ref="ds"/>
+	    <!-- 注入映射文件的位置 
+	    这些名字都不能出错-->
+	    <property name="mapperLocations"
+	        value="classpath:entity/*.xml"/>
+	</bean>
+	<!-- 读取db.properties -->
+	<util:properties id="db"
+	location="classpath:db.properties"/>
+	<!-- 配置连接池 -->
+	<bean id="ds"
+	class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close">
+	    <property name="driverClassName" value="#{db.driver}"/>
+	    <property name="url" value="#{db.url}"></property>
+	    <property name="username" value="#{db.user}"/>
+	    <property name="password" value="#{db.pwd}"/>
+	    <property name="initialSize" value="#{db.initsize}"/>
+	    <property name="maxActive" value="#{db.maxsize}"/>
+	</bean>
+	<!-- 配置MapScannerConfig -->
+	<!-- 如果不写id默认是映射器首字母小写，
+	如果需要自定义id，可以使用注解，本来是需要配置
+	组件扫描的，但是这里已经有MapperScannerConfigurer
+	就本来就是一个自建扫描 -->
+	<bean id="map" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <!-- 注入映射器所在的包名 -->
+	    <property name="basePackage"
+	        value="dao,test"/>
+	    <!-- 只扫描带有特定注解的接口 -->
+	    <property name="annotationClass"
+	    value="annotations.MyBatisRepository"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

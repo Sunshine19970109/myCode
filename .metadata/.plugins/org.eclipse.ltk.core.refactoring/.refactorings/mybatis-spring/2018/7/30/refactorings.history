@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;cloudnote/src/main/resources&apos;&#x0D;&#x0A;- Original project: &apos;mybatis-spring&apos;&#x0D;&#x0A;- Destination element: &apos;cloudnote/src/main/resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     db.properties&#x0D;&#x0A;     mybatis-spring.xml" description="Copy files" destination="=cloudnote/src\/main\/resources" element1="src/main/resources/db.properties" element2="src/main/resources/mybatis-spring.xml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1532814186523" units="0" version="1.0"/>
+</session>

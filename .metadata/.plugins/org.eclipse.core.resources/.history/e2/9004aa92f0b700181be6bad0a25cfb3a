@@ -1,0 +1,9 @@
+package test;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TestListener2 {
+	public static void main(String[] args) {
+		new ClassPathXmlApplicationContext("")
+	}
+}

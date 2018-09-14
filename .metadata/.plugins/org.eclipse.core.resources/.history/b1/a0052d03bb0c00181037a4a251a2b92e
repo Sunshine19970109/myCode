@@ -1,0 +1,139 @@
+package oo.day05;
+//银行卡系统
+public class UnionPayTest {
+
+	public static void main(String[] args) {
+		ICBCImpl card1 = new ICBCImpl("123456",2000);//工行卡
+		
+		UnionPay card2 = new ABCImpl("1234567",2000);//银联卡---农行卡
+	}
+}
+interface UnionPay{
+	public double getBalance();//查询余额
+	public boolean drawMoney(double number);//取款
+	public boolean checkPwd(String input);//验证密码
+}
+interface ICBC extends UnionPay{//工行接口
+	
+	public void payOnline(double number);//在线支付
+	
+}
+interface ABC extends UnionPay{
+	public boolean payTelBill(String phoneNumber,double sum);
+}
+
+class ICBCImpl implements ICBC{//工行卡
+	String pwd ;
+	double balance;
+	public ICBCImpl(String password,double balance) {
+		this.pwd = password;
+		this.balance = balance;
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public double getBalance() {
+		// TODO Auto-generated method stub
+		return balance;
+	}
+
+	@Override
+	public boolean drawMoney(double number) {
+		// TODO Auto-generated method stub
+		if(balance-number>=0){
+			balance  = balance - number;
+			System.out.println("取钱成功，卡余额为："+balance);
+			return true;
+			
+		}else {
+			System.out.println("您的余额不足");
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean checkPwd(String input) {
+		// TODO Auto-generated method stub
+		if (input.equals(pwd)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public void payOnline(double number) {
+		// TODO Auto-generated method stub
+		if (number<=balance) {
+			balance = balance-number;
+		}else{
+			System.out.println("您的余额不足:");
+		}
+	}
+	
+}
+
+class ABCImpl implements ABC{
+	String pwd ;
+	double balance;
+	public ABCImpl(String password,double balance) {
+		this.pwd = password;
+		this.balance = balance;
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public double getBalance() {
+		// TODO Auto-generated method stub
+		return balance;
+	}
+
+	@Override
+	public boolean drawMoney(double number) {
+		// TODO Auto-generated method stub
+		if(balance-number>=-2000){
+			balance  = balance - number;
+			System.out.println("取钱成功，卡余额为："+balance);
+			return true;
+			
+		}else {
+			System.out.println("您的余额不足");
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean checkPwd(String input) {
+		// TODO Auto-generated method stub
+		if (input.equals(pwd)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean payTelBill(String phoneNumber, double num) {
+		// TODO Auto-generated method stub
+		if (phoneNumber.length()==11&&balance-num>=-2000) {
+			balance = balance-num;
+			System.out.println("您的电话"+phoneNumber+"费"+num+"缴纳成功,您的余额为:"+balance);
+		}
+		return false;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

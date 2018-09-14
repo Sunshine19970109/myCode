@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo3</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	//等价于window.onload=function(){}
+	$(function(){
+		//1 基本选择器---跟css一样
+		console.log($("#gz"));
+		//2 层次选择器
+	//"img"带引号的是选择器，$(img)不带引号是js对象
+		console.log($("#gz+"));	
+		console.log($("#gz~"));
+		
+	//3 过滤选择器(*)		
+		//1)基本过滤(*)
+		console.log($("li:first"));
+		console.log($("li:last"));
+		console.log($("li:not(#gz)"));
+		console.log($("li:odd"));//奇数
+		console.log($("li:even"));//偶数
+		console.log($("li:eq(1)"));
+		console.log($("li:gt(1)"));
+		console.log($("li:lt(1)"));
+		//2）内容过滤
+		/*选择内容包含'州'的li标签*/
+		console.log($("li:contains('州')"));
+		console.log($("li:empty"));
+		//3）可见性过滤
+		console.log($("li:hidden"));
+		console.log($("li:visible"));
+		//4)属性过滤--所有属性都可以
+		console.log($("li[id]"));
+		console.log($("li[id=gz]"));
+		console.log($("li[id!=sz]"));
+		//5)状态过滤--相对表单控件而言的
+		console.log($("input:disabled"));
+		console.log($("input:enabled"));
+		console.log($("input:checked"));
+		console.log($("input:selected"));
+
+		//4 表单选择器--input可以省略
+		console.log($("input:radio"));
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li id="sz">深圳</li>
+		<li>杭州</li>
+		<li>天津</li>
+		<li style="display:none;">重庆</li>
+	</ul>
+	<!-- 
+		readonly:只读，数据依然可以提交给服务器。
+		disabled:禁用，数据无法提交给服务器。
+	 -->
+	<p>
+		账号:<input type="text" disabled/>
+	</p>
+	<p>
+		密码:<input type="password"/>
+	</p>
+	<p>
+		性别:
+		<input type="radio" name="sex" checked/>男
+		<input type="radio" name="sex" />女
+	</p>
+</body>
+</html>

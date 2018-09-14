@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;entity&apos; to &apos;webservicetest1/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;web-service-middle&apos;&#x0D;&#x0A;- Destination element: &apos;webservicetest1/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;web-service-middle/src/main/java/entity&apos;" description="Copy package" destination="=webservicetest1/src\/main\/java" element1="/src\/main\/java&lt;entity" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1536215774942" version="1.0"/>
+</session>

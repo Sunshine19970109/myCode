@@ -1,0 +1,4 @@
+四个边设置相同的边距
+	padding:20px;
+	margin:20;
+padding:

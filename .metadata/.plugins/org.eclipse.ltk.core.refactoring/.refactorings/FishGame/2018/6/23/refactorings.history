@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FishGame/bgm/好想你.ogg&apos; to &apos;bg.ogg&apos;" description="Rename resource &apos;好想你.ogg&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="bgm/好想你.ogg" name="bg.ogg" stamp="1528008757248" updateReferences="true"/>
+</session>

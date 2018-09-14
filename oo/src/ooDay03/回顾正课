@@ -1,0 +1,217 @@
+回顾:
+**写构造方法必须用this,继承必须用super
+1.方法的重载(overload):
+	1)发生在同一个类中，方法名称相同，参数列表不同 
+	2)编译器在编译时会根据方法的签名自动绑定方法 
+2.构造方法:构造器,构建器，构造函数
+	1)给成员变量赋初值 
+	2)与类名相同，没有返回值类型 
+	3)在创建对象时被自动调用 
+	4)若自己不写构造则默认为无参构造， 
+	若自己写了，则不再默认提供 
+	5)可以重载 
+3.this:指代当前对象
+this用法:
+	1)this.成员变量--------------访问成员变量
+	2)this.方法名()--------------调用方法
+	3)this()-------------------调用构造方法
+
+正课:
+2.继承:
+	1)作用:实现代码的复用、避免代码重复
+	2)通过extends来实现继承
+	3)父类:所有子类的共同属性和行为---------基类
+	  子类:子类所特有的属性和行为----------派生类
+	4)子继承父类后，子类具有:父类的+子类的
+	5)一个父亲可以有多个儿子
+	  每个儿子只能有一个父类
+	6)继承具有传递性
+	7)java规定:构造子类之前必须先构造父类
+		若子类自己不调父类，则编译器默认在子类构造方法内
+		第一句用super()调用父类的无参构造
+		若子类调用了父类，就不再默认
+3.super:指代当前对象的父类对象
+	super的用法:
+		super.成员变量名-------------访问父类的成员变量
+		super.方法名()--------------调用父类的方法
+		super()-------------------调用父类的构造方法
+
+向上造型:
+	1)父类引用指向子类对象
+	2)能点出来什么，看引用的类型
+
+练习:
+要求:每个人至少写两遍
+	向上造型(向上造型)
+	
+2.完成如下类:
+	2.1)Cell类:
+			row,col,Cell(int row,int col),getCellInfo()
+	2.2)Tetromino类:
+		cells, Tetromino(),drop(),moveLeft(),moveRight(),print()
+	2.3)T类,继承Tetromino
+		T(),T(int row,int col)
+	2.4)J类,继承Tetromino
+		J(),J(int row,int col)
+	2.5)L类,继承Tetromino
+		L(),L(int row,int col)
+	2.6)O类,继承Tetromino
+		O(),O(int row,int col)
+	2.7)TJTest类,包含:
+		main()----输出T,J,L,O-----四种图形
+		printWall(Tetromino t)-----打墙+打图形
+	
+		
+	
+Tetromino o1 = new T();
+
+	
+为什么要重载?
+	T只能接受T型对象
+假设:有一种类型
+		什么都能接受
+王克晶老师的要求:
+	1.上课把她教的内容记住，而不是说她教的是对的，
+	记住不光要要记住教的内容还要记住教的顺序
+	2.她让写的时候在写，她鼠标动的时候再看，其他时候认真听
+	3.每次上课前必须把之前要练的 要写的写完练会
+	4.代码一定要多写才能变成自己的，以后自己每天只上一天的课，
+	其他时间写作业和以前的代码
+
+
+int   [] arr = new int[3];
+Cell  [] cells = new Cell[4];
+//声明int[] 型的数组arr,包含3个元素
+//每个元素都是int[]型，默认值为null
+int[] [] arr = new int[3][];
+arr[0]-------------为int[]型
+arr[0] = new int[2];
+arr[1] = new int[3];
+arr[2] = new int[2];
+
+arr中包含3个元素
+arr中第1个元素里面包含2个int型
+arr中第2个元素里面包含3个int型
+arr中第3个元素里面包含2个int型
+
+arr[1][0] = 100;
+arr-------int[][] 
+arr[1]-------int[]
+arr[1][0]------100---给arr中的第二个元素中的第一个赋值为100
+
+int[][][] arr = new int[1][]
+
+RefArrayDemo
+
+//引用类型数组演示
+Cell[] cells = new Cell[4];
+cells[0] = new Cell(2,5);
+cells[1] = new Cell(2,5);
+cells[2] = new Cell(2,6);
+cells[3] = new Cell(2,7};
+
+int[][] arr = new int[3][];
+arr[0] = new int[2];
+arr[1] = new int[3];
+arr[2] = new int[2];
+arr[1][0] = 100;
+
+Cell[] cs = new Cell[]{
+	new Cell(2,5),
+	new Cell(2,6),
+	new Cell(2,7),
+	new Cell(3,6)
+};
+int[][] as = new int[3][4];//3行4列
+
+生活中的继承:
+1)继承财产:
+	钱不用自己挣，自己也能花
+2)继承皇位:
+	江山不用打，自己也能做
+3)继承工作:
+	工作不用自己找，自己也能干
+
+程序中的继承:
+	代码不用自己写，也能用
+
+class Person{
+	String name;
+	int age;
+	String address;
+	char sex;
+	void eat(){
+	}
+	void sleep(){
+	}
+}
+
+class Student extends Person{
+	String className;
+	void study(){
+	}
+}
+
+class Teacher extends Person{
+	double salary;
+	void teach(){}
+} 
+
+class Doctor extends Person{
+	String level;
+	void cut(){}
+}
+
+Student zs = new Student();
+zs.className/study();
+zs.name/age/address/eat()/sleep();
+
+
+
+何时打*:只要行列匹配就打*
+何时打-:只要格子都没匹配上则打-
+
+判断多次才能得到最终结果---------------开关
+或者审核多次
+
+Animal o1 = new Animal();//动物是动物
+Tiger o2 = new Tiger();//老虎是老虎
+Animal o3 = new Tiger();//老虎是动物-------向上转型
+
+class Animal{//动物
+}
+
+class Tiger extends Animal{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

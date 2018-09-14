@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo3</title>
+<script>
+	//此处写js有两种方式
+	//1 函数:在用户点击按钮时调用。
+	//即:函数是在页面加载后调用的.
+	//2 直接写js:页面加载时就调用.
+	//即:直接写的js比body执行的早.
+	//alert(1);
+	console.log("控制台打印");
+	// 1 声明变量
+	var x;
+	console.log(x);
+	x=6;
+	console.log(x);
+	var y="hello";
+	console.log(y);//弱类型语言
+	/*面试官喜欢问的问题:
+		1 你对JS的理解
+		他们喜欢问这种开放性问题，然后你们所有人去说，
+	然后他进行挑选。
+		2 JS中的数组与Java中的数组有什么区别。
+		他们最喜欢对比了，因为对比才能看出来你对知识理解
+	的透彻不透彻，什么时候用那项技术，不然遇到问题，脑子全是技术
+	然后又不知道用那个。
+	
+		所以你至少应该把目录记住，然后对总体的把握记住，
+	许多具体细节的语法可以记不清楚。	
+	
+		学习一门语言的步骤:
+		1 基本语法(变量定义，怎么写hello world运行)
+		2 学习数据类型
+		3 学习关键字。
+		4 如果是面向对象语言，学习有哪些对象。
+	*/
+	
+	// 2 数据类型
+	var s = "hi";
+	var n = 3.14;
+	var b = true;
+	
+	// 3   隐式转换
+	console.log(s+n);
+	console.log(s+b);
+	console.log(n+b);
+	console.log(b+b);
+	
+	//4 强制转换的函数
+	console.log(parseInt(3.14));
+	console.log(parseFloat("5.6"));
+	console.log(parseInt("abc"));//NAN
+	console.log(typeof(b));
+	//isNaN();
+	console.log(isNaN(56));
+	console.log(isNaN("56"));//false
+	console.log(isNaN("abc"));
+	console.log(isNaN(""));//false
+	//它认为""空字符串为0
+	console.log(parseInt(""));//NaN
+	
+	
+</script>
+</head>
+<body>
+	<p>我们在这个页面上演示JS基本语法</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

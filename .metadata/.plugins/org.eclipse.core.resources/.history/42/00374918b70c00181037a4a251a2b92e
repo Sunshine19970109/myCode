@@ -1,0 +1,91 @@
+package oo.day05;
+//银行卡系统
+public class UnionPayTest {
+
+	public static void main(String[] args) {
+		ICBCImpl card1 = new ICBCImpl();//工行卡
+		ICBC card2 = new ICBCImpl();//工行卡
+		UnionPay card3 = new ICBCImpl();//银联卡
+		UnionPay card4 = new ABCImpl();//银联卡---农行卡
+	}
+}
+interface UnionPay{
+	public double getBalance();//查询余额
+	public boolean drawMoney(double number);//取款
+	public boolean checkPwd(String input);//验证密码
+}
+interface ICBC extends UnionPay{//工行接口
+	public void payOnline(double number);//在线支付
+}
+interface ABC extends UnionPay{
+	public boolean payTelBill(String phoneNumber,double sum);
+}
+
+class ICBCImpl implements ICBC{//工行卡
+
+	@Override
+	public double getBalance() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean drawMoney(double number) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean checkPwd(String input) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void payOnline(double number) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+class ABCImpl implements ABC{
+
+	@Override
+	public double getBalance() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean drawMoney(double number) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean checkPwd(String input) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean payTelBill(String phoneNumber, double sum) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

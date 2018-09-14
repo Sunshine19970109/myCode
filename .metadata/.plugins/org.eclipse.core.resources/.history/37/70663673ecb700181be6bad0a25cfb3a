@@ -1,0 +1,26 @@
+package listener;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
+import org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener;
+public class TopicMessageListener2 extends AbstractAdaptableMessageListener{
+
+	public void onMessage(Message message, Session session) throws JMSException {
+		//判断消息类型是TextMessage
+		if(message instanceof TextMessage){
+			//如果是，则进行强转
+			TextMessage textMessage = (TextMessage)message;
+			try {
+				String text = textMessage.getText();
+				System.out.println("TopicMessageListener2收到消息: "+text);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
+
+}

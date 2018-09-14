@@ -1,0 +1,13 @@
+package dao.impl;
+
+import dao.UserDAO;
+import entity.User;
+
+public class UserDAOImpl implements UserDAO {
+
+	public User selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

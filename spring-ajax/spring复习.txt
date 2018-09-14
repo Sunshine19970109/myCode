@@ -1,0 +1,135 @@
+定时任务处理框架---Quartz	Mybatis
+	一站式框架
+
+(1)启动Spring容器?
+	1.导包
+	spring-mvc
+	2.添加spring配置文件
+	3.启动容器
+(2)创建对象
+	1)方式一	无参构造器
+		step1.为类添加无参构造器(或者缺省构造器)
+		step2.在配置文件里面，添加bean元素。
+			注:bean就是容器所创建的对象
+			<bean id="stu1" class="first.Student"/>
+		step3.启动容器，调用容器的getBean方法
+		//启动容器
+		ApplicationContext ac = 
+			new ClassPathXmlApplicationContext(config);
+		Student stu = ac.getBean("stu1",Student.class);
+		//运用了java反射技术
+	2)方式二	使用静态工厂方法创建对象
+	<bean id="cal1" class="java.util.Calendar"
+	factory-method="getInstance"/>
+	//getInstance是一个静态方法，返回一个对象
+	
+	3)方式三	使用实例工厂方法创建对象
+	<bean id="time1" factory-bean="cal1"
+	factory-method="getTime"/>
+	//getTime就是一个cal1对象的普通方法
+	
+(3)指定作用域
+	<bean id="t1" class="basic.Teacher"
+	scope="prototype"/>
+	scope--用来指定作用域
+		prototype--可以创建多个
+		singleton--单例模式
+	
+(4)指定初始化方法
+	//init-method:指定初始化方法名
+	//destroy-method:指定销毁方法名
+	<bean id="ms1" class="basic.MessageService"
+	init-method="init"
+	destroy-method="destory"/>
+	
+	AbstractApplicationContext这个类才有close()方法。
+	ApplicationContext--这个接口是没有的
+	销毁方法只对单例模式的有用
+
+练习:
+	写一个java类(ExampleBean),为该类提供初始化方法和销毁方法。
+	要求:
+	a.有容器来创建其实例
+	b.作用域为singleton.
+	c.不用使用延迟加载
+	
+什么是IOC(Inversion	 Of Controll  控制反转)
+	对象之间的关系由容器来建立
+	相当于所有的类之间是没有关系的,就和人一样只有
+	一起有交集的时候才有关系
+	//set方式注入
+	<bean id="a1" class="ioc.A"
+		<property name="b" ref="b1"/>
+	</bean>
+	setB(b1)
+	//构造器注入，会调用带参构造器，需要构造方法
+	//index指定参数的下标
+	<bean id="cp1" class="ioc.Computer"/>
+	<bean id="mg1" class="ioc.Manager">
+		<constructor-arg index="0" ref="cp1"/>
+	</bean>
+	
+	自动装配
+	autowire:表示让容器自动建立对象之间的依赖关系
+	byName:依据属性名查找对应的bean(就是以属性名
+	作为bean的id来查找)，找到之后，调用set方法
+	来建立依赖关系。找不到 ，不注入
+	找到多个---抛出异常
+	<bean id="bar" class="autowire.Bar"
+	autowire="byName"/>
+	autowire="byType"
+	
+注入基本类型的值
+	<bean id="vb1" class="ValueBean">
+		<property name="name" value="关关" />
+		<property name="age" value="22"/>
+	</bean>
+	
+什么是DI(Dependency  Injection  依赖注入)
+	容器可以通过调用set方法或者构造器来建立对象之间
+	的依赖关系
+	注:IOC是目标，DI是手段
+
+
+
+
+练习:
+	Restaurant类
+	Waiter类
+	采用set方法 将waiter注入到Restaurant
+	
+练习:
+	Engineer类	Car类
+	将Engineer注入到Car,要求使用构造器注入	
+
+
+
+为什么学一本书学精比每天看很多的书要更有效果呢?(*****)
+	1.因为你一本书学精的话，你抄别人的东西只抄这一本书
+	然后等你做下一个相似的题的时候，只要你没有抄答案，那么
+	就意味着别人的知识属于你了。
+	2.如果你认为看很多的书的话，你每次都以为自己在学新的东西
+	每次都给自己权力去抄别人的，那么回头来别人的知识还是别人的
+	3.如果你反复的重复一本书的知识，你就可以让这一本书的非常的熟悉,
+	然后就变成了你的知识，你下次碰到相同的知识就会开始思考自己的知识，
+	然后去解决问题，而不是继续看答案学习。
+
+结论:
+	老师以前讲的可以允许你看，可以允许你抄，但是今天的问题，如果要用
+	以前的知识，绝对不允许，用今天的答案做你的复习资料，因为这样你的脑子
+	里面会有很多的不知道能不能忘的知识，一天比一天臃肿，一停止就会全部忘记。
+
+
+
+
+
+
+异常总结
+	NoClassDefFoundError--类名写错了
+
+
+
+
+
+
+

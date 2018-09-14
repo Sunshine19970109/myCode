@@ -1,0 +1,20 @@
+严重: A child container failed during start
+java.util.concurrent.ExecutionException: org.apache.catalina.
+LifecycleException: Failed to start component 
+[StandardEngine[Catalina].StandardHost[localhost].
+StandardContext[/MyEbizTest]]
+
+
+
+严重: Context initialization failed
+org.springframework.beans.factory.BeanCreationException:
+ Error creating bean with name 'viewResolver' defined 
+ in ServletContext resource 
+ [/WEB-INF/classes/config/mvc-context.xml]: 
+ Error setting property values; nested exception 
+ is org.springframework.beans.NotWritablePropertyException:
+  Invalid property '/page/' of bean class [org.springframework.
+  web.servlet.view.InternalResourceViewResolver]:
+   Bean property '/page/' is not writable or 
+   has an invalid setter method. Does the parameter
+    type of the setter match the return type of the getter?

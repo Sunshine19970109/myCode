@@ -1,0 +1,150 @@
+Bean 容器管理的java类
+IOC/DI
+	A	--->B
+	set方法注入
+	<property name="" ref=""/>
+	构造器注入
+	<constructor-arg index="" ref=""/>
+	自动装配(了解)
+	autowire = byName  byType constructor
+	byName--把Bean中的属性名作为<Bean>的id去查找
+	注入基本类型的值
+		value
+	注入集合类型的值
+		list	set	map	/entry props prop
+		<util:list id="">
+		</..>
+		ref
+	读取属性文件
+		<util:properties id=""
+		location="classpath:db.property"
+	
+	注解可以简化配置文件
+
+
+(7)spring表达式
+	#{user.name}
+	注:读取bean的属性
+	user--要读取的bean的id
+	name--要读取的属性(调用了getName())
+	[1]--list--下标
+	['english']--map中的key 
+	.pageSize--配置文件中的key
+	
+1 使用注解来简化配置文件
+	@Component通用注解
+	@Repository持久化层组件注解
+	@Service业务层组件注解
+	@Controller控制层组件注解
+ (1)什么是组件扫描?
+ 	Student
+ 	容器会扫描指定的包及其子包下面所有的类，如果该
+	类前面有特定的注解(比如@Component)，则容器
+	会将其纳入容器进行管理(相当于在配置文件里面有
+	一个bean元素)。名字为类名小写。
+  (2)如何进行组件扫描?
+  Rod Johnson音乐博士
+  step1.在类前面添加特定的注解，比如@Component
+  注:默认的id是首字母小写之后的类名。
+  step2.在配置文件中，配置组件扫描。	
+  (3)依赖注入怎么用注解
+  @Autowired/@Qualifier
+  可以处理构造器注入和Setter注入
+  @Resource(**)
+  只能处理Setter注入，但大部分情况都是Setter注入
+  @Value()可以注入基本类型的值，也可注入对象的值
+  @Value("安迪")
+  @Value("#{config.pageSize}")
+  
+
+SpringMVC
+	(1)什么是SpringMVC?
+	用来简化基于MVC架构的web应用程序开发的框架。
+	注:SpringMVC是spring中的一个模块。
+	(2)五大组件
+	1)有那五大组件?
+	DispatcherServlet--前端控制器
+	HandlerMapping--映射处理器
+	Controller--处理器
+	ModelAndView--处理结果和视图名
+	ViewResolver--视图解析器
+	2)他们之间的关系?
+	a.请求发送给DispatcherServlet来处理，DispatcherServlet
+	会依据HandlerMapping的配置调用对应的Controller来处理
+	b.Controller将处理结果封装成ModelAndView,然后返回给
+	DispatcherServlet
+	c.DispatcherServlet会依据ViewResolver的解析调用
+	对应的视图对象(比如jsp)来生成相应的页面。
+	注:视图部分可以使用jsp,也可以使用其他的视图技术，比如
+	freemarker,velocity等等。
+	
+http://localhost:8080/springmvc01/hello.do
+
+(3)编程的步骤
+step1.导包	
+spring-webmvc--包括spring容器和SpringMVC
+step2.添加配置文件
+step3.配置DispatcherServlet
+step4.写Controller.
+step5.写jsp.
+step6.在配置文件中添加HandlerMapping,
+	ViewResolver的配置
+
+练习:
+http://localhost:8080/springmcv-lab/toLogin.do
+返回一个登陆页面
+
+
+
+
+
+
+
+
+补充:
+	学习就像组件一样，不应该是先万能再特殊。
+	应该是先特殊或者局部情况，再说通用情况。
+
+
+
+
+
+
+
+spring表达式
+	#{vb1.name}
+	#{vb1.interest[1]}
+	#{vb1.score['english']}
+	#{vb1.config.pageSize}
+
+组件扫描?
+	<context:component-scan 
+	base-package="ioc"/>
+	@Component("")
+	@Service	@Repository	@Controller
+	@Scope	@Lazy	
+	@PostConstruct--初始化
+	@PreDestroy--销毁
+	@Autowired	@Qualifier
+	@Resource(name="")
+	@Value
+	
+	当如果用系统的类时是不能加注解的，所以以后
+	能用注解的尽量用注解，用不了注解的，最好用
+	配置文件。
+	
+练习:
+	使用注解的方式注入(@Resource)
+	将engine类注入到plane类
+	
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+1.可以实现登陆
+2.实现返回何伟杰
+3.实现返回I am Hi page
+4.实现返回welcome to vue
+
+1.新建项目
+2.导包
+3.配置运行环境
+4.创建配置文件
+	applicationContext.xml
+	spring-mvc.xml
+	SqlMapConfig.xml
+	user.xml
+5.配置web.xml
+
+
+create table vue_user(
+	id primary key,
+	name varchar(50) not null,
+	password varchar(50) not null
+)
+
+问题:为什么使用junit没有运行起来?
+at org.eclipse.jdt.internal.junit4.runner.
+SubForestFilter.shouldRun(SubForestFilter.java:81)
+	包的问题:这一组包中的junit是有问题的
+	解决方案:
+	更换包之后就好了
+	
+登录成功之后需要返回User对象，因为由User对象才能返回一个何伟杰的名字
+这个是从数据库查询到的
+
+
+浏览器406错误:
+	原因:使用@ResponseBody的时候没有添加下面的注解
+	<context:annotation-config />  
+    	<mvc:annotation-driven />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

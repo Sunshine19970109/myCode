@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.ysfj.DAO.Impl.CategoryDAO">
+	<select id="selectAllProduct" parameterClass="com.ysfj.entity.Category"
+	    resultClass="com.ysfj.entity.Product">
+	    select 
+	    	p.pid pid ,
+	    	c.cid cid,
+	    	pname pName 
+	    from 
+	    	category c left outer join product p
+	    on
+	    	p.cid=c.cid   
+	    where
+	    	c.cname=#cName#
+	</select>	
+</sqlMap>

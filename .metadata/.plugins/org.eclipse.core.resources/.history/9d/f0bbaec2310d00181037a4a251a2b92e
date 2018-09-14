@@ -1,0 +1,16 @@
+package oo.day05;
+
+public class ShapeTest1 {
+public static void main(String[] args) {
+	
+}
+}
+abstract class Shape{
+	int c;
+	double area() {
+		return 0;
+	}
+}
+class Square{
+	
+}

@@ -1,0 +1,311 @@
+复习:
+在jquery中想要实现通过远程http get请求载入信息功能的是下面的哪一个事件？
+	$.get(url)
+A.ajax() 方法通过 HTTP 请求加载远程数据。
+$.ajax(opts);
+opts为json格式，常见参数url、type、data等。
+
+B.load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
+$(selector).load(URL,data,callback);
+必需的 URL 参数规定您希望加载的 URL。
+可选的 data 参数规定与请求一同发送的查询字符串键/值对集合。
+可选的 callback 参数是 load() 方法完成后所执行的函数名称。
+
+C.$.get() 方法通过 HTTP GET 请求从服务器上请求数据。
+$.get(URL,callback);
+必需的 URL 参数规定您希望请求的 URL。
+可选的 callback 参数是请求成功后所执行的函数名。
+
+D.getScript() 方法通过 HTTP GET 请求载入并执行 JavaScript 文件。
+jQuery.getScript(url,success(response,status));
+
+此题目考查的是jQuery函数
+与AJAX相关的jQuery内置函数有：
+$.Ajax()、$.get()、$.post()、$.load()、$.getJSON()
+D选项错误
+
+
+JSON 是使用 JavaScript 语法来描述数据对象。
+它是轻量级的文本数据交换格式，独立于语言和平台,
+JSON 解析器和 JSON 库支持许多不同的编程语言。
+它具有自我描述性。
+
+此题目考查的是jQuery中的ajax()函数。
+ajax()函数中，type属性表示发送请求的方式，data属性表示发送到服务器的参数
+dataType属性表示服务器返回数据处理后的类型，success属性表示请求成功处理后调用的函数。
+本题中，预期服务器返回的数据需要符合json格式
+故选项B错误，ACD均正确。
+
+此题目考查的是AJAX技术的范畴
+DHTML不属于AJAX范畴，本题选B
+
+
+
+
+
+
+
+
+
+
+云笔记:
+JSON 是什么
+JSON 就是JS的一部分:
+JSON是JavaScript中的对象直接量语法，用于生明JS
+对象。
+var i=5;
+
+如何将JSON字符串转换为JSON对象(JS对象)
+	var obj = eval("("+str+")");
+	JSON.parse()--这两个函数都可以，但是JSON.parse()
+	函数底层就是eval()函数
+	这个函数应该注意什么？--加括号
+
+
+list[0]["if"]---javaScript语法
+可以取出特殊的键值对
+
+
+mysql的端口号是3306
+oracle的端口号是1521
+
+
+
+
+
+
+
+
+
+
+
+cloud_note--数据库名
+
+测试步骤?
+	1.创建项目的时候看报不报错
+		过一会就测试一次这个是最好的 
+		如果不报错就说明没有问题，报错了就有问题
+	2.连接上数据库的时候做一次测试
+	3.数据库写一个方法测一次
+
+
+
+
+
+怎么做一个小的项目的时候才不会不会做或者卡住?
+	即使你是复习也请你能够做一下开发文档。
+	永远记住不可以抄别人的代码作为自己的项目，
+只能抄别人的代码做文档。
+
+
+需求分析:
+软件=数据结构+算法
+
+设计数据存储
+	内存:数据临时计算存储场所，关闭电源就消失，称为瞬态的
+	  -运行内存
+	  -分配的是对象
+	外存:(SSD固体硬盘，HDD机械硬盘,SD,闪存，U盘)，关闭电源不消失，
+	称为持久状态
+	  -存储容量
+	  -保存的是文件 单机(单线程)程序可以使用文件存储数据
+	  -数据库(文件) 数据库管理系统，提供了并发访问管理!适合多线程访问。
+
+云笔记采用数据库存储数据!
+	
+###设计数据的存储
+	cn_user
+	id name password
+	
+	cn_notebook
+	id title user_id  createtime
+	
+	cn_note
+	id  title body user_id  notebook_id time
+
+1.mySQL的简单使用
+	-windows 用户使用:MySQL  Client,输入密码
+	-Linux:
+		mysql -u用户名 -p密码
+		mysql -uroot -p
+
+2.显示数据库命令
+	show databases
+3.创建数据库的命令
+	create database 数据库名
+4.删除数据库命令
+	drop database 数据库名
+5.切换数据库
+	use 数据库名
+	use mysql
+6.显示当前数据库的所有表
+	show tables;
+	
+7.建表语句，
+	create table 表名(列的声明)
+8.设置当前命令行窗口的编码:设置窗口文本编码为Utf-8
+	set names utf8;
+9.执行sql脚本命令，执行文本文件中的一批SQL命令
+	-如果SQL文件是utf-8编码的，就必须先执行 set names utf8;
+	source 文本文件的路径名
+	windows--source D:\Robin\Note\note_ziliao\cloud_note.sql
+	Linux--source /home/Note/note_ziliao/cloud_note.sql
+	
+	>清楚要清晰路径，保障路径的正确性!!!
+
+案例：
+create database demo;
+use demo;
+create table MyTable(id int,name varchar(100));
+insert into MyTable(id,name) values(1,'Tom');
+insert into MyTable(id,name) values(1,'Jerry');
+select id,name from MyTable;
+
+
+
+为什么数据的表越细越复杂?
+	因为数据分类越细它的隶属层次就越多，然后关系就会越来越复杂
+
+怎么解决一对多的关系?
+	可以直接使用外键解决
+怎么解决多对多的关系?
+	可以使用多对多，关系表解决
+
+怎么建表?
+	根据需求得到功能，根据功能模拟业务
+	根据模拟业务添加一些假的数据，根据模拟的业务
+	去寻找表的关联关系，然后再建立表
+
+
+登陆功能
+	程序=数据结构+算法
+	编程思路:
+	0.搞清楚业务需求。
+	1.考虑数据如何存储
+	2.如何操作数据才能达到业务目的
+	-设计SQL
+	3.编程:将业务功能和数据操作整合起来。如何编程才能
+	执行SQL操作数据。
+	
+
+UserDao
+User findUserByName(name)
+
+UserService
+User login(name,pwd) e{
+	u=dao.findUserByName()
+}
+
+UserController
+
+
+在Mapp.xml中
+		 <!-- string是mybatis提供的Java.lang.String简写 /-->
+	 <!-- map--是mybatis提供的java.Util.Map的简写 /-->
+
+为什么自己很多想法想不到,必须跟着老师写?
+	太懒了，勤能补拙，熟练是必须熟练的。
+
+
+@ExceptionHandler专门用于异常处理的注解?
+	可以用来处理异常
+	
+从子类中提取叫做泛化。
+
+	
+如何在浏览器端调试程序?
+	将tomcat按照debug模式运行
+	当服务器调试的时候，客户端会一直卡住的。
+
+2.3.5说一下mysql分页?Oracle分页?
+	为什么需要分页?在很多数据是不可能完全显示的，进行分页显示
+	Oracle分页
+	使用三层嵌套
+
+2.3.12 JDBC中的PreparedStatement相比Statement的好处
+	大多数我们都使用PreparedStatement代替
+	1：PreparedStatement是预编译的，比Statement速度快
+	2：代码的可读性和维护性好
+	虽然用PreparedStatement来代替Statement
+会是代码多出几行，但这样的代码无论从可读性还是维护性
+上来说，都比直接用Statement的代码高很多档次:
+3.安全性
+	PreparedStatement可以防止SQL注入攻击，
+而Statement却不能
+
+简单说一下redis的使用场景?
+	缓存:把经常需要查询的，很少修改的数据，放到
+读取速度很快的空间(内存)，以便下次访问减少时间，减轻
+压力，减少访问时间。
+
+简单介绍一下关系型数据库的三范式?
+	
+	范式就是规范:
+	设计数据库的规范:
+	要想满足第二范式必须先满足第一范式，要想满足第三范式必须同时满足第二范式
+	1.列的不可分割性
+	2.必须有主键
+	3.第三范式要求一个数据库表中不包含已在其他表中已包含的非主关键字信息(外键)
+	反三范式，有的时候为了效率，可以设置重复或者可以推导的字段，
+	订单(总价价)和订单项(单价)
+
+2.4.9 bootstrap是什么?
+	bootstrap是一个移动设备优先的UI框架，我们可以不用写任何css,js代码就能实现
+	比较漂亮的有交互性的页面，我们程序员对页面的编写是有硬伤的，所以要自己写页面的话，
+	所以如果要自己写页面的话就要使用类似于bootstrap这样的UI框架。
+	平时用太多的:
+		1.模态框
+		2.表单，表单项
+		3.布局
+		4.删格系统
+
+2.6.4 没有使用过?
+	使用过，在原来的公司，租用阿里的云服务器
+	云服务就是一些云服务运营商(阿里、华为、西部数码、新浪等)，提供的远程的
+	服务器功能，我们开发者或者企业只需按需付费就可以租用对应的服务器，
+	使用ssh和sftp来就行操作
+
+
+2.6.1 Linx是一个长时间运行比较稳定的操作系统，所以我们一般会用它来做服务器(web,db,app)，
+Linux本身具有c的编译环境，我们的一些软件是没有软件包的(redis)，
+需要在linx上编译得到软件包。需要在linx的C编译环境得到软件包
+
+2.6.2 Liux 下面的常用命令
+	pwd
+	cd
+	su-u--切换到管理员
+	ls
+	
+	tail ---查看文件
+	rm-rf
+	vi
+	rm-rf
+
+你是用什么来连接远程的服务器的?
+	连接远程需要依赖于Linux服务器安装ssh服务端，一般这个端口为22
+	Linux服务器安装sftp服务端，一般这个端口为25
+	使用ssh客户端连接linux服务器，就有点像windows远程连接，但是ssh
+	连接上以后全是命令行。
+		putty
+		xshell
+	使用sftp客户端来连接sftp服务端，来上传和下载文件(上传安装包，修改了配置文件)
+	winscp,xftp
+	
+	企业中常用的组合:putty+winscp
+	xshell+xftp=xmanager
+
+	微信公众号的分类?
+	公众号:个人和企业都可以申请。
+	服务号:企业才能申请。
+	企业号：企业才能申请。
+	
+	微信平台开发者，通过接入人认证的方式，让我们的服务器来处理
+	
+2.6.23怎么把微信和业务平台绑定?
+	用户注册实体中包含一个微信号的字段，当我进行绑定时就是修改用户的微信号字段。
+	网页授权
+
+2.6.14 jdbc
+	1.变多次提交为一次
+	
+

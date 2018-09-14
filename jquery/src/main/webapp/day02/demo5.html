@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo5</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	$(function(){
+		//show--hide
+		$(":button:eq(0)").click(function(){
+			$("div").show(3000);
+		});
+		/*参数2是匿名函数，在动画完成时，由jquery自动
+		调用
+		某件事完成时被自动调用的函数，称之为回调函数*/
+		$(":button:eq(1)").click(function(){
+			$("div").hide(3000,function(){
+				console.log("OVER");
+			});
+		});
+		/*动画的实现原理:
+			通过定时器连续不断的修改元素的样式。
+			定时器和主线程(f2)并发执行*/
+		console.log("ok");
+		
+		//fadeIn()/fadeOut()
+		$(":button:eq(2)").click(function(){
+			$("div").fadeIn(3000,function(){
+				$(":button:eq(1)").trigger("click");
+			});
+		});
+		$(":button:eq(3)").click(function(){
+			$("div").fadeOut(3000);
+		});
+		//slideDown/slideUp()
+		$(":button:eq(4)").click(function(){
+			$("div").slideDown(3000);
+		});
+		$(":button:eq(5)").click(function(){
+			$("div").slideUp(3000);
+		});
+	});
+	$(function(){
+		//给div绑定悬停事件
+		//自定义事件
+		$("div").hover(
+		function(){
+			$(this).animate({"left":"20px"},0);
+		},
+		function(){
+			$(this).animate({"left":"0px"},600);
+		});
+		
+	});
+</script>
+<style>
+	div{
+		width:200px;
+		height:200px;
+		background-color:red;
+		/*自定义动画基于定位*/
+		position:relative;
+	}
+</style>
+</head>
+<body>
+  <p>
+  	<input type="button" value="show显示" />
+  	<input type="button" value="hide隐藏" />
+  	<input type="button" value="fadeIn" />
+  	<input type="button" value="fadeOut" />
+  	<input type="button" value="slideDown" />
+  	<input type="button" value="slideUp" />
+  </p>
+  <div>
+  
+  </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void printArray(int [] arr)&apos; from &apos;ArithmeticDay01.Demo02.main()&apos; to &apos;ArithmeticDay01.Demo02&apos;&#x0D;&#x0A;- Original project: &apos;Arithmetic&apos;&#x0D;&#x0A;- Method name: &apos;printArray&apos;&#x0D;&#x0A;- Destination type: &apos;ArithmeticDay01.Demo02&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;printArray&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;ArithmeticDay01{Demo02.java" name="printArray" replace="false" selection="458 144" stamp="1517057513506" version="1.0" visibility="2"/>
+</session>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.netctoss.dao.AdminDAO">
+     <select id="findByAdminCode"
+		parameterType="java.lang.String"
+		resultType="cn.tedu.netctoss.entity.Admin">
+        	SELECT ADMIN_ID adminId,
+        	ADMIN_CODE adminCode,
+        	PASSWORD,
+        	NAME,
+        	TELEPHONE,
+        	EMAIL,
+        	ENROLLDATE  
+        	FROM ADMIN_INFO 
+		WHERE admin_code=#{adminCode}
+     </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

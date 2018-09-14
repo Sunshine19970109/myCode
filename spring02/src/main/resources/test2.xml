@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	<util:list id="rainType">
+		<value>bigRain</value>
+		<value>middleRain</value>
+		<value>SmallRain</value>
+	</util:list>
+	<util:set id="subject">
+		<value>语文</value>
+		<value>数学</value>
+		<value>英语</value>
+	</util:set>
+	<util:map id="friend">
+		<entry key="高宏" value="刘姐"></entry>
+		<entry key="藤子" value="妹子"></entry>
+		<entry key="赵宇" value="老杨"></entry>
+	</util:map>
+	<util:properties id="stuNum">
+		<prop key="高宏">1521010120</prop>
+		<prop key="藤子">1521010117</prop>
+		<prop key="赵宇">1521010118</prop>
+	</util:properties>
+	<bean id="some" class="value.SomeBean">
+		<property name="rain" ref="rainType"></property>
+		<property name="subject" ref="subject"></property>
+		<property name="friend" ref="friend"></property>
+		<property name="stuNum" ref="stuNum"></property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

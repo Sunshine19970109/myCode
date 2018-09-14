@@ -1,0 +1,57 @@
+package controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import entity.Client;
+import entity.News;
+import entity.ResponseResult;
+import entity.User;
+import service.PushService;
+
+@Controller
+@RequestMapping("/push")
+public class PushController {
+	@Resource(name="userPushService")
+	private PushService userPushService;
+	
+	@RequestMapping("/userPush.do")
+	@ResponseBody
+	/**
+	 * 用户推送
+	 * @param info
+	 * @return
+	 */
+	public ResponseResult<User> userPush(User info){
+		ResponseResult<User> result = null;
+		try {
+			userPushService.push(info);
+			result = new ResponseResult<User>(1, "发送成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = new ResponseResult<User>(0, e.getMessage());
+		}	
+		return result;
+	}
+	
+	/**
+	 * 新闻推送
+	 */
+	@RequestMapping("/newsPush.do")
+	@ResponseBody
+	public ResponseResult<News> newsPush(News news){
+		return null;
+	}
+	
+	/**
+	 * 客户推送
+	 */
+	@RequestMapping("/clientPush.do")
+	@ResponseBody
+	public ResponseResult<Client> clientPush(Client news){
+		return null;
+	}
+}

@@ -1,0 +1,48 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import entity.ResponseResult;
+import entity.User;
+import service.UserService;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	@Resource
+	private UserService userServiceImpl;
+	@RequestMapping("/login.do")
+	@ResponseBody
+	public void login(HttpServletRequest request,
+			HttpServletResponse response){
+		System.out.println("login.do");
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		Boolean res = userServiceImpl.login(name, password);
+		try {
+			PrintWriter writer = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			ResponseResult<User> result = null;
+			if(res){
+				result = new ResponseResult<User>(1, "µÇÂ¼³É¹¦");
+			}else{
+				result = new ResponseResult<User>(0, "µÇÂ¼Ê§°Ü");
+			}
+			String s = mapper.writeValueAsString(result);
+			writer.println(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,85 @@
+springjdbc
+	JdbcTemplate
+	update
+	query
+		RowMapper
+	queryForObject
+	
+MyBatis
+	what?
+	持久层框架
+	原理
+	SqlSessionFactory -->SqlMapConfig.xml
+	-->Map(key="sqlID" value="PreparedStatement
+	")-->SqlSession
+
+Hibernate
+
+
+当parameterType="int"时，类型不是对象
+所以id=#{id1}这个值可以随便写，如果是对象这个就必须
+对应get方法。
+
+练习:
+	使用MyBatis完成对部门表的增删改查操作
+		a.添加部门信息
+		b.查询出所有部门信息
+		c.依据id查询部门信息
+		d.修改某个部门信息
+		e.删除某个部门
+	注意:
+	配置文件中的sql不能带‘;’号
+	
+	
+	create table t_dept(
+		id number(8) primary key;
+		deptName varchar2(20),
+		addr varchar2(50)
+	);
+	create sequence t_dept_seq;
+
+怎么返回Map类型的结果?
+ (1)MyBatis会将记录中的数据先放到一个Map对象里面
+ (以字段名作为key,以字段值作为value,一条记录对应一个
+ Map对象),然后再将Map中的数据放到对应的实体对象里面。
+ (2)返回Map类型结果，好处是不用实体类了，但是不方便(
+ 因为要获得字段值，还需要调用Map对象提供的get方法)。
+ 
+2.解决字段名与实体类的属性名不一致
+	(1)方式一	使用别名(就是让别名与属性名一样)。
+	可以把每个字段的名字都变了
+	(2)方式二	使用resultMap解决。
+ 
+ 3.Mapper映射器
+ 	哇偶!这个MyBatis真的太强大了，你只需要写接口，
+  (1)什么是Mapper映射器
+  	附和映射文件要求的接口。
+  	注:MyBatis会生成符合接口要求的对象。
+  (2)具体要求
+  	a.方法名要与sql的id一致。
+  	b.方法的参数类型要与parameterType一致。
+  	c.方法的返回类型要与resultType一致。
+  	d.映射文件的namespace要等于接口的完整名字。
+ 
+ 
+ 
+
+
+
+
+<update id="up"
+	    parameterType="entity.Dept">
+	    UPDATE  t_dept SET deptName=#{deptName},
+	    SET addr=#{addr}  WHERE id=#{id}
+	</update
+
+为什么报错?
+	应该只有一个set
+
+
+
+
+
+
+
+

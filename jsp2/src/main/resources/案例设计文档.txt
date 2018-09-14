@@ -1,0 +1,73 @@
+1 JSP基本元素练习
+	在JSP页面中输出20行"Hello JSP"
+使用小脚本输出
+<%
+	for(int i=0;i<10;i++){
+		out.println("Hello JSP<br>");
+	}
+%>
+使用表达式输出
+<%
+	for(int i=0;i<10;i++){
+%>
+	<%="No."+(i+1)+"Hello.JSP"%><br>换行
+<%
+	}
+%>
+
+2 JSP指令练习
+	<%@page import="java.util.*,..."
+		pageEncoding="UTF-8"
+		contentType="text/html;charset="UTF-8"%>
+	<%@include file="date.jsp"%>
+
+3 员工管理
+	在页面上显示员工信息列表，并且能够实现奇偶行背景交错变换的效果
+	添加循环输出表格
+	EmployeeDAO dao = new EmployeeDAO();
+	List<Employee> emps = dao.findAll();
+	for(int i=0;i<emps.size();i++){
+		Employ emp= emps.get(i);	
+	}
+	<style>
+		.row1{ background-color:#E4E4F1}
+		.row2{ background-color:#FB10A}
+	</style>
+	<tr class="row<%=i%2+1>">
+
+<%--设置response.setContentType()方法的参数-->
+<%@page contentType="text/html"%>默认
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

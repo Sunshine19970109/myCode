@@ -1,0 +1,22 @@
+package service.impl;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+import org.springframework.jms.core.JmsTemplate;
+
+import service.PushService;
+
+public class NewsPushServiceImpl implements PushService {
+
+	//注入jmsTemplate,这里可以使用自动装配
+	@Resource(name="internalJmsTemplate")
+	private JmsTemplate jmsTemplate;
+	//注入destination
+	@Resource(name="newsServiceQueue")
+	private Destination destination;
+	public void push(Object info) {
+		
+	}
+
+}

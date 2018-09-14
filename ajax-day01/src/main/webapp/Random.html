@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax获取随机数</title>
+		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="js/ajax.js" ></script>
+		<script type="text/javascript">
+			function getRan(){
+				var xhr = getXhr();
+				xhr.open("POST","random.do",true);
+				xhr.setRequestHeader('content-type',
+				"application/x-www-form-urlencoded");
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var txt = xhr.responseText;
+						$("ran").value = txt;
+					}
+					
+				};
+				xhr.send(null);
+			}
+			
+		</script>
+		<script type="text/javascript">
+		/*请求地址、请求类型、请求参数、返回值类型
+		成功函数、失败函数*/
+		$(function(){
+			$('#b1').click(f1);
+		});
+		function f1(){
+			$.ajax({
+				"url":"getNumber.do",
+				"type":"post",
+				"dataType":"text",
+				"success":function(data){
+					$('#number').val(data);
+				}
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="number" />
+		<input type="button" id="b1" value="获取随机数" />
+	</body>
+</html>

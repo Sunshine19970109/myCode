@@ -1,0 +1,39 @@
+4.Spring集成MyBatis(方式二)
+	(1)集成步骤
+	step1.导包。
+	spring-webmvc,mabatis-spring,
+	dbcp,ojdbc,spring-jdbc,junit
+	step2.添加spring配置文件
+	注:不再需要MyBatis配置文件。(连接池，映射文件)
+	可以在spring的配置文件中添加
+	SqlSessionFactoryBean来代替。
+	step3.实体类
+	step4.映射文件
+		注:namespace不再要求和接口名相等
+	step5.DAO接口
+		注:接口方法没有特定要求
+	step6.写一个DAO接口的实现类
+		注:可以注入SqlSessionTemplate
+		JdbcTemplet
+	step7.配置SqlSessionTemplate,组件扫描
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo1</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	$(function(){
+		//1 读写节点的内容
+		//1)html()==innerHTML--带标签
+		console.log($("p:first").html());
+		//2)text()==innerText--不带标签
+		
+		//2.读写节点的值
+		//val()==value
+		console.log($
+		 ("input[type=button]:first").val());
+		$("input[type=button]:first").val("BBB")
+		//3.读取节点的属性
+		//attr()==setAttribute()+getAttribute()
+		console.log($("img:first").attr("src"));
+		$("img:first").attr("src","../images/02.jpg");
+		
+		
+		//根据层次查询节点---遍历节点
+		var gz = $("#gz");
+		//获取父节点
+		console.log(gz.parent());
+		//上一个兄弟
+		console.log(gz.prev());
+		//所有兄弟
+		console.log(gz.siblings());
+		var ul = $("ul");
+		//ul下有id的节点
+		console.log(ul.find("li[id]"));
+		
+	});
+	
+	function f1(){
+		//追加
+		var li =$("<li>天津</li>");
+		console.log(li);
+		$("ul").append(li);
+	}
+	function f2(){
+		//插入
+		var li = $("<li>澳门</li>");
+		$("#gz").after(li);
+	}
+	function f3(){
+		//删除
+		$("#gz").remove();
+	}
+</script>
+</head>
+<body>
+	<p>1 jQuery支持<u>读写</u>节点</p>
+	<p>2 jQuery支持<b>增删</b>>节点</p>
+	<p>3 jQuery支持<b>查询</b>节点</p>
+	<p>
+		<input type="button" value="AAA"/>	
+	</p>
+	<p>
+		<img src="../images/01.jpg"/>
+	</p>
+	
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>杭州</li>
+	</ul>
+	<p>
+		<input type="button" value="追加"
+			onclick="f1();"/>
+		<input type="button" value="插入"
+			onclick="f2();"/>
+		<input type="button" value="删除"
+			onclick="f3();"/>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

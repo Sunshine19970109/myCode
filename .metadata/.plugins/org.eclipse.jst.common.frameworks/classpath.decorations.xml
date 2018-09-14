@@ -1,0 +1,8 @@
+<classpath>
+  <container id="struts_day01!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/workspace/struts_day01/WebContent/WEB-INF/lib/struts2-core-2.3.24.jar">
+      <source-attachment-path>E:/Java入门视频教学/struts2框架2016版视频/struts2框架2016版资料/资料/struts-2.3.24/src</source-attachment-path>
+      <attribute name="source_encoding">UTF-8</attribute>
+    </entry>
+  </container>
+</classpath>

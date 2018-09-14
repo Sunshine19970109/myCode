@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cn.com.ysfj.dao.IUserMapper">
+ <!-- Use primitive wrapper type (e.g. Integer) as parameter and allow results to
+ be auto-mapped results to Person object (Java Bean) properties -->
+ <select id="selectById" 
+     parameterClass="java.lang.Integer" 
+     resultClass="cn.com.ysfj.entity.User">
+	  SELECT id,name,
+		  real_name  realName,
+		  email,address,
+		  create_time createTime,
+		  create_user createUser,
+		  modify_time modifyTime,
+		  modify_User modifyUser
+	  FROM 	
+	  	ibatis_user
+	  WHERE id = #id#
+ </select>
+ <select id="selectAll" resultClass="cn.com.ysfj.entity.User">
+	  SELECT id,name,
+		  real_name  realName,
+		  email,address,
+		  create_time createTime,
+		  create_user createUser,
+		  modify_time modifyTime,
+		  modify_User modifyUser
+	  FROM 	
+	  	ibatis_user
+	  order by id
+ </select>
+ <delete id="deleteUser" parameterClass="java.lang.Integer">
+     delete from ibatis_user
+     where id = #id# 
+ </delete>
+ <delete id="deleteUsers">
+     delete from ibatis_user
+      <dynamic prepend="where id in">    
+	 	<iterate open="(" close=")" conjunction=",">    
+		 #[]#    
+		</iterate>    
+	 </dynamic> 
+ </delete>
+ <insert id="insertUser" parameterClass="cn.com.ysfj.entity.User">
+     insert into ibatis_user(name,real_name,email,address,
+     create_time,create_user,modify_time,modify_user) 
+     values(#name#,#realName#,#email#,#address#,#createTime#,#createUser#,
+     #modifyTime#,#modifyUser#)
+ </insert>
+ <select id="selectByName" parameterClass="java.lang.String"
+     resultClass="cn.com.ysfj.entity.User">
+      SELECT id,name,
+		  real_name  realName,
+		  email,address,
+		  create_time createTime,
+		  create_user createUser,
+		  modify_time modifyTime,
+		  modify_User modifyUser
+	  FROM 	
+	  	ibatis_user
+	  where name like concat('%',#name#,'%')
+	  
+ </select>
+</sqlMap>

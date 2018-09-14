@@ -1,0 +1,35 @@
+package Demo;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+
+public class CallableDemo implements Callable<String>{
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		//第一种方式Future + ExcecutorService
+		ExecutorService service = Executors.newFixedThreadPool(10);
+		Future<String> future = service.submit(new CallableDemo());
+		//获取返回值
+		System.out.println(future.get());
+		service.shutdown();
+		System.out.println("-----------------");
+		System.out.println("第二种方式:FutureTask+ ExecutorService");
+		
+		ExecutorService service1 = Executors.newCachedThreadPool();
+		FutureTask<String> futureTask = new FutureTask<>(new CallableDemo());
+		service1.submit(futureTask);
+		System.out.println("返回值为:"+futureTask.get());
+		
+	}
+	@Override
+	public String call() throws Exception {
+		for (int i = 1; i < 100; i++) {
+			System.out.println("开始数数"+i);
+		}
+		return "数数完毕";
+	}
+
+}

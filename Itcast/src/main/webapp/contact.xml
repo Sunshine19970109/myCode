@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contact-list>
+    <contact id="001">
+        <name>张三</name>
+        <gender>男</gender>
+        <phone>13132105223</phone>
+        <email>1187202655@qq.com</email>
+        <address>广州天河</address>       
+    </contact>    
+</contact-list>

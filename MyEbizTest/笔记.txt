@@ -1,0 +1,37 @@
+Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: 
+Unexpected exception parsing XML document from ServletContext
+ resource [/WEB-INF/classes/mvc-context.xml]; nested exception 
+ is java.lang.IllegalStateException: Context namespace 
+ element 'component-scan' and its parser class
+ [org.springframework.context.annotation.ComponentScanBeanDefinitionParser] 
+are only available on JDK 1.5 and higher
+
+ spring的版本太低了，tomcat的配置中更换一个低版本的jdk,解决问题。
+ 
+localhost:8089/EbizTest/WebService/Hello?wsdl
+ 
+新建一个webService配置的步骤:
+1.创建项目--直接genera
+2.在WEB-INF中创建lib文件夹，将jar包拷贝进去
+3.右键项目->properties->java Build Path->修改src目录
+在WEB-INF下建立classes文件夹->add Jar ->ok
+
+新建一个webServieceClient
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

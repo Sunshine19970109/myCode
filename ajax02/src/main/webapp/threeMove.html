@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>三联动下拉列表</title>
+		<script type="text/javascript" src="js/ajax.js" ></script>
+		<script type="text/javascript">
+			function city(vl){
+				/*
+				 * 1 用ajax发送请求
+				 * 2 JSON将字符串转化为对象
+				 */
+				
+				var xhr = getXhr();
+				xhr.open("POST","city.c",true)
+				//step2.发送请求
+				xhr.setRequestHeader('content-type',
+				"application/x-www-form-urlencoded");
+				xhr.onreadystatechange=function(){
+					//处理服务器返回的数据
+					if(xhr.readyState==4&&xhr.status==200){
+						var txt = xhr.responseText;
+						var cs = JSON.parse(txt);
+						for(var i=0;i<cs.length;i++){
+							$("area").innerHTML += "<option value="+cs[i].name+">"+cs[i].value+"</option>";
+						}
+					}
+				}
+				xhr.send("city=" +vl);
+			}
+			function street(vl){
+				var xhr = getXhr();
+				xhr.open("POST","street.c",true);
+				xhr.setRequestHeader('content-type',
+				"application/x-www-form-urlencoded");
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var txt = xhr.responseText;
+						var ss = JSON.parse(txt);
+						alert(txt);
+						for(var i=0;i<ss.length;i++){
+							$("street").innerHTML += "<option value="+ss[i].name+">"+ss[i].value+"</option>";
+						}
+					}
+				}
+				alert(vl);
+				xhr.send('area='+vl);
+			}
+		</script>
+	</head>
+	<body>
+		<select id="city" onchange="city(this.value);" style="width: 120px;">
+			<option value="bj">北京</option>
+			<option value="tj">天津</option>
+		</select>
+		<select id="area" style="width:120px" onchange="street(this.value);">
+		</select>
+		<select  id="street" style="width:120px">
+		</select>
+	</body>
+</html>

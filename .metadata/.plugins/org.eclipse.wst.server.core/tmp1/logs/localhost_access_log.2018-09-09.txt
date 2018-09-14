@@ -1,0 +1,9 @@
+127.0.0.1 - - [09/Sep/2018:10:42:43 +0800] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:10:42:52 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:10:43:50 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:10:53:03 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:10:56:13 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:11:10:41 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:11:15:20 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [09/Sep/2018:11:17:01 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507
+192.168.0.199 - - [09/Sep/2018:13:13:49 +0800] "GET /ibatisAndLog4j/findAll.do HTTP/1.1" 200 1507

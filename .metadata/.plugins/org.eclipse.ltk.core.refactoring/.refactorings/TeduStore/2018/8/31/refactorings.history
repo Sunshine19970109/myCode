@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TeduStore/面试.txt&apos; to &apos;面试题.txt&apos;" description="Rename resource &apos;面试.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="面试.txt" name="面试题.txt" stamp="1533386848045" updateReferences="true"/>
+</session>

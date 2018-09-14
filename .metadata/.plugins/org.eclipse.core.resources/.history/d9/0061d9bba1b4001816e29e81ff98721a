@@ -1,0 +1,44 @@
+1.可以实现登陆
+2.实现返回何伟杰
+3.实现返回I am Hi page
+4.实现返回welcome to vue
+
+1.新建项目
+2.导包
+3.配置运行环境
+4.创建配置文件
+	applicationContext.xml
+	spring-mvc.xml
+	SqlMapConfig.xml
+	user.xml
+5.配置web.xml
+
+
+create table vue_user(
+	id primary key,
+	name varchar(50) not null,
+	password varchar(50) not null
+)
+
+问题:为什么使用junit没有运行起来?
+	包的问题:这一组包中的junit是有问题的
+	解决方案:
+	更换包之后就好了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

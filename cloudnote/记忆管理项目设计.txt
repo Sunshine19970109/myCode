@@ -1,0 +1,155 @@
+#记忆管理
+
+第一阶段整体概要设计:
+	需求分析:
+		记忆管理是一个可以帮用户不断重复他的记忆的一个网站，可以实现的功能
+		可以上传我的笔记，搜索我的笔记，创建记忆本，创建记忆科目，创建记忆项
+		可以编辑我的记忆内容。
+		可以进行刷题，重复记忆，可以导出记忆文件。
+		
+		增加需求:可以设计多久没有完成记忆计划，你的记忆笔记将会删除，可以设置永久不删。
+			默认是永久不删
+	页面设计:
+		登陆页面
+		注册页面
+		修改密码页面
+		添加记忆页面
+		
+	模块设计:
+		用户模块:
+		记忆科目模块模块:
+		记忆本模块:
+		记忆项模块:
+		记忆大比拼模块:
+		答题测试模块:
+		定时弹出提问模块:
+	
+	数据库设计:
+		使用oracle数据库
+		创建表:
+			管理员表:m_manager
+			用户表: m_user
+			记忆科目表:m_subject
+			记忆本表:m_book
+			记忆项表:m_project
+			计划表:m_plan
+			文章推送表:m_artitle
+	问题处理:
+		1.数据库笛卡尔积怎么回事?		
+			关联查询的时候没有连接条件
+	
+	技术模块分析:
+	需求设计:
+	页面设计:
+	数据库设计:
+	问题处理:
+	第一阶段设计收获:
+
+第二阶段详细设计:
+
+模块设计:
+	技术需求准备:
+	请求分析:
+	业务分析:
+	数据分析:
+	
+	持久层:
+	业务层:
+	控制器:
+	测试:
+	问题处理:
+	
+
+
+用户模块:
+	创建用户表 m_user
+	create table m_user(
+		id int not null prevary key,
+		username varchar2(50) unique,
+		password varchar2(50) not null,
+		age int 10,
+		gender Integer comment '0代表女性，1代表男性',
+		identify varchar2(20) comment '身份 可以选择 学生  在职',
+		status int comment '当1代表正常，0代表被注销的用户',
+		created_user varchar2(50),
+		created_time Date,
+		modified_user varchar2(50),
+		modified_time Date
+	)
+	
+	创建记忆科目表	m_subject  可能是多对多
+	create table m_subject(
+		id int not null auto_increment prevary key,
+		uid int ,
+		name varchar2(50),
+		learn_time int comment '学习时长',
+		plan_id int comment '计划关联的id',
+		status int comment '当状态为1表示正常，状态为2表示被删除',
+		public bool comment '是否可以公开',
+		created_user varchar2(50),
+		created_time Date,
+		modified_user varchar2(50),
+		modified_time Date
+	); 
+	
+	创建记忆本表	m_book
+	create table m_book(
+		id not null primary key auto_increment,
+		uid int,
+		subj_id int,
+		name varchar(100),
+		status int comment '当状态为1表示正常，状态为2表示被删除',
+		plan_id int comment '计划关联的id',
+		public bool comment '是否可以公开',
+		created_user varchar2(50),
+		created_time Date,
+		modified_user varchar2(50),
+		modified_time Date
+	);
+
+	创建记忆项的表	m_project
+	create table m_project(
+		id int not null primary key auto_increment,
+		uid int,
+		subj_id int,
+		book_id int,
+		question varchar2(200),
+		answer varchar2(100000000) comment '最大100M',
+		times int comment '记忆过的次数',
+		status int comment '1代表正常，0代表被删除了',
+		rank	int comment '级别 : 1代表简单    2 代表一般	3代表困难',
+		public bool comment '是否可以公开',
+		use_num  int comment '被使用的次数，可以作为是否是热门记忆笔记用',
+		user_num int comment '被多少个人使用过 ',
+		collect int comment '0代表未被收藏，1代表被收藏了',
+		created_user varchar2(50),
+		created_time Date,
+		modified_user varchar2(50),
+		modified_time Date
+	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

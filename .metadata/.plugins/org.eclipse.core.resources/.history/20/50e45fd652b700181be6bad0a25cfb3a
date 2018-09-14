@@ -1,0 +1,44 @@
+package Demo;
+
+public class DeadLock {
+	
+}
+
+class T6 implements Runnable{
+	private Boolean flag;
+	public T6(boolean flag) {
+		this.flag = flag;
+	}
+	@Override
+	public void run() {
+		if(flag){
+			while (true) {
+				synchronized (flag) {
+					
+				}
+			}
+		}else{
+			
+		}
+	}
+	
+}
+
+class MyLock{
+	public static Object obj1 = new Object();
+	public static Object obj2 = new Object();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

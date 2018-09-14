@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo3</title>
+<script>
+	//此处写js有两种方式
+	//1 函数:在用户点击按钮时调用。
+	//即:函数是在页面加载后调用的.
+	//2 直接写js:页面加载时就调用.
+	//即:直接写的js比body执行的早.
+	//alert(1);
+	console.log("控制台打印");
+</script>
+</head>
+<body>
+	<p>我们在这个页面上演示JS基本语法</p>
+</body>
+</html>

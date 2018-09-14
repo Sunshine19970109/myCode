@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo2</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	function prt(){
+		//得到所有包含p标签的jQuery对象
+		console.log($("p"));
+		for(var i=0;i<$("p").length;i++){
+			console.log($("p")[i].innerHTML);		
+		}
+	}
+	function chg(img){
+		if($(img).width()==218){
+		//width(250)这个方法直接返回jQuery对象，所以可以一直
+		//操作
+		  $(img).width(250).height(250);
+		}else{
+		  $(img).width(218).height(218);
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="打印"
+		onclick="prt()"/>
+	<p>1 jQuery对象本质就是对DOM数组的封装</p>
+	<p>2 jQuery对象包含很多操作DOM数组的API</p>
+	<p>3 只有jQuery对象可以调用jQuery的API</p>
+	<div>
+		<img src="../images/01.jpg" 
+			onclick="chg(this);"/>
+		<img src="../images/02.jpg"
+			onclick="chg(this);"/>
+		<img src="../images/03.jpg"
+			onclick="chg(this)"/>
+	</div>
+</body>
+</html>

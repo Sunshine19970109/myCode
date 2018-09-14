@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 真正产生Connection的targetConnectionFactory ,这个有JMS服务厂商提供-->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+	    <property name="brokerURL" value="tcp://192.168.126.128:61616"/>
+	</bean>
+	<!-- Spring用于管理真正ConnectionFactory的ConnectionFactory -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+	    <!-- 目标连接工厂 -->
+	    <property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+	    <!-- 消费者标识 -->
+	    <property name="clientId" value="topic-consumer-a"/>
+	</bean>
+	 <!--订阅模式，一对多的 -->
+	<bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+	     <constructor-arg value="news.service.topic"/>
+	</bean>
+</beans>

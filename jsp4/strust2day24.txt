@@ -1,0 +1,53 @@
+框架的意义与作用:
+	所谓框架,就是把一些繁琐的重复性代码封装起来，使程序员在编码
+中把更多的经历放到业务需求的分析和理解上。
+	特点:封装了很多细节，程序员在使用的时候会非常简单。
+
+三层架构与Strust2
+	表现层:M model V view Control
+	业务层：service
+	持久层: dao data access object
+	Strust2在三层架构中的位置处于表现层，注意
+	它只是一个表现层框架
+
+3、MVC与Strust2
+	控制器:Servlet
+		init()
+		desdroy()
+		service(ServletRequest,ServeletResponse)
+	过滤器:Filter它也可以作为控制。
+		init(FilerConfig)
+		destroy()
+		doFilter(ServletRequest,ServletResponse,FilterChain)
+		它不光包含Servlet的功能，而且比Servlet还要多一个控制程序能否继续
+		执行的功能。
+		Servlet能做的Filter都能做，并且比Servlet功能更强大，它多了
+		一个放行的功能。
+		
+Strust2的来历
+	Strusts1:也是apache开发的一套mvc的开源框架，在2005
+年之前非常流行。
+	弊端：Strust1的核心控制器是一个Servlet,随着使用者的增多，
+	弊端开始出现。
+	Strusts2:在很久以前有一个设计超前的框架XWork,后来推出了
+XWork1和WebWork2.Strust2就是apache和OpenSymphony组织
+合并开发出来的
+	里面包含了WebWork2的核心及Strust的一些特性和功能。
+	除此之外和Strusts1没有任何关系了。
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

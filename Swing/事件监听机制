@@ -1,0 +1,23 @@
+事件监听机制
+	事件源
+	事件
+	事件处理
+	事件监听 关联事件源和事件
+	
+人受伤事件
+	Person p1 = new Person("张三")；
+	Person p2 = new Person("李四")；
+	事件：受伤
+		interface  受伤接口{
+			一拳（）；
+			一脚();
+			一板砖();
+		}
+	事件处理:
+		受伤处理类 implements 受伤接口{
+			一拳（）{System.out.println("鼻子流鼻血");}
+			一脚(){System.out.println("晕倒了");}
+			一板砖(){System.out.println("送到太平间")}
+		}
+	事件监听:
+		p1.注册监听(受伤接口);

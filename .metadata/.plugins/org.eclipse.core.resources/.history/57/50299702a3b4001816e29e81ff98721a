@@ -1,0 +1,31 @@
+package service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+
+import dao.UserDAO;
+import entity.User;
+import service.UserService;
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Resource
+	private UserDAO userDAOImpl;
+	public String login(String name,String password) {
+		if(password==null||"".equals(password)){
+			return "µÇÂ¼Ê§°Ü";
+		}else if(name==null||"".equals(name)){
+			return "µÇÂ¼Ê§°Ü";
+		}else {
+			User user = userDAOImpl.selectByName(name);
+			if(password.equals(user.getPassword())){
+				return "µÇÂ¼³É¹¦";
+			}else {
+				return "ÃÜÂë²»ÕýÈ·";
+			}
+		}
+	}
+
+}

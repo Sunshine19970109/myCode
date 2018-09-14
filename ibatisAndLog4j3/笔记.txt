@@ -1,0 +1,218 @@
+在ibatis中当sql标签有多个参数时怎么办?
+	一共有三种办法:
+	方法一:使用String 
+	String sql = "uid = '" + username + "' and pwd='" + password + "'";  
+	方法二:使用Map
+map中一共有两种写法:
+	Map map=new HashMap();  
+	map.put("uid", username);  
+	map.put("pwd", password);  
+	Integer r = (Integer) sqlMap.queryForObject("checkLogin2", map); 
+	 
+	<select id="    " parameterClass="java.util.Map" 
+	resultClass="java.lang.Integer">  
+       SELECT count(*) AS value FROM userinfo 
+       WHERE uid=#uid# and pwd=#pwd#  
+	</select>  
+
+	或者:建议使用第二种，这样方便复用
+	<parameterMap class="java.util.HashMap" id="parameterMap">        
+	    <parameter property="uid"/>        
+	    <parameter property="pwd"/>   
+	</parameterMap>      
+	<select id="checkLogin2" resultClass="java.lang.Integer" 
+	parameterMap="parameterMap">        
+	     SELECT count(*) AS value 
+	     FROM userinfo WHERE uid=? and pwd=?  
+	</select>
+
+
+
+
+
+1. Caused by: org.xml.sax.SAXParseException; lineNumber: 30; 
+columnNumber: 76; 需要属性 "class", 并且必须为元素类型 "parameterMap" 指定该属性。
+缺少一个class的属性配置
+
+java.lang.ExceptionInInitializerError
+	at test.TestCustomer.testInsertCustomerr(TestCustomer.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+Caused by: com.ibatis.common.xml.NodeletException: Error parsing XML.  Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMapConfig/sqlMap'.  Cause: com.ibatis.common.xml.NodeletException: Error parsing XML.  Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMap/select'.  Cause: com.ibatis.sqlmap.client.SqlMapException: Error.  Could not initialize class.  Cause: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:69)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlMapConfigParser.parse(SqlMapConfigParser.java:62)
+	... 26 more
+Caused by: java.lang.RuntimeException: Error parsing XPath '/sqlMapConfig/sqlMap'.  Cause: com.ibatis.common.xml.NodeletException: Error parsing XML.  Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMap/select'.  Cause: com.ibatis.sqlmap.client.SqlMapException: Error.  Could not initialize class.  Cause: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at com.ibatis.common.xml.NodeletParser.processNodelet(NodeletParser.java:146)
+	at com.ibatis.common.xml.NodeletParser.process(NodeletParser.java:107)
+	at com.ibatis.common.xml.NodeletParser.process(NodeletParser.java:125)
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:96)
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:67)
+	... 27 more
+Caused by: com.ibatis.common.xml.NodeletException: Error parsing XML.  Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMap/select'.  Cause: com.ibatis.sqlmap.client.SqlMapException: Error.  Could not initialize class.  Cause: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:69)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlMapParser.parse(SqlMapParser.java:55)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlMapConfigParser$10.process(SqlMapConfigParser.java:289)
+	at com.ibatis.common.xml.NodeletParser.processNodelet(NodeletParser.java:144)
+	... 31 more
+Caused by: java.lang.RuntimeException: Error parsing XPath '/sqlMap/select'.  Cause: com.ibatis.sqlmap.client.SqlMapException: Error.  Could not initialize class.  Cause: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at com.ibatis.common.xml.NodeletParser.processNodelet(NodeletParser.java:146)
+	at com.ibatis.common.xml.NodeletParser.process(NodeletParser.java:107)
+	at com.ibatis.common.xml.NodeletParser.process(NodeletParser.java:125)
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:96)
+	at com.ibatis.common.xml.NodeletParser.parse(NodeletParser.java:67)
+	... 34 more
+Caused by: com.ibatis.sqlmap.client.SqlMapException: Error.  Could not initialize class.  Cause: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at com.ibatis.sqlmap.engine.builder.xml.SqlStatementParser.resolveClass(SqlStatementParser.java:104)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlStatementParser.parseGeneralStatement(SqlStatementParser.java:79)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlMapParser$21.process(SqlMapParser.java:398)
+	at com.ibatis.common.xml.NodeletParser.processNodelet(NodeletParser.java:144)
+	... 38 more
+Caused by: java.lang.ClassNotFoundException: nameAndCreatedDate
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at com.ibatis.common.resources.Resources.classForName(Resources.java:304)
+	at com.ibatis.sqlmap.engine.builder.xml.SqlStatementParser.resolveClass(SqlStatementParser.java:99)
+	... 41 more
+
+Caused by: java.lang.RuntimeException: Error occurred.  Cause: 
+com.ibatis.common.xml.NodeletException: Error parsing XML. 
+ Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMapConfig/sqlMap'. 
+  Cause: com.ibatis.common.xml.NodeletException: Error parsing XML.  
+  Cause: java.lang.RuntimeException: Error parsing XPath '/sqlMap/select'. 
+   Cause: com.ibatis.sqlmap.client.SqlMapException: Error.  
+   Could not initialize class.  Cause: java.lang.ClassNotFoundException: 
+   nameAndCreatedDate
+	at com.ibatis.sqlmap.engine.builder.xml.SqlMapConfigParser.parse(SqlMapConfigParser.java:65)
+	at com.ibatis.sqlmap.client.SqlMapClientBuilder.buildSqlMapClient(SqlMapClientBuilder.java:63)
+	at com.ysfj.DAO.Impl.CustomerDAO.<clinit>(CustomerDAO.java:24)
+	... 24 more
+
+<parameterMap id="map1" class="java.util.Map">
+ 	    <parameter property="name"/>
+ 	    <parameter property="createdDate"/>
+ 	    <parameter property="ids"/>
+ 	</parameterMap>
+
+ 		
+ 	        
+
+
+
+Caused by: java.sql.SQLSyntaxErrorException: ORA-00909: 参数个数无效
+这个错误时使用concat()函数的时候添加的参数大于两个
+在oracle中concat()函数一次只能拼接两个字符串，可以嵌套使用
+在mySql中concat可以使用多个参数
+oracle中的字符串拼接最好使用||--相当于java中的+号
+
+补充:
+在数据库中时间越早越小
+ 	
+查询2017年2月19号之前，id在8-10之间的客户
+
+
+那意思就是mySql是用数据库名区分的，
+然后oracle是用SID区分的是么
+
+before insert pf_customer
+for each row
+when(new.id is null)
+begin
+	select seq_pf_customer.next into : new.id from dual
+end;
+
+创建序列:
+create Sequence seq_pf_customer begin with 1 increment by 1;
+
+to_date('2018/01/09 00:00:00','yyyy/mm/dd hh24:mi:ss');
+
+
+Integer   String 
+等等的基本类型封装类都是java.lang.Integer包下的
+
+Sets the content type of the response being 
+sent to the client, if the response has not 
+been committed yet. The given content type may 
+include a character encoding specification, for 
+example, text/html;charset=UTF-8. The response's 
+character encoding is only set from the given content
+ type if this method is called before getWriter is called. 
+This method may be called repeatedly to change content 
+type and character encoding. This method has no effect
+ if called after the response has been committed. It does
+  not set the response's character encoding if it 
+  is called after getWriter has been called or after 
+  the response has been committed. 
+
+Containers must communicate the content type and the 
+character encoding used for the servlet response's 
+writer to the client if the protocol(协议) provides a way 
+for doing so. In the case of HTTP, the Content-Type 
+header is used. 
+
+
+Sets the character encoding (MIME charset) of the
+ response being sent to the client, for example, 
+ to UTF-8. If the character encoding has already 
+ been set by setContentType(java.lang.String) or
+  setLocale(java.util.Locale), this method 
+  overrides it. Calling setContentType(java.lang.String)
+   with the String of text/html and calling 
+   this method with the String of UTF-8 is 
+   equivalent with calling setContentType with 
+   the String of text/html; charset=UTF-8. 
+This method can be called repeatedly to change 
+the character encoding. This method has no effect
+ if it is called after getWriter has been called 
+ or after the response has been committed. 
+
+Containers must communicate the character 
+encoding used for the servlet response's writer
+ to the client if the protocol provides a
+way for doing so. In the case of HTTP, the 
+character encoding is communicated as part of 
+the Content-Type header for text media types.
+ Note that the character encoding cannot be 
+ communicated via HTTP headers if the servlet
+  does not specify a content type; however,
+   it is still used to encode text written via
+    the servlet response's writer. 
+
+
+待解决问题:
+	1.在servlet中当异常的时候怎么返回rr
+
+	2.国安保险网页旁边的滚动提示框
+
+
+
+
+
+
+

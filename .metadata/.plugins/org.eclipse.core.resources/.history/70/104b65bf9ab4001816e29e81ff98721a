@@ -1,0 +1,36 @@
+1.可以实现登陆
+2.实现返回何伟杰
+3.实现返回I am Hi page
+4.实现返回welcome to vue
+
+1.新建项目
+2.导包
+3.配置运行环境
+4.创建配置文件
+	applicationContext.xml
+	spring-mvc.xml
+	SqlMapConfig.xml
+	user.xml
+5.配置web.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

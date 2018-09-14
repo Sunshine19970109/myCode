@@ -1,0 +1,19 @@
+package controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import service.UserService;
+
+@Controller
+@RequestMapping("user.do")
+public class UserController {
+	@Resource
+	private UserService userServiceImpl;
+	@RequestMapping(params="urlname=findByName")
+	public void findByName(){
+		
+	}
+}

@@ -1,0 +1,23 @@
+package Demo;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class CallableDemo implements Callable<String>{
+	public static void main(String[] args) {
+		//第一种方式Future + ExcecutorService
+		ExecutorService service = Executors.newFixedThreadPool(10);
+		Future<String> future = service.submit(new CallableDemo());
+		service.shutdown();
+	}
+	@Override
+	public String call() throws Exception {
+		for (int i = 1; i < 100; i++) {
+			System.out.println("开始数数"+i);
+		}
+		return "数数完毕";
+	}
+
+}

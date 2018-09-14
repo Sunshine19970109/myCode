@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;day10.Thread_jion&apos; to &apos;Thread_join&apos;&#x0D;&#x0A;- Original project: &apos;JSD1701_SE&apos;&#x0D;&#x0A;- Original element: &apos;day10.Thread_jion&apos;&#x0D;&#x0A;- Renamed element: &apos;day10.Thread_join&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Thread_jion&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;day10{Thread_jion.java[Thread_jion" matchStrategy="1" name="Thread_join" qualified="false" references="true" similarDeclarations="false" stamp="1521593074472" textual="false" version="1.0"/>
+</session>

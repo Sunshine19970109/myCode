@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo1</title>
+<style>
+	#d0,p,#d4{
+		border: 5px solid green;
+		width:400px;
+	}
+	#d1,#d2,#d3,#d5,#d6,#d7{
+		width:100px;
+		height:100px;
+		margin:15px;
+	}
+	#d1,#d5{
+		background-color:green;
+	}
+	#d2,#d6{
+		background-color:black;
+	}
+	#d3,#d7{
+		background-color:blue;
+	}
+	/* 右浮动  */
+	#d1,#d2,#d3{
+		float:right;
+	}
+	/* 左浮动*/
+	#d5,#d6,#d7{
+		float:left;
+	}
+	/* 解决浮动问题 */
+	#p1{
+		clear:right;
+	}
+	#d8{
+		clear:left;
+	}
+</style>
+</head>
+<body>
+  <div id="d0">
+   <div id="d1"></div>
+   <div id="d2"></div>
+   <div id="d3"></div>
+  </div>
+  <p id="p1">浮动时观察我的位置</p>
+  
+  <div id="d4">
+   <div id="d5"></div>
+   <div id="d6"></div>
+   <div id="d7"></div>
+   <div id="d8"></div>
+  </div>
+  <p id="p2">浮动时观察我的位置</p>
+</body>
+</html>
+
+
+
+
+
+

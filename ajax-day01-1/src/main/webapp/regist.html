@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页面</title>
+		<script type="text/javascript" src="js/my.js" ></script>
+		<script>
+			function check(){
+				var xhr = getXhr();
+				xhr.open('GET','check.do?adminCode='+$F('adminCode'),true);
+				//写f1方法
+				xhr.onreadystatechange=function(){
+					//处理服务器返回的数据
+					if(xhr.readyState==4&&xhr.status==200){
+						//获取服务器返回的数据
+						var txt = xhr.responseText;
+						$('msg').innerHTML = txt;
+					}
+				};
+				xhr.send(null);
+			}
+		</script>
+	</head>
+	<body>
+		<form action="check.do">
+			账号:<input type="text" id="adminCode" onblur="check()"/><span id='msg'></span><br />
+			密码:<input type="password"  /><br />
+			<input type="submit" value="登录" />
+		</form>
+	</body>
+</html>

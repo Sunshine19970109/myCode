@@ -1,0 +1,17 @@
+package dao.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+
+import dao.UserDAO;
+import entity.User;
+
+public class UserDAOImpl implements UserDAO {
+	@Resource
+	private SqlMapClientTemplate sqlMapClientTemplate;
+	public User selectByName(String name) {
+		return (User)sqlMapClientTemplate.queryForObject("selectByName", name);
+	}
+
+}

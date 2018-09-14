@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>验证中文昵称是否存在</title>
+		<script type="text/javascript" src="js/ajax.js" ></script>
+		<script type="text/javascript">
+			function check(){
+				var xhr = getXhr();
+				var name = $("name").value;
+				xhr.open("GET","check.do?name="+name,true);
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var txt = xhr.responseText;
+						$("tips").innerHTML = txt;
+					}
+				}
+				xhr.send(null);
+			}
+		</script>
+		<style type="text/css">
+			#tips{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		昵称：<input id="name" type="text" onblur="check()"/>
+		<input type="button" value="检查一下吧"/><span id="tips"></span><br/>
+		<input type="button" value="注册" />
+	</body>
+</html>

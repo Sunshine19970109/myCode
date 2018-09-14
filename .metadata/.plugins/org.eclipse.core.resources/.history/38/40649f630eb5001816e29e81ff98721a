@@ -1,0 +1,15 @@
+package jedis;
+
+import org.junit.Test;
+
+import redis.clients.jedis.Jedis;
+
+public class JedisTest {
+	@Test
+	//获得一个jedis对象操作数据
+	public void testNew(){
+		Jedis jedis = new Jedis("192.168.126.128", 6379);
+		String res = jedis.get("username");
+		System.out.println(res);
+	}
+}

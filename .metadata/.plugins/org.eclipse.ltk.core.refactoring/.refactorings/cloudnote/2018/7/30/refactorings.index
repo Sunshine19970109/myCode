@@ -1,0 +1,5 @@
+1532815673871	Delete element
+1532815715413	Delete element
+1532816463552	Rename resource 'mybatis-spring.xml'
+1532816559778	Rename resource 'db.properties'
+1532816563033	Move 'jdbc.properties' to 'conf'

@@ -1,0 +1,68 @@
+分页查询：
+	分页查询就是将数据分段查询出来，一次只查询数据的一部分
+这样做可以减少系统开销，减少数据量可以提高网络传递速度。
+
+ORACLE中提供了一个伪列:ROWNUM
+ROWNUM字段不存在于任何一张表中，但是每张表都可以查询该字段。
+该字段的值是结果集中每条记录的行号
+ROWNUM的值是动态生成的，伴随查询过程。只要可以查询出一条记录，Rownum
+就会为该条记录生成行号，从1开始每次递增1
+
+SELECT ROWNUM,empno,ename,sal
+From emp
+
+由于ROWNUM是在查询表的过程中进行编号的，所以在使用ROWNUM对结果
+集编号的查询过程中不要使用ROWNUM做大于1以上数字判断，否则结果集
+没有任何数据
+
+SELECT * 
+FROM(SELECT ROWNUM rn,t.*
+	FROM(SELECT empno,ename,sal,deptno
+		FROM emp
+		ORDER BY sal DESC) t
+)
+WHERE rn BETWEEN 6 AND 10
+
+虽然不能用ROWNUM做大于判断，但是可以用小于的判断
+不用把所有的结果集都编号
+SELECT *
+FROM(SELECT rn,t.*
+	FROM(SELECT empno,ename,sal,deptno
+		FROM emp
+		ORDER BY sal DESC) t
+	WHERE ROWNUM<=10)
+WHERE rn>=6;
+
+
+查询职员表，根据职员的职位计算奖励金额，当职位分别是'MANAGER'/
+'ANALYST'/'SALEAMAN'时，奖励金额分别是薪水的1.2倍，1.1
+倍，1.05倍，如果不是这三个职位，则奖励金额取薪水值
+SELECT ename,job,sal
+	DECODE(job,
+		'MANAGER',sal*1.2,
+		'ANALYST'，sal*1.1
+		'SALESMAN',sal*1.05
+		sal) bonus
+FROM emp;
+		
+为什么感觉看视频的就可以投资的时间比计较长呢?
+	其实是假的，你其实抄笔记的话是一样的。
+	
+以后如果要抄代码怎么办?
+	以后如果是抄代码自己就必须抄两遍，但是如果是抄注释
+	然后自己写代码，抄一遍就可以了。漂亮就这么干。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

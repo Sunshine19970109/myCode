@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dao.UserDAO">
+ <!-- Use primitive wrapper type (e.g. Integer) as parameter and allow results to
+ be auto-mapped results to Person object (Java Bean) properties -->
+<select id="selectByName" parameterClass="java.lang.String"
+    resultClass="entity.User">
+    select id,name,password
+    from vue_user
+    where name=#name#
+</select>
+<select id="selectAll" resultClass="entity.User">
+    select id,name,password
+    from vue_user
+</select>
+</sqlMap>

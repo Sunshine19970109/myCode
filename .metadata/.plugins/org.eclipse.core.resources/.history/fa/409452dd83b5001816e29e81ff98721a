@@ -1,0 +1,12 @@
+package dao;
+
+import entity.User;
+
+public interface UserDAO {
+	/**
+	 * 根据名字查询用户
+	 * @param name
+	 * @return
+	 */
+	User selectByName(String name);
+}

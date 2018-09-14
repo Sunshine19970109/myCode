@@ -1,0 +1,129 @@
+Controller
+	不用实现Controller接口
+	方法名，返回类型
+	多个方法
+	@Controller()
+	@RequestMapping()
+组件扫描	mvc注解扫描	视图解析器
+
+获取请求参数值
+	request
+	@RequestPara()
+	javaBean
+
+向页面传值
+	request
+	ModelAndView	Map.put
+	ModelMap	add
+	session
+	
+重定向
+	String "redirect:toIndex.do"
+	ModelAndView	RediretView
+
+1.系统分层(扩展)
+ (1)为什么要分层?
+ 高内聚，低耦合
+	好维护，类的职责一定要单一
+	将一个类分为多个类，形成一系列的调用关系，形成了
+	分层
+	类之间不要直接依赖
+	为了系统好维护，系统设计应该要做到"高内聚，低耦合"。
+	“高内聚”:指的是类的职责要单一，这样，一个类就可以
+	会拆分成多个类(比如AccountService拆分成了AccountService和
+	AccountDAO),这样，就形成了分层的概念。
+	“低耦合”:指的是类与类之间不要直接依赖，(AccountService
+	要调用AccountDAO,应该使用依赖注入)
+ (2)如何分层?
+	表示层:数据表现和操作界面，以及请求分发
+	业务层:封装了业务逻辑,通过依赖注入调用持久层
+	持久层:封装了数据访问逻辑	
+	注:
+		表示层调用业务层，业务层调用持久层
+		上一层通过接口类调用下一层提供的服务(这样，
+		下一层实现发生了改变，不影响上一层)
+
+转账
+	资金账户	account
+	股票账户	stock
+	AccountDAO接口	AccountDAOJdbcImpl
+	StockDAO接口		StockDAOJdbcImpl类
+	
+	AccountService
+		@Resource(name="aDAO")
+		private AccountDAO aDAO;
+		@Resource(name="sDAO")
+		private StockDAO sDAO;
+		
+		transfer(accountId,stockId,amount){
+			//安全检查...
+			//权限检查..
+			//事务
+			//日志
+			aDAO
+			sDAO
+			//事务
+			//日志
+		}
+	业务逻辑与数据访问逻辑写一块了	不好
+	
+	如果我想用hibernate访问数据库	4页a4纸
+
+1 为什么要分层?
+	高内聚，低耦合
+	好维护，类的职责一定要单一
+	将一个类分为多个类，形成一系列的调用关系，形成了
+	分层
+	类之间不要直接依赖
+	为了系统好维护，系统设计应该要做到"高内聚，低耦合"。
+	“高内聚”:指的是类的职责要单一，这样，一个类就可以
+	会拆分成多个类(比如AccountService拆分成了AccountService和
+	AccountDAO),这样，就形成了分层的概念。
+	“低耦合”:指的是类与类之间不要直接依赖，(AccountService
+	要调用AccountDAO,应该使用依赖注入)
+	
+2 如何分层
+
+
+写一个项目最好把不同的逻辑都分开
+因为如果万一有了新的技术，你就可以很容易的修改
+
+什么是面向接口编程?
+	面向接口编程就是指高所有的事情都要用接口指定，
+层与层之间用接口连接。
+	每个功能的实现去实现对应的接口。
+
+对于一个项目进行了分层处理就实现了测试的时候报错的可能。
+那么对于测绘技能大赛，怎么减少报错的可能呢？
+	可以分为:
+	1)工具类:完成数据类型得到转换、画图、
+	生成成果文件、读取成果文件、生成图片类
+	定义接口，定义需要的方法，大不了不用依赖注入
+	直接自己注入，直接new
+	可以通过计算器计算一个数测试一下
+	
+	2)模型类:数学模型
+	定义需要用的模型接口。
+	数学模型测试:这里的数学模型是最容易写错的，
+	一定要熟练
+	
+	3)显示层
+	注入接口
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

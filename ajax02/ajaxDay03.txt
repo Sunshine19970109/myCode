@@ -1,0 +1,197 @@
+1.jQuery对ajax编程的支持
+  (1)$.ajax方法
+     1)用法:
+     $.ajax({});
+     注:{}是一个对象，其属性用来控制ajax对象如何向
+     服务器发送请求，其常见属性如下。
+     url:请求地址
+     type:请求类型
+     data:请求参数(可以是请求字符串形式，比如
+     	"adminCode=king&age=22",
+     	还可以是对象形式，比如{"adminCode":"king",
+     	"age":22})
+     	dataType:服务器返回的数据类型
+     		json--表示json字符串
+     		text--文本
+     		html--html文档
+     		xml--xml文档
+     		script--javascript脚本
+     	success:事件处理函数
+     	"error":服务器出错的处理函数
+     比如:
+     $.ajax({
+     	"url":"check.do",
+     	"type":"get",
+     	"data":"adminCode=king",
+     	"dataType":"text",
+     	"success":function(obj){
+     			//处理服务器返回的数据
+     			obj就是服务器返回的数据。
+     			如果返回的是json字符串，会
+     			自动转换成javascript对象
+     		    }
+      "error":function(){	
+      	}   
+     });
+     	
+(2)load方法
+	1)该方法会向服务器发送异步请求，并且将服务器
+	返回的数据直接添加到附合条件的节点之上。
+	1)用法
+	$obj.load(url,[data]);
+	url:是请求地址。
+	data:是请求参数。有两种写法(请求字符串和
+	对象的形式)
+	注:$obj,是一个jQuery对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Post请求
+	xhr.open('post','check.do',true)
+	xhr.setRequestHeader('content-type','app...');
+	xhr.onreadystatechange=function(){
+		xxxx
+	}
+	xhr.send('adminCode=sdd');
+
+编码问题
+	get
+		URIEncoding="utf-8"
+		encodeURI="utf-8"
+	post
+		resquest.setCharacterEncoding
+		
+jQuery js
+缓存问题:
+Json 
+	what?
+	轻量级的数据交换格式
+	基本语法
+	{"name":"sally","age":22}
+	string,number,true/false,null,object
+	[{},{},{}]
+	how?
+		java对象 --->json字符串
+			jackson  ObjectMapper
+		json字符串--->js对象
+			JSON.parse
+		Math.random();
+		这两个是JSON中内置的对象。
+	
+
+
+1、JQuery对ajax编程的支持
+(1)$.ajax方法
+	1)用法:
+	$.ajax({});
+	注:{}是一个对象，其属性用来控制ajax对象如何向
+服务器发送请求，常见的属性如下。
+	url:请求地址
+	type:请求类型
+	data:请求参数(可以是字符串形式，比如
+	"adminCode=king&age=22"
+	还可以是对象形式，比如{"adminCode":"king","age":21})
+	dataType:服务器返回的数据类型。
+		"json"	json字符串
+		"text"	文本
+		"html"	html文档
+		"xml"		xml文档
+		"script"	javascript脚本
+	success：绑定事件处理函数(服务器已经返回了
+	所有数据，并且没有出错)。
+	error:绑定事件处理函数(服务器出错了)
+	
+	比如:
+	$.ajax({
+	"url":"check.do",
+	"type":"get",
+	"data","adminCode=king",
+	"dataType":"text",
+	"success":function(obj){
+		//处理服务器返回的数据
+		obj就是服务器端返回的数据。
+		如果返回的是json字符串，会自动
+		转换成javascript对象。
+		}
+	"error":function(){
+	
+		}
+	});
+	
+	相当于:xhr.open('','check.do')
+	
+	xhr.onreadystatechange=function(){
+		if(xhr.readystate==4
+		&&xhr.status==200){
+		
+		}
+	}
+
+老师说不让抄代码是指什么意思?
+	1.不让抄代码不是说不让你看代码
+	意思是让你把自己看代码和抄代码的这个过程分离开，看的时候
+认真的看，写的时候认真的写，不能看。
+
+
+IE浏览器中的
+tbody,tHead,tr都不能用
+$("tb1"),innerHTML=trs赋值，只用td可以，但是其他的
+都行。
+
+
+(2)load方法
+	1)该方法会向服务器发送异步请求，并且将服务器返回的数据
+	直接添加到附合要求的节点之上。
+	2)用法
+	$obj.load(url,[data]);
+	url:是请求地址。data:是请求参数，有两种形式
+	字符串，或者对象的形式
+	注:$obj,是jQuery对象
+
+
+初始化DispatcherServlet的时候好办法:
+	右键部署描述文件--》新建一个Servlet-->
+	选择用已有的类-->输入初始化参数
+	
+当删除旧的项目，添加新的项目
+Tomcat可能会乱，而导致错误出现，可以选择清理一下
+TomCat
+
+师父领进门，修行在个人
+	第一次做的时候，师父带着你做，以后熟练不熟练
+这个得看你自己。
+
+信息: Mapped "{[/demo/ary.do]
+代表刚才成功了。
+
+信息: FrameworkServlet 'DispatcherServlet'
+代表DispatcherServlet配置成功了。
+
+当有多个数据的时候可以返回List,或者Map
+	类型一致--List
+	类型不一致--Map
+
+为什么要知道List和数组的返回值是一样的(浏览器端)
+	因为我们在实际工作中会经常互换，
+	List和Array
+	bean和Map
+
+安装MySql
+	1.utf-8
+	2.管理员密码
+

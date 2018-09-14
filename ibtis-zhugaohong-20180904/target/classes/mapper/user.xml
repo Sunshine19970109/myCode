@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="">
+	<insert id="insertUser" parameterClass="com.ysfj.entity.User">
+	    insert into ibatis_user(name,real_name,email,address,create_time)
+	    values(#name#,#realName#,#email#,#address#,#createTime#)
+	</insert>
+</sqlMap>

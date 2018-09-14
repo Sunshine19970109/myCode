@@ -1,0 +1,33 @@
+
+
+
+
+
+step1.导包
+	需要添加mybatis,mybatis-spring,spring-jdbc
+step2.在配置文件当中，添加
+	SqlSessionFactoryBean
+	
+step3.实体类Admin不用动，要注意属性与表的字段名不一样，
+	建议用别名解决。
+step4.添加映射文件
+	AdminMapper.xml
+	<select id="findByAdminCode"
+		parameterType="java.lang.String"
+		resultType="cn.tedu.netctoss.entity.Admin"
+step5.Mapper映射器
+	添加注解
+step6.配置MapperScannerConfigurer
+	测试AdminDAO
+
+错误解决:
+	1 AdminMapper.xml文件的路径用/隔开，不能用.
+	2 AdminMapper.xml文件中的namespace必须是对应的接口的名字。
+
+
+
+
+
+
+
+

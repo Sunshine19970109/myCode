@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//1.直接定义事件
+	//e---获取事件对象
+	function f1(e){
+		console.log("button1: "+e);
+		console.log(e);
+	}
+	//2.动态绑定事件
+		//给按钮2绑定事件
+		//e会传入对应发生的事件信息
+	window.onload=function(){
+		var b2 = document.getElementById("btn2");
+		b2.onclick=function(e){
+			console.log("按钮2: "+e);
+			console.log(e);
+		}
+	}	
+</script>
+</head>
+<body>
+	<input type="button" value="按钮1"
+		onclick="f1(event)"/>
+	<input type="button" value="按钮2" id="btn2"/>
+</body>
+</html>

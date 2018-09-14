@@ -1,0 +1,150 @@
+Cookie Session Filter  Listener
+Cookie能够缓存一些数据
+
+状态管理
+在一个请求中不能取到另一个请求中的数据。
+1 cookie和session
+	1 业务场景:
+	登陆时要记录账号
+	后续的查询，增加，修改等页面上显示此账号
+	2 如何记录账号
+		1）request
+		登陆时一个请求，查询是另外一个请求
+		2个请求服务器创建2个request,所以无法通过
+		request共享这样的数据
+		2）config
+	可能使用LoginServlet处理登陆请求
+	可能使用FindServlet处理查询请求
+	2个Servlet使用2个不同的config,所以无法通过config
+	共享这样的数据
+	>事实上config只能读取常量，无法存取变量
+		3)context
+	浏览器和服务器时1对多的关系
+	每个用户登录时传入的数据都是code=xxx
+	若将这样的数据存入唯一的context是有冲突的
+3 cookie和session专门解决此类问题。
+	他们内部的数据可以在多个请求之间共用 
+	他们内部的数据可以再多个Servlet之间共用 
+	服务器会给每个浏览器创建1份cookie,1个session 
+	>上述规则由tomcat保障  
+4 cookie和session的区别(面试题)
+	cookie存储在浏览器上，服务器压力小，不安全 
+	session存储在服务器上，服务器压力大，安全 
+5 使用建议
+	重要的数据存入session 
+	其他的数据存入cookie  
+	
+四、cookie使用
+	1 基本用法
+	创建cookie
+	发送cookie
+	获取cookie
+	2 生存时间
+	cookie.setMaxAge(seconds);
+	seconds>0:超过指定时间才会删除
+	=0删除cookie
+	<0:缺省值，浏览器会将Cookie保存到内存中
+	3 Cookie编码
+	存数据时对中文转码
+	Cookie c = new Cookie("city",
+	URLEncoder.encode("北京","utf-8"));
+	解码
+	String value = c.getValue();
+	value=URLDecoder.decode(value,"utf-8");
+	
+补充：
+	写一个项目，每个请求或者流程执行的流程图，必须有一份，
+这样会帮助你解决许多的问题，不然你会碰到许多的找不到原因的错误。
+这样不仅可以规避错误，而且即使你碰到错误也容易解决。
+	
+什么是Cookie的路径问题
+	浏览器在访问服务器上的某个地址时，会比较Cookie的路径与
+该路径是否匹配，只有匹配的Cookie才会发送给服务器
+	Cookie的 默认路径等于添加这个Cookie的Web组件的路径
+	如:/appName/file/addCookie.jsp添加了一个Cookie
+	,则该Cookie的路径等于/appName/file
+
+有效路径
+	setPath("");
+
+Cookie的限制
+	Cookie可以被用户禁止
+	Cookie会将状态保存在浏览器端，不安全，对于敏感数据，
+	需要加密后再使用Cookie来保存
+	Cookie只能保存少量数据，大约4kb左右
+	Cookie的个数是有限制的
+	Cookie只能保存字符串
+
+filter可以判断网页功能
+
+五、include中的相对路径
+	因为logo.jsp是在被tomcat翻译jsp时调用，
+	所以这个路径是给服务器用的，部署之后他俩的目录确实差一级。
+
+每个浏览器都有一个不同的session
+	绑定对象
+	setAttribute(String name,Object obj);
+	获取你绑定对象
+	Object Session.getAttribute(String name);
+	移除绑定对象:
+	void Session.removeAttribute(String name);
+
+
+简述什么是状态管理？
+	在一个请求中不能取到另一个请求中的数据
+	状态管理就是用Cookie记录每个浏览器，在不同的页面上显示
+用户名。
+	将客户端(浏览器)与服务器之间多次交互当做一个整体看待，并且
+将多次交互所涉及的数据即状态保存下来。
+
+简述什么是Cookie?
+	记录浏览器传入的数据，可以在不同的请求中使用，可以存放在
+服务器端，也可以存放在浏览器端。
+	浏览器向web服务器发送请求时，服务器会将少量的数据以set-Cookie
+消息头的方式发送给浏览器，浏览器将这些数据保存下来；当浏览器再次访问
+服务器时，会将这些数据以Cookie消息头的方式发送给服务器。
+
+获取所有的cookies
+	request.getCookies();
+获取cookie名
+	cookie.getName();
+	
+简述Session的工作原理？
+	session是在服务器端，当第一次浏览器请求，服务器会自动创建
+一个session,然后存入数据，发送给浏览器时，服务器会自动创建一个
+cookie,对应这个session的id,第二次请求就可以获取session,
+在不同的请求中就可以使用session中存入的数据了，可以存入任何数据。
+
+	浏览器访问web服务器时，服务器会为每个浏览器在服务器端内存
+中分配空间，单独创建一个Session对象，该对象有一个id属性，其值唯一，
+一般称之为SessionId,并且服务器会将这个SessionId(使用Cookie的方式)
+发送给浏览器；浏览器再次访问服务器时，会将SessionId发送给服务器，
+服务器可以依据SessionId找到对应的Session对象。
+
+invalidate方法可以立即删除session对象
+服务器在默认情况下，会使用Cookie的方式Session发送给浏览器，
+如果用户禁止Cookie,则Session不会被浏览器保存，此时，服务器
+可以使用URL重写的方式来发送SessionId.因此如果浏览器禁用Cookie
+服务器可以使用URL重写的方式来使用Session对象
+
+6 简述什么是Session超时，如何修改缺省的时间限制？
+	超出session的有效时间，比如半个小时
+	1 通过修改tomcat中conf/web.xml文件设置
+	<session-config>
+	<session-timeout>30</session-timeout>
+	</session-config>
+	2 通过编程的方式来修改
+	void setMaxInactiveInterval(int seconds){}
+
+
+
+
+
+
+
+
+
+
+
+
+

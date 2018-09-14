@@ -1,0 +1,22 @@
+package Demo;
+
+public class ThreadState {
+	public static void main(String[] args) {
+		
+	}
+}
+class T1 extends Thread{
+	@Override
+	public void run() {
+		
+		super.run();
+	}
+}
+class T2 implements Runnable{
+
+	@Override
+	public void run() {
+		
+	}
+	
+}

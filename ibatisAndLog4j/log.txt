@@ -1,0 +1,5 @@
+2018-08-30 14:43:04,454 INFO [test.TestLog4j.main(TestLog4j.java:27)]:我是信息 -main
+ 2018-08-30 14:43:04,459 WARN [test.TestLog4j.main(TestLog4j.java:28)]:warn -main
+ 2018-08-30 14:43:04,459 ERROR [test.TestLog4j.main(TestLog4j.java:29)]:error -main
+ 2018-08-30 14:43:04,459 FATAL [test.TestLog4j.main(TestLog4j.java:30)]:fatal -main
+ 

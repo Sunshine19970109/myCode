@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.ysfj.Dao.IUserDAO">
+ <!-- Use primitive wrapper type (e.g. Integer) as parameter and allow results to
+ be auto-mapped results to Person object (Java Bean) properties -->
+
+ <insert id="insertUser" parameterClass="com.ysfj.entity.User"
+     resultClass="java.lang.Integer">
+     insert into ibatis_user(name,real_name,email,address,
+     create_time) 
+     values(#name#,#realName#,#email#,#address#,#createTime#)
+ </insert>
+ <select>
+     
+ </select>
+</sqlMap>

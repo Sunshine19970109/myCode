@@ -1,0 +1,49 @@
+package day09;
+/**
+ * Exception常用方法
+ * @author dell
+ *
+ */
+public class Exception_API {
+	public static void main(String[] args) {
+		/*
+		 * 1.数字字符串转Integer
+		 * 
+		 */
+		System.out.println("程序开始了");
+		try {
+			String s = "abc";
+			System.out.println(Integer.parseInt(s));
+		} catch (Exception e) {
+		//输出错误堆栈信息，便于定位并解决错误
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	
+		System.out.println("程序结束了");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

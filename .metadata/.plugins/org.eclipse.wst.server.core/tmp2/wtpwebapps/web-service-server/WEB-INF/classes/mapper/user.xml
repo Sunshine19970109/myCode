@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dao.UserDAO">
+ <!-- Use primitive wrapper type (e.g. Integer) as parameter and allow results to
+ be auto-mapped results to Person object (Java Bean) properties -->
+ <select id="selectById" 
+     parameterClass="java.lang.Integer" 
+     resultClass="entity.User">
+	  SELECT id,name,
+		  real_name  realName,
+		  email,address,
+		  create_time createTime,
+		  create_user createUser,
+		  modify_time modifyTime,
+		  modify_User modifyUser
+	  FROM 	
+	  	ibatis_user
+	  WHERE id = #id#
+ </select>
+ <select id="selectAll" 
+     resultClass="entity.User">
+	  SELECT id,name,
+		  real_name  realName,
+		  email,address,
+		  create_time createTime,
+		  create_user createUser,
+		  modify_time modifyTime,
+		  modify_User modifyUser
+	  FROM 	
+	  	ibatis_user
+ </select>
+ <insert id="insertUser" parameterClass="entity.User">
+     insert into ibatis_user(name,real_name,email,address,
+     create_time,create_user,modify_time,modify_user) 
+     values(#name#,#realName#,#email#,#address#,#createTime#,#createUser#,
+     #modifyTime#,#modifyUser#)
+ </insert>
+ <delete id="deleteById" parameterClass="java.lang.Integer">
+     delete from ibatis_user
+     where id = #id# 
+ </delete>
+</sqlMap>

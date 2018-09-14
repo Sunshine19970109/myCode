@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;root-context.xml&apos; to &apos;Ebiz2/src/main/resources&apos;&#x0D;&#x0A;- Original project: &apos;Ebiz2&apos;&#x0D;&#x0A;- Destination element: &apos;Ebiz2/src/main/resources&apos;&#x0D;&#x0A;- Original element: &apos;root-context.xml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/src\/main\/resources" element1="src/main/java/resource/root-context.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1536045631005" units="0" version="1.0"/>
+</session>

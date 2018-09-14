@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo3</title>
+<style>
+	div{
+		width:200px;
+		border:1px solid red;
+		padding:30px;
+	}
+	p{
+		border:1px solid red;
+		text-align:center;
+		padding:90px;
+	}
+</style>
+<script>
+/*
+ * 为什么要取消冒泡
+ 	冒泡指的是:<div>里面含有<p>,<p>里面含有<input>
+ 	这样里面的包了好多层如果每一层都有onclick事件，那么点了里面的
+ 	就会矛盾了，到底执行那个onclick事件，还是都执行，都执行顺序是什么？
+ 	顺序是从里到外执行，这里就需要取消冒泡了
+ */
+	function f1(e){
+		alert('button');
+		//取消冒泡
+		if(e.stopPropagation){
+			//其他浏览器
+			e.stopPropagation();
+		}else{
+			//IE浏览器
+			e.cancelBubble();
+		}
+	}
+</script>
+</head>
+<body>
+	<div onclick="alert('div')">
+		<p onclick="alert('p')">
+			<input type="button" value="按钮1"
+			onclick="f1(event)"/>
+		</p>
+	</div>
+</body>
+</html>

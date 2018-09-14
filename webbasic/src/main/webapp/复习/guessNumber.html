@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>猜数字</title>
+<script type="text/javascript">
+	/*在页面加载时随机生成随机数，在页面加载后，
+	用户点击猜时使用这个随机数	
+	*/
+	var ran = parseInt(Math.Random()*100);
+	/*1 写一个猜的方法当点击按钮的时候调用
+		获取文本框的值
+		获取span
+		判断文本框的值是不是数字
+		不是数字，是数字
+		开始比较
+	*/
+	function guess(){
+		var n = document.getElementById("num").value;
+		var span = document.getElementById("result");
+		if(isNaN(n)){
+			alert("请输入数字");
+		}else{
+			if(n>ran){
+				span.innerHTML="大了";
+			}else if(n<ran){
+				span.innerHTML="小了";
+			}else{
+				span.innerHTML="恭喜呢,猜中了";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<!-- 一个文本框一个按钮，span 用来显示结果 -->
+	<input type="text" id="num" />
+	<input type="button" value="猜" onclick="guess()"/>
+	<span id="result"></span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

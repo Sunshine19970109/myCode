@@ -1,0 +1,108 @@
+注意:
+	写jsp最好不要在jsp中直接声明方法，因为这样产生耦合度高，
+最好是引入类，然后你的方法在类中写。
+
+补充:
+	如果你方法套jsp，jsp套方法这样容易把编译器弄晕，当你写方法
+调用的时候，它会给旁边报错，但是实际没有错误，所以你可以直接执行。
+
+jsp页面中的注释
+	1 <!--注释内容-->
+	HTML注释，注释中的内容如果包含Java代码，这些Java代码
+	会被执行
+	2 <%-- 注释内容 --%>
+	JSP特有的注释，如果注释的内容中出现Java代码，会被忽略
+	
+JSP页面中的Java代码
+	JSP页面中的Java代码，包含以下三种:
+	-JSP表达式
+	-JSP小脚本
+	-JSP声明
+	编写位置
+		-页面的任意位置
+	作用
+		-控制页面中可变内容的产生
+		
+JSP注释、JSP表达式、JSP指令、JSP小脚本、JSP声明对比
+	JSP注释:<%-- 注释内容 --%>
+	JSP表达式:<%=  %>
+	JSP指令:<%@指令名  属性=值 %>
+	JSP小脚本:<%  %>
+	JSP声明:<%!  %>
+
+JSP页面中的指令
+	语法规则:<%@指令名  属性=值 %>
+	常用指令:
+		-page指令
+		-include指令
+		-taglib
+	作用:
+		-控制JSP在转译成Servlet类时生成的内容
+
+什么是隐含(内置)对象?(笔试题)--必须背下来
+	容器自动创建，在JSP文件中可以直接使用的对象
+	作用:
+	-JSP预先创建的这些对象可以简化对HTTP请求，响应信息的访问
+	1 request--HttpServletRequest(*)
+	2 response--HttpServletResponse
+	3 out--JSPWriter和PrintWriter一样
+	4 config--ServletConfig
+	5 application--ServletContext
+	6 exception--Throwable
+	7 session--HttpSession后面讲(*)
+	8 page--Object  就是this,指代jsp生成的那个Servlet
+	9 pageContext--PageContext(*)
+	是一个管理者，通过它可以获得其他8个隐含对象
+
+如何使用隐含对象?
+	<%String user = request.getParameter("user");%>
+	<%=request.getMethod()%>
+
+六、开发模式
+	1. Model 1 
+	2. Model 2
+	
+七、MVC模式
+	是一个经典的设计模式，是处理分层思想
+	M:Model,即业务层，用来处理分层思想
+	V:View,即视图层，用来展示数据
+	C:Controller,即控制层，是业务层和视图层的桥梁
+	它可以降低软件中代码的耦合度，便于团队开发及维护
+	来源于生活:餐厅吃饭
+
+
+不要老是怕事件
+	其实这个是最皮毛的东西了，因为这个其实就是一些固定方法名
+的方法，然后里面的逻辑才是最重要的
+
+技术网站
+	推酷网  简书  Csdn  51.cto  掘进
+
+
+jsp文件page指令
+声明文件编码方式，声明文本类型字符集
+<%  %>小脚本
+<%=  %>表达式
+<%! %>声明
+
+jsp声明和jsp小脚本对比
+	jsp小脚本
+	语法规则:<%  %>
+	合法内容:能够写在方法里的java代码片段都可以
+	作为小脚本
+	转译成Servlet时的规则:原封不动成为Servlet
+	类的service()方法里面的一段代码
+	jsp声明
+	语法规则:<%!  %>
+	合法内容:成员属性或成员方法的声明
+	转译成Servlet时的规则:成为JSP页面转译成的Servlet
+	类中成员属性或成员方法
+
+
+
+
+
+
+
+
+

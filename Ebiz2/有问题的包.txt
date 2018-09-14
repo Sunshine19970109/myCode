@@ -1,0 +1,46 @@
+<dependency>
+			<groupId>com.wsapi</groupId>
+			<artifactId>ws-api01</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+</dependency>
+
+
+		
+		
+		
+		
+		
+		
+		
+	   
+        
+       
+		
+		
+		
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登陆页面</title>
+<style>
+	.ok{
+		color:green;
+	}
+	.error{
+		color:red;
+	}
+</style>
+<script>
+	function checkCode(){
+		//获取账号
+		var code = 
+		document.getElementById("code").value;
+		//获取span
+		var span = 
+		document.getElementById("code_msg");
+		
+		//检查格式,^$从开始到结束，\w是包括数字、字母、下划线
+		var reg =/^\w{6,15}$/;
+		if(reg.test(code)){
+			//格式正确变绿
+			span.className="ok";
+			return true;
+		}else{
+			//格式错误变红
+			span.className="error";
+			return false;
+		}		
+	}
+	function checkPassword(){
+		var reg = /^\w{6,20}$/
+		var p = 
+		document.getElementById("password").value;
+		var s = 
+		document.getElementById("password_msg");
+		if(reg.test(p)){
+			s.className="ok";
+			return true;
+		}else{
+			s.className="error";
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+ <form action="http://www.tmooc.cn"
+ 	onsubmit="return checkCode()+checkPassword()==2">
+ 	<p>
+ 		账号:<input id="code" type="text" 
+ 		onblur="checkCode()"/>
+ 		<span id="code_msg" class="str">6-15位字母、数字、下划线</span>
+ 	</p>
+ 	<p>
+ 		密码:<input id="password"  type="text"
+ 		onblur="checkPassword()"/>
+ 		<span id="password_msg">6-20位字母、数字、下划线</span>
+ 	</p>
+ 	<p>
+ 		<input type="submit" value="登陆"/>
+ 	</p>
+ </form>
+</body>
+</html>

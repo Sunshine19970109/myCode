@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="">
+	<select id="selectAll" resultClass="com.ysfj.entity.User" >
+	    select id ,name,
+	    	real_name realName,
+	    	email,address,
+	    	create_time createTime
+	    from ibatis_user 
+	</select>
+	<delete id="deleteUser" parameterClass="java.lang.Integer">
+	    delete from ibatis_user
+	    where id = #id#
+	</delete>
+</sqlMap>

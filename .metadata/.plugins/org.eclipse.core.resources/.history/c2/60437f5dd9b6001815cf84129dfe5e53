@@ -1,0 +1,5 @@
+package activemqtest.test;
+
+public class Sender {
+
+}

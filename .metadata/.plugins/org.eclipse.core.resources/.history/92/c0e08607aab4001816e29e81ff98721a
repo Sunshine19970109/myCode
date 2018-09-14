@@ -1,0 +1,62 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ws.UserWebService;
+import entity.User;
+
+@Controller
+@RequestMapping("/user.do")
+public class UserController {
+	@Resource
+	private UserWebService userWebService;
+	/**
+	 * http:localhost:8008/web-service-client2/findAll.do
+	 * @return
+	 */
+	@RequestMapping(params="method=findAll")
+	
+	public ModelAndView findAll(HttpServletRequest request){
+		String url = request.getRequestURI();
+		System.out.println(url);
+		System.out.println("findAll");
+		List<User> users = userWebService.findAll();
+		for (User user : users) {
+			System.out.println(user);
+		}
+		return new ModelAndView("user");
+	}
+	@RequestMapping(params="method=findById")
+	public void findById(HttpServletResponse response){
+		try {
+			PrintWriter writer = response.getWriter();
+			User user = userWebService.findById(59);
+			ObjectMapper mapper = new ObjectMapper();
+			String res = mapper.writeValueAsString(user);
+			writer.println(res);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping(params="method=addUser")
+	public void addUser(HttpServletResponse response){
+		User user = new User("hello", "world", "45236523@163.com", "º£Ì¦");
+		userWebService.addUser(user);	
+	}
+	@RequestMapping(params="method=deleteById")
+	public void deleteById(){
+		userWebService.deleteById(68);
+	}
+}

@@ -1,0 +1,28 @@
+1.创建junit测试类
+
+2.jdk5以后的新功能
+	可以静态引入:
+		静态引入可以直接调用方法，不需要类名
+	@Ignore
+	@BeforeClass
+	@AfterClass
+	test driven development
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

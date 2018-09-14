@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<link rel="stylesheet" href="../css/selectUser.css"></link>
+		<script type="text/javascript" src="../js/selectUser.js"></script>
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="top">
+				<p>用户名(Name)
+					<input id="username" name="username" type="text"/>
+					<input id="select" name="select" type="button" value="查询" />
+				</p>
+				<input id="deleteMany" name="deleteMany" type="button" value="批量删除"/>
+			</div>
+			
+			<div>
+				<table id="usersTable" class="usersTable">
+					<thead>
+						<tr>
+							<th><input id="selectAll" name="selectAll" type="radio" /><lable for="selectAll">全选</label></th>
+							<th>ID</th>
+							<th>NAME</th>
+							<th>Real_Name</th>
+							<th>Email</th>
+							<th>Address</th>
+							<th>Create_Time</th>
+							<th>操作</th>
+						</tr>
+					<thead>
+					<tbody id="userTb">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</body>
+</html>

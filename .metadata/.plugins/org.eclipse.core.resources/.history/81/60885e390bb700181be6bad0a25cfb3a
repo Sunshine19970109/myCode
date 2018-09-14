@@ -1,0 +1,12 @@
+package service.impl;
+
+import service.PushService;
+
+public class UserPushServiceImpl implements PushService {
+
+	public void push(Object info) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

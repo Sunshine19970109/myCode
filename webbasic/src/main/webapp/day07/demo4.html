@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo4</title>
+<script>
+	//location--弹出框
+	function f1(){
+		var b =confirm("您确定要离开本页么?");
+		if(b){
+			location.href="http://www.tmooc.cn"	
+		}		
+	}
+	//reload--刷新，重新加载
+	function f2(){
+		location.reload();
+	}
+	//前进
+	function f3(){
+		history.forward();
+	}
+	//screen--可以得到屏幕信息
+	console.log(screen.width);
+	console.log(screen.height);
+	//navigator--得到浏览器信息
+	console.log(navigator.userAgent);
+</script>
+</head>
+<body>
+	<input type="button" value="达内"
+	onclick="f1()"/>
+	<input type="button" value="刷新" 
+	onclick="f2()">
+	<input type="button" value="前进"
+	onclick="f3()"/>
+</body>
+</html>

@@ -1,0 +1,11 @@
+1535604544447	Move 'db.properties' to 'config'
+1535604546994	Move 'SQLMapConfig.xml' to 'config'
+1535604723723	Delete element
+1535604769178	Rename resource 'jdbc.properties'
+1535611270735	Move 'log4j.properties' to 'ibatisAndLog4j'
+1535629114308	Delete element
+1535634576076	Copy folder
+1535671082942	Copy file
+1535694118223	Copy folder
+1535694166991	Copy folder
+1535694176276	Copy folder

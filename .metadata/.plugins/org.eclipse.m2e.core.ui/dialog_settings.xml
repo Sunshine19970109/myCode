@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.ebiz"/>
+			<item value="com.ysfj"/>
+			<item value="cn.tedu"/>
+			<item value="cn.tedu.spring"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="vue-activemq-spring"/>
+			<item value="springmvc-tag"/>
+			<item value="webservicetest1"/>
+			<item value="ibtis-zhugaohong-20180904"/>
+			<item value="Ebiz2"/>
+			<item value="E"/>
+			<item value="webservicetest"/>
+			<item value="Ebiz"/>
+			<item value="ibatis-zhugaohong-20180903"/>
+			<item value="ibatisAndLog4j3"/>
+			<item value="ibatis_zhugaohong_20180831"/>
+			<item value="ibatisAndLog4j"/>
+			<item value="day1_easyui_1"/>
+			<item value="mybatis-spring"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.EditDependencyDialog">
+		<item value="480" key="width"/>
+		<item value="443" key="x"/>
+		<item value="64" key="y"/>
+		<item value="450" key="height"/>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item value="480" key="width"/>
+		<item value="130" key="x"/>
+		<item value="143" key="y"/>
+		<item value="590" key="height"/>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="G:\eclipse\eclipse-jee-luna-SR2-win32-x86_64\eclipse\workspace\web-service-middle"/>
+			<item value="G:\eclipse\eclipse-jee-luna-SR2-win32-x86_64\eclipse\workspace\web-service-client2"/>
+			<item value="G:\eclipse\eclipse-jee-luna-SR2-win32-x86_64\eclipse\workspace\web-service-server"/>
+			<item value="D:\TeduStore"/>
+			<item value="C:\workspace\TeduStore"/>
+			<item value="C:\workspace\JSD1701_XML"/>
+			<item value="C:\workspace\DMS_DAY01_PART1"/>
+			<item value="E:\Java入门视频教学\JSD1702\14-couldnote02\day06\day01\note"/>
+			<item value="E:\Java入门视频教学\JSD1702\14-couldnote02\day04\Day10\note"/>
+			<item value="E:\Java入门视频教学\JSD1702\14-couldnote02\day05\Day11\note"/>
+			<item value="C:\workspace\springmvc-day02"/>
+			<item value="C:\workspace\spring01"/>
+			<item value="C:\workspace\spring02"/>
+			<item value="E:\Java入门视频教学\day11_jsp基础\01.代码\contactSys_web"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="MyEbizTest"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="MyEbizTest"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\workspace\vue-demo-server"/>
+			<item value="G:\eclipse\eclipse-jee-luna-SR2-win32-x86_64\eclipse\workspace\web-service-client2"/>
+			<item value="C:\workspace\Ebiz"/>
+			<item value="C:\workspace\MyEbizTest"/>
+			<item value="C:\workspace\ajax02\ajaxDay03.txt"/>
+			<item value="C:\workspace\mybatis-spring2\AjaxDay01.txt"/>
+			<item value="C:\workspace\mybatis-day02-2\springDay08.txt"/>
+			<item value="C:\workspace\springjdbc\springmvc-day07.txt"/>
+			<item value="C:\workspace\spring-nectoss\springmvc-day07.txt"/>
+			<item value="C:\workspace\spring-nectoss\springDay06.txt"/>
+			<item value="C:\workspace\springmvc-day02\springDay04.txt"/>
+			<item value="C:\workspace\springmvc01\springDay04.txt"/>
+			<item value="C:\workspace\springmvc01\springDay03.txt"/>
+			<item value="C:\workspace\spring03\src\main\resources\springDay03.txt"/>
+			<item value="C:\workspace\spring02\springDay03.txt"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

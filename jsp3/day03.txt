@@ -1,0 +1,3 @@
+怎么创建一个自己的标签?
+	写一个类继承SimpleTagSupport，实现doTag方法
+	写一个对应的tld文件

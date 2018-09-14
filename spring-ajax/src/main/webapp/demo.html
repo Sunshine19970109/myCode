@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring MVC AJAX DEMO</title>
+<script type="text/javascript" src="js/jquery-1.4.3.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#ary-btn").click(aryDemo);
+	});
+	function aryDemo(){
+		//console.log("Click");
+		$.ajax({
+			url:'demo/ary.do',
+			type:'get',//获取数据最好用get,发送数据最好用post
+			dataType:'json',
+			success:function(ary){
+				for(i=0;i<ary.length;i++){
+				var obj = ary[i];
+					$('#ary-result').append(obj);
+				}
+				
+			},
+			error:function(){
+				alert('通信故障!');
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<h1>Spring MVC AJAX</h1>
+	<h2>获取数组数据</h2>
+	<input type="button" id="ary-btn"
+		value="数组"/>
+	<p id="ary-result"></p>
+</body>
+</html>

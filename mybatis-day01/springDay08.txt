@@ -1,0 +1,37 @@
+springjdbc
+	JdbcTemplate
+	update
+	query
+		RowMapper
+	queryForObject
+	
+MyBatis
+	what?
+	³Ö¾Ã²ã¿ò¼Ü
+	Ô­Àí
+	SqlSessionFactory -->SqlMapConfig.xml
+	-->Map(key="sqlID" value="PreparedStatement
+	")-->SqlSession
+
+Hibernate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

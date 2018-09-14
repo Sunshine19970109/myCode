@@ -1,0 +1,811 @@
+###项目开发流程
+1.需求说明书
+
+
+2.概要设计
+
+3.详细设计
+
+4.编码
+	1)看懂需求说明书
+	二分之一的时间用来做设计：一半的时间用来编码
+	编码比设计简单
+	
+	2)根据读懂的需求去编码
+	3)测试--编码的时候有测试点
+	测试模块结果文档
+
+5.测试---英语六级(性能测试,压力测试)
+
+6.产品的交付
+
+7.售后服务(产品维护)
+
+Linux--视频                                                                                                           0 
+
+写每个方法--输入和输出的注释特别重要
+	
+	
+学子商城--SSM
+day08--jack
+##创建工程
+1.创建maven工程
+2.添加web.xml
+3.添加tomcat运行环境
+4.添加jar包
+	spring-webmvc
+	mysql
+	commons-dbcp
+	mybatis
+	mybatis-spring
+	spring-jdbc
+	jstl
+	junit
+	jackson3个
+
+5.先建立包
+6.配置文件
+	application*2
+	spring-mvc
+	db.properties
+	建立Mapper文件夹
+
+mvc注解驱动（功能更加强大)
+	这里不需要处理中文乱码
+	因为导入了jackson的jar包
+
+7.web.xml
+	配置三大组件
+
+#建库
+	1.创建数据库tedustore
+	2.建表	t_user
+	
+	3.建表--来自页面
+	id  int primary key
+	username varchar(50) unique
+	password varchar(50) not null
+	email    varchar(50) not null
+	phone 	 varchar(32) not null
+	image		varchar(100)
+	gender	int(1)			
+	created_user	varchar(50)
+	created_time	date
+	modified_user	varchar(50)
+	modified_time	date
+	
+新建UserMapper.xml
+定义namespace
+定义insert节点
+<insert id="insertUser" 
+	parameterType="cn.tedu.store.bean.User">
+		insert into t_user(
+			username,password,email,phone,created_user,create_time,modified_user,modified_time
+		)
+		values(
+			#{username},
+			#{password},
+			#{email},
+			#{phone},
+			#{created_user},
+			#{create_time},
+			#{modified_user},
+			#{modified_time}
+		)
+</insert>
+
+定义select节点，编写select语句
+
+###1.2注册-业务层
+	1.定义接口IUserService,定义方法addUser(User user)
+		public interface IUserService{
+			public void addUser(User user);
+		}
+	2.在UserService接口的实现类中，实现方法
+	@Service
+	public class UserService implements IUserService{
+		@Resouce
+		private UserMapper userMapper;
+		public void addUser(User user){
+			//1.调用持久层的方法selectByUsername(user.getUsername());返回user1对象
+			//2.如果user1==null,到用insertUser(user)方法
+			
+			//3.如果user1!=null,抛出异常UsernameAlreadyExistException;
+			throw new UsernameAlreadyExistException("用户名已存在");
+		}
+	}
+
+
+在cn.tedu.store.service.ex包新建异常类
+	UsernameAlreadyExistException
+	public class UsernameAlreadyExistException extends RuntimeException{
+		public UsernameAlreadyExistException(){}
+		public UsernameAlreadyExistException(String msg){
+			super(msg);
+		}
+	}
+
+#1.3邮箱，电话号码，和用户名的验证
+	1.邮箱
+	1）持久层
+	在接口UserMapper中定义方法
+		Integer selectByEmail(String email);
+		在UserMapper.xml，定义select节点，定义select语句
+		<select id="selectByEmail"
+		resultType="java.lang.Integer"
+			SELECT count(*) FROM t_user where email="#{email}"
+		</select>
+	2)业务层
+		在接口中IUserService中定义方法
+		boolean checkEmial(String email);
+		在实现类中UserService中实现方法
+		public boolean checkEmail(String email){
+			//1.调用持久层的方法selectByEmail,用n接受返回值
+			//如果n>0,返回true,n==0返回false
+		}
+	2.电话
+	1）持久层
+	2)业务层
+
+
+##用户注册
+	1.1持久层
+	1.2业务层
+	判断user对象是否为空
+	调用select方法，返回user对象；判断user对象是否为null
+	1.3邮箱，电话号码验证
+	邮箱:持久层
+	业务层
+	
+用户名的业务层
+	在接口中定义方法
+	验证和注册是不一样的请求
+		boolean checkUsername(String username){
+			return userMapper.selectByUsername(username)!=null;
+		}
+	
+	
+控制器层:
+	1. 显示页面
+	/showRegister.do ---------显示页面
+	参数列表:无
+	响应方式:转发
+	2. 用户名
+	/checkUsername.do --------异步请求,验证用户名
+	参数列表:username
+	响应方式:ResponseBody
+	3. 邮箱
+	/checkEmail.do------------异步请求，验证邮箱
+	参数列表:email
+	响应方式:ResponseBody
+		@RequestMapping("/checkEmail.do")
+		@ResponseBody
+		public ResponseResult<Void> checkEmail(String email){
+			
+		}
+		怎么测试?
+		可以使用假的提交来测试服务器端
+	
+	4. 电话
+	/checkPhone.do------------异步请求，验证邮箱
+	参数列表:Phone
+	响应方式:ResponseBody
+		@RequestMapping("/checkPhone.do")
+		@ResponseBody
+		public ResponseResult<Void> checkEmail(String phone){
+			
+		}
+		
+	5. 提交
+	/register.do -------------异步请求，提交注册
+	参数列表；四个框
+	响应方式:ResponseBody
+	如过注册成功--转发重定向
+	不成功---继续在这个页面--返回错误信息
+	这里可以异步请求在重定向
+	405--方法错误
+	@RequestMapping("/register.do")
+	@ResponseBody
+	public ResponseResult<Void> register(){
+	//400
+		@RequestParam("uname")String username,
+		//声明rr
+		//2.try{
+			//addUser
+		}catch(){
+			//4.创建rr对象 state
+		
+		}
+	}
+	
+控制器层不需要接口
+修改html为jsp的时候，一定要先添加编码信息然后保存才能修改内容和后缀名
+新建UserController类
+	
+		@Controller
+		@RequestMapping("/User")
+		public class UserController{
+			//显示注册页面
+			@ResquestMapping("/showRegister.do");
+			public String showRegister(){
+				return "register";
+			}
+			
+		}
+	
+	
+怎么隐藏关闭的隐藏的项目
+	Filters and Customization 选择关闭	
+
+
+在控制器中定义方法，完成用户名的异步验证
+	public ResponseResult checkUsername(){
+		
+	}
+	
+	
+##2.用户管理--登陆
+
+	1.持久层
+		不用写
+	2.业务层
+		用用户名查，拿到用户对象，返回对象，或抛出异常
+	3.控制器层
+		处理异常在页面显示，或者转发
+	定义异常
+	1.在IUserService接口中定义方法
+		User login(String username,String password)
+	2.在UserService类中实现方法
+	public User login(String username,String password){
+		//selectByUsername--拿到对应名字的用户
+		if(user==null){
+			//没查到用户
+			抛出异常UserNotFoundException("帐号不存在")
+		}else{
+			//查到了，看密码
+			if(){
+				return user;
+			}else{
+				//PasswordNotMatchException("密码错误");
+			}
+		}
+	}
+	
+	
+@RequestMapping("/login.do")
+@ResponseBody 
+public ResponseResult<Void> login(String username,String password,HttpSession session){
+	//
+
+}
+	
+
+调整页面.jsp
+1.注册成
+
+2.在登陆页面上
+
+###5.显示首页index.jsp
+	//定义显示
+	
+	调整页面
+		1.登陆成功，跳转到index.jsp
+		2.在心的前面显示用户名
+		3.如果登陆成功，登陆改为退出；否则，首页显示登陆
+
+
+5.给退出添加超级连接
+
+	<li><a href="../User/exit.do">退出</a></li>
+	在UserController类中定义方法
+	//退出的功能
+	@RequestMapping("/exit.do")
+	public String exit(HttpSession session){
+		//1.让session失效
+		session.invalidate();
+		//2.重定向index.jsp
+		return "redirect:../main/showIndex.do";
+	}
+
+
+3. 用户管理--修改密码
+	3.1修改密码--持久层
+	1.在userMapper接口中定义方法
+		void updateUser(User user);
+	2.在UserMapper.xml文件中的定义updateUser
+	定义update节点，编写update语句
+	<update id="updateUser" parameterType="xx.xx.User">
+		update t_user
+		<set>--可以处理逗号的问题 
+			<if test="password!=null">
+				password=#{password}
+			</if>
+			<if test="username!=null">
+				username=#{username}
+			</if>
+			<if test="gender!=null">
+				gender=#{gender},
+			</if>
+			<if test="phone!=null">
+				phone=#{phone},
+			</if>
+			<if test="email!=null">
+				email=#{email},
+			</if>
+			<if test="modidied_user!=null">
+				modidied_user=#{modifiedUser},
+			</if>
+			<if test="modidied_time!=null">
+				modidied_time=#{modifiedTime}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	测试成功
+
+
+AbstractApplicationContext ac = new ClassPathXmlApplicationContext();
+UserMapper um = ac.getBean("userMapper",UserMapper.class);
+	um.update()
+
+3.2 修改密码业务层
+	1.在IUserService接口中定义方法
+		void changePassword(Integer id,String oldPwd,String new Pwd);
+
+	2.在UserService接口中实现方法
+	public void changePassword(Integer id,String oldPwd,String new Pwd){
+		//1.调用持久层方法:selectUserById(id);返回User
+		//2.if(user!=null){
+			//从user对象中取出password和oldPassword对比
+			if(password.equals(oldPassword)){
+				//修改密码:创建user1
+				updateUser(user);
+			}else{
+				throw new PasswordNotMatchException("旧密码不匹配");
+			}
+		}else{
+			throw new UserNotFoundException("用户不存在");
+		}
+	}
+
+3.控制器层
+	url
+	/updatePassword.do
+	参数列表:session(id),oldPwd,new Pwd
+	响应方式:ResponseBody
+	@RequestMapping("/updatePassword.do")
+	@ResponseBody
+	public ResponseResult<Void> updatePassword(Httpsession session,
+			String oldPwd,String newPwd
+			){
+			//1.声明rr对象
+			try{
+				id?从session中获取user对象，在对象中获取id
+				//调用业务层方法changePassword(id,oldPwd,newPwd)
+							
+			}
+		
+	}
+	
+	
+	1.测试
+		先登陆再去测试能不能修改密码
+	简单的测试是可以直接用浏览器
+	
+	代码调整:
+		将获取id的方法泛化为baseController的方法getId();
+4.页面
+	3.页面调整--侧边栏
+
+4.用户管理--个人信
+	1.显示页面
+	/showPersonpage.do ---------显示个人信息页
+	参数列表:无
+	响应方式:转发
+	@RequestMapping("/showPersonpage.do")
+	public String showPersonpage(){
+		return "personpage";
+	}
+
+name--表单提交
+
+2.页面调整
+	1）在个人显示页
+	2)在安全管理也
+
+4.2修改个人信息页面
+	2.1持久层
+	2.2业务层
+
+1.在接口中定义方法
+	
+	void updateUser(Integer id,String username,Integer gender,String email,String phone){
+		
+	}
+
+	在接口的实现类中实现方法
+	public void updateUser(Integer id,String username,Integer gender,String email,String phone){
+		//1.调用持久层方法:selectUserById(id);返回user1对象
+		if(user1!=null){
+		//按照用户名查询--如果名子已经存在，那么就不能改，如果名字没变，或者名字不同就可以改值嗯
+			//2.按照名查出user2
+			if(user2!=null&&!user1.getName().Equals(user2.getName())){
+				
+			}else{
+				可以修改
+			}
+		}
+	}
+
+4.3 控制器层
+	url定义
+		/updateUser.do
+		参数
+		响应方式:ResponseBody
+		public ResponseResult<Void> updateUser(HttpSession session,String username,Integer gender,
+						String email,String phone){
+				//声明rr对象
+				try{
+					//调用业务层  updateUser(this.getId(session),...);	
+				}catch(){
+								
+				}
+		}
+
+
+
+怎么测试js？
+	1.直接看浏览器的错误信息
+	2.如果没有存无信息，就需要在浏览器端打端点开始测试
+
+当登陆的时候服务器会为每个浏览器创建一个session
+
+4.2
+
+登陆拦截器
+						Filter 3
+	1.定义拦截器:HandlerInterceptor 3
+	
+	2.配置拦截器
+		
+#地址管理
+	1.建立表  t_address(17)
+	create table t_address(
+		id int  auto_increment  primary key,
+		uid int not null,
+		recv_name varchar(100),
+		recv_province varchar(6),
+		recv_city varchar(6),
+		recv_area varchar(6),
+		recv_district varchar(50),
+		recv_address varchar(100),
+		recv_phone varchar(32),
+		recv_tel varchar(32),
+		recv_zip varchar(6),//邮编
+		recv_tag varchar(10),//地址标签
+		isDefault int(1),
+		created_user varchar(50),
+		created_time date,
+		modified_user varchar(50),
+		modified_time date
+	)default charset=utf8
+	
+	1.显示地址管理和方法
+	定义控制器和方法
+	@Controller
+	@RequestMapping("/address")
+	public class AddressController extends BaseController{
+		//显示地址管理页面
+		@RequestMapping("/showAddress.do")
+		public String showAdress(){
+			return "addressAdmin";
+		}
+	}
+	
+	2.调整页面
+		1.包含header.jsp
+		2.包含left.jsp
+	
+	
+13号模拟面试周--中午四个，晚上四个
+	
+##1.2显示省市区三级联动菜单
+	把省市区的压缩文件解压，
+	
+	2.1显示省份
+		1.持久层
+			public class Province{
+				private Integer id;
+				private String ProvinceCode;
+				private String provinceName;
+			}
+			1）定义接口
+					public interface Dict{
+						//查询所有省份信息
+						List<Province> selectProvince();
+						String selectByProvinceCode(String provinceCode);
+					}
+			2）在映射文件中编写sql语句
+					新建一个xml文件，DictMapper.xml
+					写sql语句  selectProcince
+					别名
+				
+			3）测试类测试
+		2.业务层
+			1.新建IDictService接口,在接口中定义方法
+			public interface IDictService{
+				List<Province> getProvince();
+			}
+			public class DictService{
+				@Resource
+				private DictMapper dictMapper;
+				public List<Province> getProvince(){
+					return dictMapper.selectProvince();
+				}
+			} 
+		3.控制器层
+			/dict/getProvince.do
+			参数列表:无
+			响应放时:ResponseBody
+			@Controller
+			@RequestMapping("/dict")
+			public class DictController{
+				@Resource
+				private IDictService dictService;
+				//获取省份信息
+				public ResponseResult<List<Province>> getProvince(){
+						//1.创建rr对象，state :1,message :成功
+						//2.调用业务层的方法getProvince();返回list集合
+						//3.把list添加到rr对象的data属性中
+						return rr;
+				} 
+			}
+	
+	2.2显示城市
+		public class City{
+			private Integer id;
+			private String provinceCode;
+			private String cityCode;
+			private String cityName;
+		}
+		1）持久层
+		selectCity
+	
+	
+##地址管理
+	1.添加地址
+		1.1显示地址管理页面
+		1.2显示省市区
+		1.2.1显示省，显示市显示区
+		1)在DictMapper接口中定义方法
+		List<Area> selectArea(String cityCode)
+
+		public class Area{
+			
+		}	
+		在映射文件DictMapper.xml文件中，定义select节点，编写select语句
+	
+	
+5.调整省市区的函数
+	getProvince(provinceCode,cityCode,areaCode)
+	getCity(provinceCode,cityCode,areaCode)
+	getArea(provinceCode,cityCode,areaCode)
+	
+##1.3添加收货人的持久层
+新建Address类
+		public class Address{
+			//17个
+		}
+	1.新建AddressMapper接口，在接口中定义方法
+		public Integer AddressMapper{
+			void insertAddress(Address address);
+		}
+	
+1.5 添加
+	
+	
+	
+##2.显示收货人地址
+###2.1持久层
+	  2.2业务层
+	
+
+#3.设为默认
+	3.1持久层
+		1.Integer updateByUid(Integer uid);
+		2.Integer updateById(Integer id);
+
+	3.2业务层
+		ssm处理事务，当抛出RuntimeException或者子类异常框架会自动回滚
+	3.3控制器层
+	
+#4.修改个人信息
+	4.1显示个人信息
+		4.1.1持久层
+			Address selectById(Integer id)
+		4.1.2业务层
+			Address getById(Integer id)
+		4.1.3控制器层
+			/goUpdate.do
+			//参数列表:id
+			响应方式
+			public ResponseResult<Address> goUpdate(Integer id){
+				//1.创建rr对象
+			}
+	
+
+2.在接口中实现方法:
+	public void updateAddress(Address address){
+		//1.给address的recvDistrict属性赋值
+	}
+	控制器层:/updateAddress.do
+	参数列表:10个
+	
+	
+##5.删除收货人地址
+		5.1持久层
+			1.在接口中定义方法
+			void deleteById(Integer id)
+			
+		5.2业务层
+		5.3控制器层
+		5.4页面	
+	
+	如果方法不再引号内会直接执行
+	
+	
+	
+List<GoodsCategory> selectGoodsCategory(
+							@Param("parentId") Integer parentId,
+							@Param("offset") Integer offset,
+							@Param("count") Integer count);
+	
+	
+	测试:二级分类3个，每个二级分类显示所有的3级分类
+	
+	调整MainController类中的showIndx方法
+	public String showIndex(ModelMap map){
+		
+	}
+	
+怎么在浏览器端检查一个标签?
+	拉为蓝色，右键检查就可以了
+	
+	在GoodsMapper接口中定义方法
+	
+###.商品详情
+	4.1持久层
+	4.2业务层
+	4.3控制器层
+	4.4页面
+	
+create table t_cart(
+	id int auto_imcrement premary key,
+	uid int not null,
+	good_id varchar(200) not null,
+	num int(10),
+	created_user varchar(50),
+	created_time date,
+	modified_user varchar(50),
+	modified_time date
+)default charset=utf8;
+	
+##1.添加购物车
+	1.持久层
+		Cart
+	
+	
+##2.显示购物车
+	cn.tedu.store.vo.CartVo
+	值对象:CartVo---用来封装两个表中的数据在一个对象中
+	2.1持久层
+	selectByUid(Integer id)
+	可能出现笛卡尔级
+	<select id="selectByUid"
+		resultType="cn.tedu.store.vo.CartVo">
+		select 
+			t_cart.id id,uid,goods_id goodsId,t_cart.num,
+			image,title,price,
+			created_user createdUser,
+			created_time createdTime,
+			modified_user modifiedUser,
+			modified_time modifiedTime,
+		from
+			t_cart,t_goods
+		where goods_id=t_goods.id and
+		uid=#{uid}
+	</select>
+	2.2业务层
+	2.3控制器层
+	/showCart.do
+	session
+	2.4页面
+	
+	需求分析
+	业务分析
+	数据分析
+	编码实现
+	
+
+	1.批量删除
+			
+delete from t_cart
+where 
+	id in 
+	collection 属性表示定义集合的类型；如果是数组那么写array
+	item表示定义变量
+	open表示从xx开始
+	close表示从xx结束
+	separator表示分割符号
+	<foreach collection="array" item=id open"("
+	separator=","  close=")">
+		#{id}
+	</foreach>
+
+
+removeByIds
+
+public void sum(int x,int y){
+	.........(x+y);
+}
+
+数据库编程中也有存储过程，跟java方法相似
+存储过程(pl/sql)这是一种数据库语言
+	public void delete(Integer id,int x){
+	//sql
+		delete from t_cart where id=pid;
+	}
+
+特点:先在数据库中进行编译;提高效率
+public void detele(Integer pid,int x)
+
+定义格式:
+	//修改分隔符解析decreayte
+	delimiter $$
+	create procedure del(pid int)
+	begin
+		delete from t_cart where id=pid;
+	end $$
+	delimiter ;
+
+2. 使用存储过程
+	call sel(2);
+	
+3.查看存储过程
+	show procedure status;
+4.删除存储过程
+	drop procedure del;	
+
+1.在接口中定义方法
+	<delete id="deleteById">
+		{call del(#{id})}
+	<delete>
+
+3.3 修改数量
+		delimiter &&
+		create procedure upd(pid int,pnum int)
+		begin 
+		update t_cart
+		set num = pnum,
+		where id=pid;
+		end $$
+	1.持久层
+	2.业务层
+	3.控制器层
+	4.页面
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

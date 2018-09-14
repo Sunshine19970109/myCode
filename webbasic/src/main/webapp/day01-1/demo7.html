@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单</title>
+</head>
+<body>
+	<form action="Http://www.baidu.com">
+	<h1>表单</h1>
+	<!-- 文本框、密码框 -->
+	<p>
+		<label for="user_name">账号:</label>
+		<input type="text" id="user_name"/>
+	</p>
+	<p>
+		<label for="pwd">密码:</label>
+		<input type="password" id="pwd"/>
+	</p>
+	<!-- 单选框、复选框 -->
+	<p>
+		性别:
+		<label for="male">男</label>
+		<input type="radio" name="sex" id="male"/>
+		<label for="female">女</label>
+		<input type="radio" name="sex" id="female"/>
+	</p>
+	<p>
+		爱好:
+		<label for="basketball">篮球</label>
+		<input type="checkbox" name="favorite" id="basketball"/>
+		<label for="football">足球</label>
+		<input type="checkbox" name="favorite" id="football"/>
+		<label for="pingpong">乒乓球</label>
+		<input type="checkbox" name="favorite" id="pingpong"/>
+	</p>
+	<!-- 按钮 -->
+	<p>
+		<input type="submit" value="提交"/>
+		<input type="reset" value="重置"/>
+		<input type="button" value="取消"/>
+	</p>
+	<!-- 隐藏域、文件选择器 -->
+	<p>
+		<input type="hidden" value="9"/>
+		<label for="file">上传:</label>
+		<input type="file" name="file"/>
+	</p>
+	<!-- 文本域 -->
+	<p>
+		<label for="address">地址:</label>
+		<textarea cols="30" rows="5" id="address">
+北京市海淀区北三环西路甲18号中鼎大厦B座7层
+		</textarea>
+	</p>
+	<!-- 下拉选 -->
+	<p>
+		<label for="course">课程</label>
+		<select id="cource">
+			<option value="1">Java</option>
+			<option value="2">php</option>
+			<option value="3">.net</option>
+		</select>
+	</p>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,188 @@
+1 SpringJdbc
+	(1)SpringJdbc是什么?
+	Spring框架对jdbc的封装。
+	(2)编程步骤
+	step1.导包
+	spring-webmvc,spring-jdbc,
+	ojdbc,dbcp,junit
+	step2.添加spring的配置文件
+	
+	
+	
+	
+
+什么时候用war包，什么时候用jar包?
+	当web应用需要部署到服务器上面运行时，用war包
+	当只访问数据库的简单操作,jar包就可以了。
+	没有jsp,Servlet等等
+
+
+
+
+
+
+
+
+
+
+
+
+SpringMVC
+	是什么?
+	用来简化webMVC模式的web应用开发的框架
+五大组件
+	DispatcherServlet
+	HandlerMapping--配置文件配置
+	Controller
+	ModelAndView--name
+	ViewResolver--配置name对应的视图解析器
+编程步骤
+	基于注解的方式
+	@RequestMapping
+	@Controller
+	组件扫描	MVC注解扫描	视图解析器
+读取请求参数
+	三种方式	request	
+	@RequestParam	javabean--对应请求参数
+向页面传值
+	四种	request  session  ModelAndView
+	ModelMap	
+重定向
+	redirect:toIndex.do
+表单包含有中文怎么处理
+	配置过滤器
+	CharacterEncodingFilter
+	request.setCharacterEncoding
+拦截器
+	过滤器是servlet规范
+	拦截器属于spring框架
+	什么是拦截器
+	实现接口HandlerInterceptor接口
+	preHandler
+	postHandler
+	afterCompletion
+	配置文件配置
+	优先级:由配置的顺序执行
+异常处理
+	配置简单的异常处理器--仅仅配置
+	@ExceptionHandler--相当于一个请求
+	
+当控制器的返回值不是String或者ModelAndView的时候，
+前端控制器就不管了，不管是转发还是重定向，都和servlet
+中一样。
+	比如生成验证码，这个验证码的生成，是不需要地址的，
+	应为地址本来是在OutputStream定义的时候，
+	但是这个os是通过reponse获取的，所以底层已经封装
+	好了，可以直接用这个流输出发送给浏览器就行，不需要
+	转发重定向，相当于model1
+
+做验证码的问题?
+	验证验证码的时候保存发送:
+	request.setAttribute("codeError","验证码错误");
+	
+验证码点击事件及请求:
+	<td><img src="checkcode.do" 
+	alt = "验证码"
+	title="点击更换"//前面是js中间是字符串，后面是js
+	onclick="this.src='checkcode.do?a='+Math.random();"/></td>
+	<td><span class="required">${codeError}</span></td>
+
+比较验证码:
+	1 拿到用户输入的验证码
+	2 拿到session中的验证码
+	3 对比决定返回的jsp
+	
+怎么保证验证码错误的时候，用户名还在?
+	获取request中的用户名，本来就有
+	在jsp的value值中显示。
+
+系统分层
+	表示层
+	业务层
+	持久层
+
+为什么现在觉的业务层就像一个空壳一样?
+	因为现在的业务非常的简单，
+	当业务复杂的时候，就可以很有必要了。
+	业务层放业务逻辑，持久层只负责访问数据库
+	
+
+
+
+
+
+
+	
+	
+spring容器是在什么时候启动的?
+	是在前端控制器的初始化方法里面启动。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+springmvc怎么实现访问数据库?
+	1.书写配置文件
+		driver=oracle.jdbc.driver.OracleDriver
+		url=jdbc:oracle:thin:@localhost:1521:xe
+		user=system
+		pwd=zhu123456
+		initsize=1
+		maxsize=2
+	2.配置spring配置文件
+		读取配置文件
+		<util:properties id="db"
+		location="classpath:db.properties"/>
+		配置连接池
+		<bean id="ds"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		销毁destroy-method="close"
+		name必须和set方法一致，value值用spring表达式取值
+		<property name="driverClassName" value="#{db.driver}"
+	3 用注解注入
+	@Repository("adminDAO")--定义bean
+	@Resource(name="ds")
+	private DataSource ds;---
+	依赖注入，在配置文件中配置的连接池
+	4 获取连接，写sql,设置参数，执行获取结果，将结果转换为对象
+
+DBTool和DBUtil的区别?
+	DBTool不能实现多线程，DBUtil实现了多线程访问数据
+	DBUtil:
+	创建Properties对象
+	加载文件
+	读取参数
+	p.getProperty("driver")
+	创建连接池--BasicDataSource--DBCP
+	设置参数--ds.set...
+	获取连接关闭连接
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

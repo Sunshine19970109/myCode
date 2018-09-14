@@ -1,0 +1,41 @@
+1 Spring的事务支持不依赖于JavaEE环境
+	Spring支持可插入的事务管理器，使事务划分更加轻松，同时无需处理底层的问题
+	Spring事务管理的通用抽象层还包括JTA策略和一个JDBC DateSource
+	Spring事务语义通过AOP应用于POJO，通过XML或JavaSE 5注释配置
+	
+Spring的组成一共与7块组成
+	Spring核心容器(Core)
+	Spring AOP
+	Spring ORM
+	Spring DAO
+	Spring WEB
+	Spring上下文(Context)
+	SpringMVC
+
+	不一定每个bean都提供相应的生命周期方法
+	销毁方法只适用于singleton模式的bean
+	初始化方法只执行一次
+
+	springMVC是一个mvc框架，主要是实现了核心控制器，并没有数据库访问功能
+	MVC包括--视图层、模型层、控制层
+	prototype表示一个bean定义对应多个实例
+	Spring容器是Spring框架的核心组成模块
+	IOC具有三种注入方式
+	分别是:构造函数注入、属性注入、接口注入
+	初始化方法名不一定为init
+	byName不可能找到多个、byType会找到多个
+	Spring容器有BeanFactory和ApplicationContext等类型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
