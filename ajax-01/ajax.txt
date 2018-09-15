@@ -1,0 +1,151 @@
+3  特点:
+
+4.1  创建xhr对象：new XMLHttpRequest()
+
+4.2 xhr.open("get/post","url",true);
+
+4.3  xhr.send(); get? post?
+
+4.4 xhr.onreadystatechange=function(){};
+
+4.5  xhr.readystate==4  xhr.status==200
+
+4.6	xhr.responseText
+
+
+var cityNode = document.getElementById("city");
+cityNode.innerHTML = "<option>请选择...</option>";
+var cities = msg.split(";");
+for(i=0;i<cities.length;i++){
+	var city = city[i].split(",");
+	//第一个参数是显示的文本，第二个参数，表示value的值
+	var option =  new Option(city[1],city[0]);
+	//在city下拉列表中，添加子节点
+	cityNode.appendChild(option);
+}
+
+
+什么是JSON?
+	客户端和服务器端实现数据交互的轻量级的解决方案
+	{"name":"admin","age",18},{"name":}
+
+语法格式:
+	key-value
+	
+好处:易于缩写，易于阅读，易于访问
+
+2. 客户端
+1 一个k-v
+2 多个k-v的json对象
+	var obj = {
+		"state":0,
+		"message":"失败"
+	};
+
+3。k-v中包含一个对象
+	var obj = {
+		"state":1,
+		"message":"成功"，
+		"data":{"name":"admin","age":18}
+	};
+	
+4.k-v,value是一个数组(服务器端就是list)
+	var obj = {
+		"state":1，
+		"message":"成功"，
+		"data":[
+			{"cityCode":21,"cityName":"沈阳市"},
+			{"cityCode":22,"cityName":"大连市"},
+			{"cityCode":23,"cityName":"鞍山市"}
+		]
+	};
+	
+	for(i=0;obj.data.length;i++){
+		obj.data[i].cityCode;
+		obj.data[i].cityName;
+	}
+
+3.服务器端（字符串）怎么转换成对象?
+	var strValue = xhr.responseText;
+	var obj = JSON.parse(strValue);
+	
+	
+练习2：异步请求，二级联动菜单
+		
+		
+jQuery实现异步提交
+	1.导入jquery		*.js;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	Liux命令？
+	pwd--用于显示当前工作目录
+	ls---查看当前工作目录内容
+	cd---用于改变当前工作目录
+	mkdir 
+	rmdir
+	exit
+
+2.java的编译运行过程
+	程序员编写的java源文件(.java)首先要经过编译，生成所谓
+的字节码文件(.class);
+	Java程序的运行需要JVM的支持。JVM是一个软件，安装在操作
+系统中，为字节码文件提供运行环境；
+	Java官方提供了针对不同平台的JVM软件，这些JVM遵循着相同
+的标准，只要是标准的.class文件，就可以在不同的JVM上运行，
+而且运行效果相同，这样，就实现了所谓的“一次编程到处运行”。
+
+
+3.什么是面向对象（封装。继承。多态），
+举出实例配合代码去解说。
+
+一切都是对象，有自己的属性，有自己的功能。
+例如:  Dog
+		String name; String sex;
+		Integer age;
+		animal  Cat
+		Dog extance animal  
+		Cat extance animal
+		
+什么是类?
+	类定义了一种抽象数据类型。
+	类不但定义了抽象数据类型的组成(成员变量)，同时还定义了
+可以对该类型实施的操作(方法)。
+
+4.写代码中常遇到的异常有哪些，发生在哪里（至少5个）。
+	nullPointerException--空指针
+	notFindException--找不到文件
+	超出索引异常
+	
+5.java的八种基本类型，取值范围，char的编码。
+	int double String byte boolean 
+	char 
+	
+	
+开发步骤:
+	1.页面
+	2。控制器
+
+为什么拷贝的maven项目特别容易包错呢?
+	这里需要更新一下maven项目
+
+为什么报错不能转换JSON对象?
+	1.缺少对应的jar包
+	2.自己的类有问题
+	
+
+
+
+
+
+
+
